@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: 'A trusted peer community for legal professionals across the AI ecosystem.',
   metadataBase: new URL('https://agicounsel.org'),
   openGraph: { title: 'AGI Counsel Network', description: 'Legal judgment for the age of intelligence.', url: 'https://agicounsel.org', siteName: 'AGI Counsel Network', type: 'website' },
+  alternates: { canonical: '/', languages: { en: '/', 'zh-CN': '/zh/' } },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

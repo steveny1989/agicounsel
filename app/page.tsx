@@ -22,7 +22,7 @@ export default function Home() {
   return <main>
     <header className="site-header">
       <a className="brand" href="#top" aria-label="AGI Counsel Network home"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a>
-      <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#work">What we do</a><a href="#principles">Principles</a><a className="nav-join" href="#join">Join the network</a></nav>
+      <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#work">What we do</a><a href="#principles">Principles</a><a className="language-switch" href="/zh/">中文</a><a className="nav-join" href="#join">Join the network</a></nav>
     </header>
 
     <section className="hero" id="top">
