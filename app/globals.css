@@ -46,6 +46,7 @@ nav .nav-join { border-bottom: 1px solid var(--gray); padding-bottom: 6px; }
 .intro-content,.work-content,.discussion-content,.voices-content,.principles-content { max-width: 950px; }
 .section h2 { margin: 20px 0 45px; }
 .intro-columns { border-top: 1px solid var(--gray); padding-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 55px; color: var(--gray); line-height: 1.8; }
+.intro-summary { max-width: 620px; padding-top: 28px; border-top: 1px solid var(--gray); color: var(--gray); line-height: 1.7; }
 
 .stack-section { padding: 0 0 100px; }
 .stack-heading { padding-bottom: 60px; }
@@ -71,8 +72,8 @@ nav .nav-join { border-bottom: 1px solid var(--gray); padding-bottom: 6px; }
 .carousel-stage { position: relative; }
 .carousel-slide { display: none; animation: carouselReveal .45s ease; }
 .carousel-slide.is-active { display: block; }
-.carousel-slide>.section,.carousel-slide>.stack-section>.section { min-height: 610px; align-content: center; }
-.carousel-slide>.featured-note>.section,.carousel-slide>.principles>.section { min-height: 610px; }
+.carousel-slide>.section,.carousel-slide>.stack-section>.section { min-height: 520px; align-content: center; }
+.carousel-slide>.featured-note>.section,.carousel-slide>.principles>.section { min-height: 520px; }
 .carousel-tabs { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--gray); border-bottom: 1px solid var(--gray); }
 .carousel-tabs button { min-height: 76px; padding: 18px clamp(16px,3vw,40px); border: 0; border-right: 1px solid var(--gray); background: var(--paper); color: var(--gray); cursor: pointer; text-align: left; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
 .carousel-tabs button:last-child { border-right: 0; }
@@ -92,6 +93,8 @@ nav .nav-join { border-bottom: 1px solid var(--gray); padding-bottom: 6px; }
 .discussion-grid article>span { color: var(--gold); }
 .discussion-grid h3 { margin: 0; font-weight: 700; line-height: 1.35; }
 .discussion-grid p { margin: 0; color: var(--gray); line-height: 1.7; }
+.discussion-grid.compact article { grid-template-columns: 62px 1fr; align-items: center; padding: 24px 0; }
+.discussion-grid.compact h3 { font-size: clamp(18px,2vw,26px); font-weight: 500; }
 
 .featured-note { background: var(--navy); color: var(--paper); }
 .featured-note-inner { padding-top: 110px; padding-bottom: 110px; }
@@ -107,6 +110,8 @@ nav .nav-join { border-bottom: 1px solid var(--gray); padding-bottom: 6px; }
 .quote-grid blockquote { margin: 0; padding: clamp(28px,4vw,50px); background: var(--paper); display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; }
 .quote-grid blockquote p { margin: 0 0 35px; font-size: clamp(22px,2.3vw,32px); line-height: 1.35; letter-spacing: -.02em; }
 .quote-grid cite { color: var(--gray); font-style: normal; text-transform: uppercase; letter-spacing: .1em; line-height: 1.5; }
+.quote-grid.single { grid-template-columns: 1fr; }
+.quote-grid.single blockquote { min-height: 245px; }
 
 .principles,.contribute-card,footer { background: var(--navy); color: var(--paper); }
 .principles-inner { padding-top: 110px; padding-bottom: 110px; }
