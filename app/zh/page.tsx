@@ -8,11 +8,10 @@ const layers = [
   ['05', '应用', '改变工作与生活'],
 ];
 
-const work = [
-  ['01', '深度对话', '围绕塑造 AI 生态的法律议题，开展坦诚且非公开的同行交流。'],
-  ['02', '基准与实践分享', '交流新兴标准、运营模式以及 AI 法律工作的真实实践。'],
-  ['03', '小型聚会', '以邀请制的小规模交流，追求深度而非人数。'],
-  ['04', 'AI 法律人的未来', '共同探索人工智能如何改变法律判断、制度与我们的职业。'],
+const discussions = [
+  ['01', '构建 AI 原生法务部门', '当人工智能成为运营模式的一部分，法务团队应如何重新思考工作流、人才、知识与治理？'],
+  ['02', 'AI 智能体与法律责任', '当人工智能从回答问题走向采取行动，法律责任将如何变化？'],
+  ['03', 'AI 法律人的未来', '下一代法律专业人士最重要的能力会是什么？'],
 ];
 
 const principles = [
@@ -60,7 +59,7 @@ export default function ChineseHome() {
   return <main lang="zh-CN">
     <header className={`site-header ${isScrolled ? 'site-header-scrolled' : ''}`}>
       <a className="brand" href="#top"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a>
-      <nav aria-label="主导航"><a href="#about">关于我们</a><a href="#work">我们做什么</a><a href="#principles">社群原则</a><a className="language-switch" href="/">EN</a><a className="nav-join" href="#join">加入网络</a></nav>
+      <nav aria-label="主导航"><a href="#about">关于</a><a href="#discussing">对话</a><a href="/zh/notes/">社群笔记</a><a href="#principles">社群原则</a><a className="language-switch" href="/">EN</a><a className="nav-join" href="#contribute">参与</a></nav>
     </header>
 
     <section className="hero" id="top">
@@ -68,7 +67,7 @@ export default function ChineseHome() {
       <div className="eyebrow"><span /> 独立同行社群</div>
       <h1>智能时代的<br />法律判断力。</h1>
       <p className="hero-copy">连接人工智能生态各环节法律专业人士的可信同行网络。</p>
-      <div className="hero-actions"><a className="button button-light" href="#join">加入网络 <span>↗</span></a><a className="text-link" href="#about">了解我们的使命 <span>↓</span></a></div>
+      <div className="hero-actions"><a className="button button-light" href="#discussing">进入对话 <span>↗</span></a><a className="text-link" href="#about">了解我们的使命 <span>↓</span></a></div>
       <div className="hero-footer"><span>跨越专业边界</span><span>贯穿 AI 全产业链</span><span>以信任为基础</span></div>
     </section>
 
@@ -84,21 +83,31 @@ export default function ChineseHome() {
       <div className="layer-cake">{layers.map(([n, t, b]) => <div className="layer" key={t}><span>{n}</span><strong>{t}</strong><small>{b}</small></div>)}</div>
     </section>
 
-    <section className="section work fade-in" id="work">
-      <div className="section-label">03 / 我们做什么</div>
-      <div className="work-content"><p className="kicker">追求深度，远离喧嚣。</p><h2>为那些难以在大会舞台上充分展开的对话，创造空间。</h2>
-        <div className="work-grid">{work.map(([n, t, b]) => <article key={t}><span>{n}</span><h3>{t}</h3><p>{b}</p></article>)}</div>
+    <section className="section discussions fade-in" id="discussing">
+      <div className="section-label">03 / 我们正在讨论</div>
+      <div className="discussion-content"><p className="kicker">真实问题，而非标准答案。</p><h2>此刻，正在社群中流动的问题。</h2>
+        <div className="discussion-grid">{discussions.map(([n, t, b]) => <article key={t}><span>{n}</span><h3>{t}</h3><p>{b}</p></article>)}</div>
       </div>
     </section>
 
+    <section className="featured-note fade-in"><div className="section featured-note-inner">
+      <div className="section-label section-label-gold">04 / 精选社群笔记</div>
+      <div className="featured-note-content"><p className="kicker kicker-gold">AGI Counsel Note #01</p><h2>AI 原生法务部门会是什么样？</h2><p className="note-deck">来自 Network 成员匿名讨论的三点初步观察。</p><ul><li>AI 原生，不等于在现有工作流上增加 Copilot。</li><li>知识架构可能比工具选择更重要。</li><li>当生产成本下降，人类判断力会变得更加珍贵。</li></ul><a className="note-link" href="/zh/notes/ai-native-legal-department/">阅读社群笔记 <span>→</span></a></div>
+    </div></section>
+
+    <section className="section community-voices fade-in" id="community">
+      <div className="section-label">05 / 来自社群</div>
+      <div className="voices-content"><p className="kicker">让集体思考被看见。</p><h2>来自 Network 内部的问题与观察。</h2><div className="quote-grid"><blockquote><p>“当法律分析变得极其充裕，人类判断究竟意味着什么？”</p><cite>一位 Network 成员提出的问题</cite></blockquote><blockquote><p>“AI 原生法务团队需要重新设计工作流，而不只是增加新工具。”</p><cite>来自一次 AGI Counsel 对话</cite></blockquote></div></div>
+    </section>
+
     <section className="principles fade-in" id="principles"><div className="section principles-inner">
-      <div className="section-label section-label-gold">04 / 社群原则</div>
+      <div className="section-label section-label-gold">06 / 社群原则</div>
       <div className="principles-content"><p className="kicker kicker-gold">我们如何参与。</p><h2>严肃的同行社群，始于清晰的共同约定。</h2>
         <div className="principles-list">{principles.map(([t, b], i) => <div className="principle" key={t}><span>0{i + 1}</span><h3>{t}</h3><p>{b}</p></div>)}</div>
       </div>
     </div></section>
 
-    <section className="join section fade-in" id="join"><div className="join-card"><p className="kicker kicker-light">一个有意保持精简的网络。</p><h2>带来你的判断。<br />带走更好的问题。</h2><p>会员目前实行邀请制。如果你认同我们的使命，请直接发送邮件：</p><a className="join-email" href="mailto:hello@agicounsel.org?subject=AGI%20Counsel%20Network%20—%20加入意向">hello@agicounsel.org <span>↗</span></a></div></section>
+    <section className="contribute section fade-in" id="contribute"><div className="contribute-card"><div><p className="kicker kicker-light">07 / 参与或加入</p><h2>我们下一步应该讨论什么？</h2><p>欢迎成员为未来的对话提出问题、实践难题或议题。请告诉我们它为什么在此刻重要，以及你是否愿意参与讨论。</p><a className="join-email" href="mailto:hello@agicounsel.org?subject=给%20AGI%20Counsel%20Network%20的讨论问题&body=你希望%20Network%20讨论什么问题？%0A%0A为什么这个问题此刻重要？%0A%0A你是否愿意参与这场讨论？%0A%0A姓名（选填）：">贡献一个问题 <span>↗</span></a></div><aside><span>会员加入</span><p>会员目前实行邀请制。如果你认同我们的使命，欢迎来信介绍自己：</p><a href="mailto:hello@agicounsel.org?subject=AGI%20Counsel%20Network%20—%20加入意向">hello@agicounsel.org</a></aside></div></section>
 
     <footer><a className="brand" href="#top"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a><p>连接人工智能生态各环节法律专业人士的独立同行社群。</p><div><a href="mailto:hello@agicounsel.org">hello@agicounsel.org</a><span>© 2026 AGI Counsel Network</span></div></footer>
 
