@@ -20,7 +20,7 @@ const discussions = [
 const principles = [
   '信任',
   '实践交流',
-  '拒绝推销',
+  '社群优先',
   '个人参与',
 ];
 

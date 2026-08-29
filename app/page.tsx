@@ -20,7 +20,7 @@ const discussions = [
 const principles = [
   'Trust',
   'Practical exchange',
-  'No solicitation',
+  'Community first',
   'Personal capacity',
 ];
 
