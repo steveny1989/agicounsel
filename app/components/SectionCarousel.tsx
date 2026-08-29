@@ -20,8 +20,6 @@ export default function SectionCarousel({ id, title, labels, children }: Props) 
     return () => window.clearInterval(timer);
   }, [paused, slides.length]);
 
-  const move = (direction: number) => setActive((current) => (current + direction + slides.length) % slides.length);
-
   return <section className="section-carousel fade-in" id={id} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}>
     {title && <div className="carousel-bar">
       <h2>{title}</h2>

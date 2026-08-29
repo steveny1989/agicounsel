@@ -76,15 +76,16 @@ export default function Home() {
       <section className="hero carousel-slide-hero">
         <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
         <div className="eyebrow"><span /> Why we exist</div>
-        <h1>Compare notes. Sharpen judgment. Navigate what comes next.</h1>
+        <h1>Compare notes. Sharpen judgment.<br />Build what's next.</h1>
         <p className="hero-copy">AI is changing our work.</p>
         <div className="hero-actions"><a className="button button-light" href="#about">Explore <span>↓</span></a></div>
       </section>
     </SectionCarousel>
 
-    <SectionCarousel id="about" title="Foundation" labels={['Across the AI stack', 'Community principles']}>
-      <section className="stack-section"><div className="stack-title"><h2>Across the AI Stack</h2></div><div className="layer-cake" aria-label="The five layers of the AI ecosystem">{layers.map(([name, note]) => <div className="layer" key={name}><strong>{name}</strong><small>{note}</small></div>)}</div></section>
-      <section className="principles" id="principles"><div className="principles-simple">{principles.map((title) => <div className="principle-keyword" key={title}>{title}</div>)}</div></section>
+    <SectionCarousel id="about" title="Foundation" labels={['Across the AI stack', 'How we work', 'Community principles']}>
+      <section className="foundation-panel foundation-stack"><div className="foundation-intro"><p className="kicker">Our scope</p><h2>Across the<br />AI Stack</h2><p>Legal professionals from every layer of the intelligence economy.</p></div><div className="layer-cake" aria-label="The five layers of the AI ecosystem">{layers.map(([name, note]) => <div className="layer" key={name}><strong>{name}</strong><small>{note}</small></div>)}</div></section>
+      <section className="foundation-panel foundation-work"><div className="foundation-intro"><p className="kicker">How we work</p><h2>Questions become conversations. Conversations become shared insight.</h2></div><div className="foundation-actions"><article><span>01</span><h3>Compare practice</h3></article><article><span>02</span><h3>Test assumptions</h3></article><article><span>03</span><h3>Sharpen judgment</h3></article></div></section>
+      <section className="principles foundation-panel" id="principles"><div className="foundation-intro"><p className="kicker kicker-gold">What makes it possible</p><h2>Community<br />Principles</h2></div><div className="principles-simple">{principles.map((title) => <div className="principle-keyword" key={title}>{title}</div>)}</div></section>
     </SectionCarousel>
 
     <SectionCarousel id="community" title="Community" labels={["Current questions", 'Featured note', 'From the community']}>

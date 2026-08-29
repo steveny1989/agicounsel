@@ -76,15 +76,16 @@ export default function ChineseHome() {
       <section className="hero carousel-slide-hero">
         <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
         <div className="eyebrow"><span /> 我们为何存在</div>
-        <h1>交流实践。磨砺判断。共同面对未来。</h1>
+        <h1>交流实践，磨砺判断。<br />共建未来。</h1>
         <p className="hero-copy">AI 正在改变我们的工作。</p>
         <div className="hero-actions"><a className="button button-light" href="#about">继续了解 <span>↓</span></a></div>
       </section>
     </SectionCarousel>
 
-    <SectionCarousel id="about" title="共同基础" labels={['贯穿 AI 产业链', '社群原则']}>
-      <section className="stack-section"><div className="stack-title"><h2>贯穿 AI 产业链</h2></div><div className="layer-cake">{layers.map(([name, note]) => <div className="layer" key={name}><strong>{name}</strong><small>{note}</small></div>)}</div></section>
-      <section className="principles" id="principles"><div className="principles-simple">{principles.map((title) => <div className="principle-keyword" key={title}>{title}</div>)}</div></section>
+    <SectionCarousel id="about" title="共同基础" labels={['贯穿 AI 产业链', '我们如何交流', '社群原则']}>
+      <section className="foundation-panel foundation-stack"><div className="foundation-intro"><p className="kicker">我们的范围</p><h2>贯穿 AI<br />产业链</h2><p>连接智能经济每一层的法律专业人士。</p></div><div className="layer-cake" aria-label="人工智能生态的五个层次">{layers.map(([name, note]) => <div className="layer" key={name}><strong>{name}</strong><small>{note}</small></div>)}</div></section>
+      <section className="foundation-panel foundation-work"><div className="foundation-intro"><p className="kicker">我们如何交流</p><h2>问题形成对话。<br />对话沉淀洞见。</h2></div><div className="foundation-actions"><article><span>01</span><h3>交流实践</h3></article><article><span>02</span><h3>检验假设</h3></article><article><span>03</span><h3>磨砺判断</h3></article></div></section>
+      <section className="principles foundation-panel" id="principles"><div className="foundation-intro"><p className="kicker kicker-gold">交流的基础</p><h2>社群<br />原则</h2></div><div className="principles-simple">{principles.map((title) => <div className="principle-keyword" key={title}>{title}</div>)}</div></section>
     </SectionCarousel>
 
     <SectionCarousel id="community" title="社群" labels={['当前议题', '精选笔记', '来自社群']}>
