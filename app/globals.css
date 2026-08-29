@@ -63,8 +63,9 @@ nav .nav-join { border-bottom: 1px solid var(--gray); padding-bottom: 6px; }
 .layer small { color: var(--gray); text-transform: uppercase; letter-spacing: .12em; text-align: right; transition: color .2s ease; }
 .layer:focus-visible { z-index: 2; outline: 2px solid var(--gold); outline-offset: 3px; background: var(--navy); color: var(--paper); border-color: var(--navy); transform: scale(1.015); }
 .layer:focus-visible small { color: var(--gold); }
-.layer-cake:has(.layer:focus-visible) .layer:not(:focus-visible) { opacity: .4; }
-@media(hover:hover){.layer:hover{z-index:2;background:var(--navy);color:var(--paper);border-color:var(--navy);transform:scale(1.015)}.layer:hover small{color:var(--gold)}.layer-cake:has(.layer:hover) .layer:not(:hover){opacity:.4}}
+.layer-cake:has(.layer:focus-visible) .layer:not(:focus-visible) { opacity: .4; background: var(--paper); color: var(--navy); border-color: var(--gray); }
+.layer-cake:has(.layer:focus-visible) .layer:not(:focus-visible) small { color: var(--gray); }
+@media(hover:hover){.layer:hover{z-index:2;background:var(--navy);color:var(--paper);border-color:var(--navy);transform:scale(1.015)}.layer:hover small{color:var(--gold)}.layer-cake:has(.layer:hover) .layer:not(:hover){opacity:.4;background:var(--paper);color:var(--navy);border-color:var(--gray)}.layer-cake:has(.layer:hover) .layer:not(:hover) small{color:var(--gray)}}
 
 .section-carousel { background: var(--paper); border-top: 1px solid var(--gray); }
 .carousel-bar { min-height: 92px; padding: 22px clamp(24px,7vw,110px); display: flex; align-items: center; justify-content: space-between; gap: 30px; background: var(--paper); color: var(--navy); border-bottom: 1px solid var(--gray); }
