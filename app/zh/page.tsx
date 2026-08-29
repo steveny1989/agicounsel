@@ -82,7 +82,7 @@ export default function ChineseHome() {
       </section>
     </SectionCarousel>
 
-    <SectionCarousel id="about" title="共同基础" labels={['贯穿 AI 产业链', '我们如何交流', '社群原则']}>
+    <SectionCarousel id="about" title="" labels={['贯穿 AI 产业链', '我们如何交流', '社群原则']}>
       <section className="foundation-panel foundation-stack"><div className="foundation-intro"><p className="kicker">我们连接谁</p><h2>贯穿 AI<br />产业链</h2><p>连接智能经济每一层的法律专业人士。</p></div><div className="layer-cake" aria-label="人工智能生态的五个层次">{layers.map(([name, note]) => <div className="layer" key={name}><strong>{name}</strong><small>{note}</small></div>)}</div></section>
       <section className="foundation-panel foundation-work"><div className="foundation-intro"><p className="kicker">我们如何交流</p><h2>问题形成对话。<br />对话沉淀洞见。</h2></div><div className="foundation-actions"><article><span>01</span><h3>交流实践</h3></article><article><span>02</span><h3>检验假设</h3></article><article><span>03</span><h3>磨砺判断</h3></article></div></section>
       <section className="principles foundation-panel" id="principles"><div className="foundation-intro"><p className="kicker kicker-gold">我们共同遵循</p><h2>社群<br />原则</h2></div><div className="principles-simple">{principles.map((title) => <div className="principle-keyword" key={title}>{title}</div>)}</div></section>
