@@ -88,7 +88,7 @@ export default function ChineseHome() {
       <section className="principles foundation-panel" id="principles"><div className="principles-statement"><p className="kicker kicker-gold">我们共同遵循</p><h2>信任让坦诚交流成为可能。<br />从真实实践中相互启发。<br />以个人身份参与，自由表达判断。</h2></div><div className="principles-strip">{principles.map((title, index) => <div className="principle-item" key={title}><span>0{index + 1}</span><strong>{title}</strong></div>)}</div></section>
     </SectionCarousel>
 
-    <SectionCarousel id="community" title="社群" labels={['当前议题', '精选笔记', '来自社群']}>
+    <SectionCarousel id="community" title="" labels={['当前议题', '精选笔记', '来自社群']}>
       <section className="section discussions carousel-simple"><div className="discussion-content"><h2>当前议题</h2><div className="discussion-grid compact">{discussions.map((title) => <article key={title}><h3>{title}</h3></article>)}</div></div></section>
       <section className="featured-note"><div className="section featured-note-inner carousel-simple"><div className="featured-note-content"><p className="kicker kicker-gold">AGI Counsel Note #01</p><h2>AI 原生法务部门会是什么样？</h2><a className="note-link" href="/zh/notes/ai-native-legal-department/">阅读笔记 <span>→</span></a></div></div></section>
       <section className="section community-voices carousel-simple"><div className="voices-content"><div className="quote-grid single"><blockquote><p>“当法律分析变得充裕，人类判断意味着什么？”</p><cite>来自 Network</cite></blockquote></div></div></section>

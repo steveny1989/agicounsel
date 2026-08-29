@@ -88,7 +88,7 @@ export default function Home() {
       <section className="principles foundation-panel" id="principles"><div className="principles-statement"><p className="kicker kicker-gold">What guides us</p><h2>Trust makes candid exchange possible.<br />Shared practice deepens collective insight.<br />Participation in a personal capacity.</h2></div><div className="principles-strip">{principles.map((title, index) => <div className="principle-item" key={title}><span>0{index + 1}</span><strong>{title}</strong></div>)}</div></section>
     </SectionCarousel>
 
-    <SectionCarousel id="community" title="Community" labels={["Current questions", 'Featured note', 'From the community']}>
+    <SectionCarousel id="community" title="" labels={["Current questions", 'Featured note', 'From the community']}>
       <section className="section discussions carousel-simple"><div className="discussion-content"><h2>Current Questions</h2><div className="discussion-grid compact">{discussions.map((title) => <article key={title}><h3>{title}</h3></article>)}</div></div></section>
       <section className="featured-note"><div className="section featured-note-inner carousel-simple"><div className="featured-note-content"><p className="kicker kicker-gold">AGI Counsel Note #01</p><h2>What Would an AI-Native Legal Department Look Like?</h2><a className="note-link" href="/notes/ai-native-legal-department/">Read Note <span>→</span></a></div></div></section>
       <section className="section community-voices carousel-simple"><div className="voices-content"><div className="quote-grid single"><blockquote><p>"What does human judgment mean when legal analysis becomes abundant?"</p><cite>From the Network</cite></blockquote></div></div></section>
