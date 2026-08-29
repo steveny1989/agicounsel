@@ -65,16 +65,24 @@ export default function ChineseHome() {
       <nav aria-label="主导航"><a href="#about">关于</a><a href="#community">社群动态</a><a href="/zh/notes/">社群笔记</a><a className="language-switch" href="/">EN</a><a className="nav-join" href="#contribute">参与</a></nav>
     </header>
 
-    <section className="hero" id="top">
-      <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
-      <div className="eyebrow"><span /> 独立同行社群</div>
-      <h1>智能拓展可能。<br />判断塑造未来。</h1>
-      <p className="hero-copy">连接 AI 生态法律专业人士的同行网络。</p>
-      <div className="hero-actions"><a className="button button-light" href="#about">了解我们 <span>↓</span></a><a className="text-link" href="#contribute">参与 <span>↗</span></a></div>
-    </section>
+    <SectionCarousel id="top" title="" labels={['愿景', '我们为何存在']}>
+      <section className="hero carousel-slide-hero">
+        <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
+        <div className="eyebrow"><span /> 独立同行社群</div>
+        <h1>智能拓展可能。<br />判断塑造未来。</h1>
+        <p className="hero-copy">连接 AI 生态法律专业人士的同行网络。</p>
+        <div className="hero-actions"><a className="button button-light" href="#contribute">参与 <span>↗</span></a></div>
+      </section>
+      <section className="hero carousel-slide-hero">
+        <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
+        <div className="eyebrow"><span /> 我们为何存在</div>
+        <h1>交流实践。磨砺判断。共同面对未来。</h1>
+        <p className="hero-copy">AI 正在改变我们的工作。</p>
+        <div className="hero-actions"><a className="button button-light" href="#about">继续了解 <span>↓</span></a></div>
+      </section>
+    </SectionCarousel>
 
-    <SectionCarousel id="about" title="共同基础" labels={['我们为何存在', '贯穿 AI 产业链', '社群原则']}>
-      <section className="intro section carousel-simple"><div className="intro-content"><h2>AI 正在改变法律工作。</h2><p className="intro-summary">交流实践，磨砺判断，共同面对未来。</p></div></section>
+    <SectionCarousel id="about" title="共同基础" labels={['贯穿 AI 产业链', '社群原则']}>
       <section className="stack-section"><div className="stack-title"><h2>贯穿 AI 产业链</h2></div><div className="layer-cake">{layers.map(([name, note]) => <div className="layer" key={name}><strong>{name}</strong><small>{note}</small></div>)}</div></section>
       <section className="principles" id="principles"><div className="principles-simple">{principles.map((title) => <div className="principle-keyword" key={title}>{title}</div>)}</div></section>
     </SectionCarousel>
