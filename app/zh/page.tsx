@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import SectionCarousel from '../components/SectionCarousel';
 
 const layers = [
-  ['能源', '为智能提供动力'],
-  ['芯片', '支撑规模化算力'],
-  ['基础设施', '建设智能时代底座'],
-  ['模型', '推动能力边界'],
   ['应用', '改变工作与生活'],
+  ['模型', '推动能力边界'],
+  ['基础设施', '建设智能时代底座'],
+  ['芯片', '支撑规模化算力'],
+  ['能源', '为智能提供动力'],
 ];
 
 const discussions = [

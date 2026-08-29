@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import SectionCarousel from './components/SectionCarousel';
 
 const layers = [
-  ['Energy', 'Powering intelligence'],
-  ['Chips', 'Computing at scale'],
-  ['Infrastructure', 'Building the rails'],
-  ['Models', 'Advancing capability'],
   ['Applications', 'Changing how we work'],
+  ['Models', 'Advancing capability'],
+  ['Infrastructure', 'Building the rails'],
+  ['Chips', 'Computing at scale'],
+  ['Energy', 'Powering intelligence'],
 ];
 
 const discussions = [

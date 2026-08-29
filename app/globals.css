@@ -54,11 +54,11 @@ nav .nav-join { border-bottom: 1px solid var(--gray); padding-bottom: 6px; }
 .stack-heading h2 { max-width: 720px; margin-bottom: 0; }
 .layer-cake { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0 24px; }
 .layer { position: relative; z-index: 1; height: 72px; border: 1px solid var(--gray); border-bottom: 0; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 32px; background: var(--paper); transition: opacity .2s ease,transform .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease; }
-.layer:nth-child(1) { width: 72%; background: var(--navy); color: var(--paper); }
+.layer:nth-child(1) { width: 72%; }
 .layer:nth-child(2) { width: 79%; }
 .layer:nth-child(3) { width: 86%; }
 .layer:nth-child(4) { width: 93%; }
-.layer:nth-child(5) { width: 100%; border-bottom: 1px solid var(--gray); }
+.layer:nth-child(5) { width: 100%; border-bottom: 1px solid var(--gray); background: var(--navy); color: var(--paper); }
 .layer strong { font-weight: 700; }
 .layer small { color: var(--gray); text-transform: uppercase; letter-spacing: .12em; text-align: right; transition: color .2s ease; }
 .layer:focus-visible { z-index: 2; outline: 2px solid var(--gold); outline-offset: 3px; background: var(--navy); color: var(--paper); border-color: var(--navy); transform: scale(1.015); }
