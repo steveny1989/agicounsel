@@ -68,7 +68,7 @@ export default function Home() {
     <section className="hero" id="top">
       <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
       <div className="eyebrow"><span /> Independent peer community</div>
-      <h1>Legal judgment for<br />the age of intelligence.</h1>
+      <h1>Intelligence expands possibility.<br />Judgment shapes what comes next.</h1>
       <p className="hero-copy">A peer network for legal professionals across the AI ecosystem.</p>
       <div className="hero-actions"><a className="button button-light" href="#about">Explore <span>↓</span></a><a className="text-link" href="#contribute">Contribute <span>↗</span></a></div>
     </section>

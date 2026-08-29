@@ -68,7 +68,7 @@ export default function ChineseHome() {
     <section className="hero" id="top">
       <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
       <div className="eyebrow"><span /> 独立同行社群</div>
-      <h1>智能时代的<br />法律判断力。</h1>
+      <h1>智能拓展可能。<br />判断塑造未来。</h1>
       <p className="hero-copy">连接 AI 生态法律专业人士的同行网络。</p>
       <div className="hero-actions"><a className="button button-light" href="#about">了解我们 <span>↓</span></a><a className="text-link" href="#contribute">参与 <span>↗</span></a></div>
     </section>
