@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ChineseNotesArchive() {
   return <main lang="zh-CN">
-    <header className="site-header site-header-scrolled"><a className="brand" href="/zh/"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a><nav aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/#discussing">对话</a><a href="/zh/#principles">社群原则</a><a className="language-switch" href="/notes/">EN</a><a className="nav-join" href="/zh/#contribute">参与</a></nav></header>
+    <header className="site-header site-header-scrolled"><a className="brand" href="/zh/"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a><nav aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/#discussing">对话</a><a href="/zh/#principles">社群原则</a><a className="language-switch" href="/notes/?lang=en">EN</a><a className="nav-join" href="/zh/#contribute">参与</a></nav></header>
     <section className="notes-hero"><div className="eyebrow"><span /> 集体思考</div><h1>社群笔记</h1><p>将 Network 对话中出现的问题与洞见，沉淀为简短、匿名的共同记录。</p></section>
     <section className="notes-list section"><div className="section-label">已发布笔记</div><div>
       <a className="note-index-card" href="/zh/notes/ai-native-legal-department/"><span>Note #01 · 2026 年 8 月</span><h2>AI 原生法务部门会是什么样？</h2><p>关于工作流、知识架构，以及人类判断力价值变化的三点初步观察。</p><strong>阅读笔记 →</strong></a>

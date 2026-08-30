@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import LanguageRouter from './components/LanguageRouter';
 
 export const metadata: Metadata = {
   title: 'AGI Counsel Network | Intelligence expands possibility',
@@ -11,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body><LanguageRouter />{children}</body></html>;
 }

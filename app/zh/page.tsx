@@ -62,7 +62,7 @@ export default function ChineseHome() {
   return <main lang="zh-CN">
     <header className={`site-header ${isScrolled ? 'site-header-scrolled' : ''}`}>
       <a className="brand" href="#top"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a>
-      <nav aria-label="主导航"><a href="#about">关于</a><a href="#community">社群动态</a><a href="/zh/notes/">社群笔记</a><a className="language-switch" href="/">EN</a><a className="nav-join" href="#contribute">参与</a></nav>
+      <nav aria-label="主导航"><a href="#about">关于</a><a href="#community">社群动态</a><a href="/zh/notes/">社群笔记</a><a className="language-switch" href="/?lang=en">EN</a><a className="nav-join" href="#contribute">参与</a></nav>
     </header>
 
     <SectionCarousel id="top" title="" labels={['愿景', '我们为何存在']}>

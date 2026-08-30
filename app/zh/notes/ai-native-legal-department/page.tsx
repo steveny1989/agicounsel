@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ChineseNoteOne() {
   return <main lang="zh-CN">
-    <header className="site-header site-header-scrolled"><a className="brand" href="/zh/"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a><nav aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/notes/">全部笔记</a><a className="language-switch" href="/notes/ai-native-legal-department/">EN</a><a className="nav-join" href="/zh/#contribute">参与</a></nav></header>
+    <header className="site-header site-header-scrolled"><a className="brand" href="/zh/"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a><nav aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/notes/">全部笔记</a><a className="language-switch" href="/notes/ai-native-legal-department/?lang=en">EN</a><a className="nav-join" href="/zh/#contribute">参与</a></nav></header>
     <article className="note-article"><header><a href="/zh/notes/">← 社群笔记</a><p className="kicker">AGI Counsel Note #01 · 2026 年 8 月</p><h1>AI 原生法务部门会是什么样？</h1><p className="article-deck">来自 AGI Counsel Network 成员对话的三点初步观察。</p></header>
       <div className="article-body"><p className="article-intro">AI 原生法务部门，不由采购了多少工具来定义。它始于一个更根本的问题：当智能成为运营模式的一部分，法律工作本身应该如何被重新设计？</p>
         <h2>01 — AI 原生，不等于增加 Copilot</h2><p>在现有工作流中增加 AI 助手，也许能够提高速度，却未必改变工作流的底层逻辑。AI 原生团队会更早开始思考：事项如何进入法务部门，知识在哪里产生，哪些决定必须依赖判断，以及哪些环节需要被重新设计，而不只是被加速。</p>

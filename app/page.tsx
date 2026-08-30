@@ -62,7 +62,7 @@ export default function Home() {
   return <main>
     <header className={`site-header ${isScrolled ? 'site-header-scrolled' : ''}`}>
       <a className="brand" href="#top" aria-label="AGI Counsel Network home"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a>
-      <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#community">Community</a><a href="/notes/">Notes</a><a className="language-switch" href="/zh/">中文</a><a className="nav-join" href="#contribute">Contribute</a></nav>
+      <nav aria-label="Primary navigation"><a href="#about">About</a><a href="#community">Community</a><a href="/notes/">Notes</a><a className="language-switch" href="/zh/?lang=zh">中文</a><a className="nav-join" href="#contribute">Contribute</a></nav>
     </header>
 
     <SectionCarousel id="top" title="" labels={['Vision', 'Why we exist']}>

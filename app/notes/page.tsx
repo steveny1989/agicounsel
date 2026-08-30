@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotesArchive() {
   return <main>
-    <header className="site-header site-header-scrolled"><a className="brand" href="/"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a><nav aria-label="Primary navigation"><a href="/">Home</a><a href="/#discussing">Conversations</a><a href="/#principles">Principles</a><a className="language-switch" href="/zh/notes/">中文</a><a className="nav-join" href="/#contribute">Contribute</a></nav></header>
+    <header className="site-header site-header-scrolled"><a className="brand" href="/"><span className="brand-mark">A</span><span>AGI Counsel Network</span></a><nav aria-label="Primary navigation"><a href="/">Home</a><a href="/#discussing">Conversations</a><a href="/#principles">Principles</a><a className="language-switch" href="/zh/notes/?lang=zh">中文</a><a className="nav-join" href="/#contribute">Contribute</a></nav></header>
     <section className="notes-hero"><div className="eyebrow"><span /> Collective thinking</div><h1>Community Notes</h1><p>Short, anonymized distillations of questions and insights emerging from Network conversations.</p></section>
     <section className="notes-list section"><div className="section-label">Published notes</div><div>
       <a className="note-index-card" href="/notes/ai-native-legal-department/"><span>Note #01 · August 2026</span><h2>What Would an AI-Native Legal Department Look Like?</h2><p>Three emerging ideas about workflows, knowledge architecture, and the changing value of human judgment.</p><strong>Read the note →</strong></a>
