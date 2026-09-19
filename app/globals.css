@@ -147,16 +147,17 @@ nav .nav-join { border-bottom: 1px solid var(--gray); padding-bottom: 6px; }
 .quote-grid.single { grid-template-columns: 1fr; }
 .quote-grid.single blockquote { min-height: 245px; }
 
+.community-voices { background: var(--navy); color: var(--paper); }
 .room-notes { max-width: 1180px; }
-.room-notes-header { display: grid; grid-template-columns: minmax(220px,.72fr) minmax(300px,1.28fr); column-gap: clamp(35px,6vw,90px); align-items: end; margin-bottom: 42px; }
-.room-notes-header .kicker { grid-column: 1; margin-bottom: 18px; }
-.room-notes-header h2 { grid-column: 1; margin: 0; }
-.room-notes-header>p:last-child { grid-column: 2; grid-row: 1 / span 2; align-self: end; max-width: 560px; margin: 0; color: var(--gray); line-height: 1.65; }
-.room-notes-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; border: 1px solid var(--gray); background: var(--gray); }
-.room-notes-grid article { min-height: 178px; padding: clamp(24px,3vw,38px); background: var(--paper); }
-.room-notes-grid article:last-child { grid-column: 1 / -1; }
-.room-notes-grid span { display: block; margin-bottom: 25px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .14em; }
-.room-notes-grid p { max-width: 860px; margin: 0; font-size: clamp(20px,2.05vw,30px); line-height: 1.35; letter-spacing: -.025em; }
+.room-notes-header { display: grid; grid-template-columns: minmax(260px,1fr) minmax(300px,.72fr); gap: clamp(42px,8vw,120px); align-items: end; padding-bottom: 48px; border-bottom: 1px solid var(--gold); }
+.room-notes-header .kicker { margin: 0 0 18px; }
+.room-notes-header h2 { margin: 0; font-size: clamp(44px,6vw,82px); line-height: .96; font-weight: 400; letter-spacing: -.055em; }
+.room-notes-header>p { max-width: 470px; margin: 0; color: var(--gray); line-height: 1.7; }
+.room-notes-list { margin: 0; padding: 0; list-style: none; }
+.room-notes-list li { display: grid; grid-template-columns: 82px minmax(0,1fr); gap: clamp(22px,4vw,64px); align-items: start; padding: clamp(30px,4vw,52px) 0; border-bottom: 1px solid color-mix(in srgb,var(--gray) 62%,transparent); }
+.room-notes-list span { padding-top: .5em; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .16em; }
+.room-notes-list p { max-width: 930px; margin: 0; color: var(--paper); font-size: clamp(27px,3.2vw,46px); line-height: 1.18; font-weight: 400; letter-spacing: -.035em; }
+.room-notes-list li:nth-child(3) p { font-size: clamp(24px,2.75vw,40px); line-height: 1.25; }
 
 .principles,.contribute-card,footer { background: var(--navy); color: var(--paper); }
 .principles-inner { padding-top: 110px; padding-bottom: 110px; }
@@ -226,7 +227,7 @@ footer>div a { color: var(--gold); }
 
 @media(max-width:800px){.foundation-panel{min-height:0;padding:58px 24px;gap:34px}.foundation-intro h2 br{display:none}.foundation-panel .layer{grid-template-columns:1fr}.foundation-panel .layer small{display:none}.foundation-actions article{min-height:96px;padding:20px 8px}.foundation-actions h3{font-size:15px}.principles-statement h2{font-size:clamp(25px,7vw,34px);line-height:1.4}.principles-strip{grid-template-columns:repeat(2,1fr)}.principle-item:nth-child(2){border-right:0}.principle-item:nth-child(-n+2){border-bottom:1px solid var(--gray)}}
 
-@media(max-width:800px){.room-notes-header{grid-template-columns:1fr;margin-bottom:32px}.room-notes-header .kicker,.room-notes-header h2,.room-notes-header>p:last-child{grid-column:1;grid-row:auto}.room-notes-header>p:last-child{margin-top:18px}.room-notes-grid{grid-template-columns:1fr}.room-notes-grid article,.room-notes-grid article:last-child{grid-column:1;min-height:0}.room-notes-grid p{font-size:clamp(20px,6vw,26px)}}
+@media(max-width:800px){.room-notes-header{grid-template-columns:1fr;gap:24px;padding-bottom:34px}.room-notes-header h2{font-size:clamp(42px,13vw,58px)}.room-notes-header>p{max-width:34em}.room-notes-list li{grid-template-columns:42px minmax(0,1fr);gap:16px;padding:30px 0}.room-notes-list span{padding-top:.35em}.room-notes-list p,.room-notes-list li:nth-child(3) p{font-size:clamp(23px,7vw,31px);line-height:1.28}}
 
 @media(max-width:800px){main[lang="zh-CN"] .hero-long-title{font-size:clamp(30px,8vw,34px)}}
 
