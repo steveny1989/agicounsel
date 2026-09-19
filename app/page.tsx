@@ -24,6 +24,14 @@ const principles = [
   'Personal capacity',
 ];
 
+const roomNotes = [
+  'AI transformation is also organizational transformation.',
+  'The business must be part of the co-creation process.',
+  'AI is a business problem first, and a technology problem second. Build for real value—not technical spectacle.',
+  'A truly valuable system must be able to learn.',
+  'The lawyer of the future may become an Agent’s Chief of Staff.',
+];
+
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -88,10 +96,10 @@ export default function Home() {
       <section className="principles foundation-panel" id="principles"><div className="principles-statement"><p className="kicker kicker-gold">What guides us</p><h2>Trust makes candid exchange possible.<br />Shared practice deepens collective insight.<br />Participation in a personal capacity.</h2></div><div className="principles-strip">{principles.map((title, index) => <div className="principle-item" key={title}><span>0{index + 1}</span><strong>{title}</strong></div>)}</div></section>
     </SectionCarousel>
 
-    <SectionCarousel id="community" title="" labels={["Current questions", 'Featured note', 'From the community']}>
+    <SectionCarousel id="community" title="" labels={["Current questions", 'Featured note', 'From the Room']}>
       <section className="section discussions carousel-simple"><div className="discussion-content"><h2>Current Questions</h2><div className="discussion-grid compact">{discussions.map((title) => <article key={title}><h3>{title}</h3></article>)}</div></div></section>
       <section className="featured-note"><div className="section featured-note-inner carousel-simple"><div className="featured-note-content"><p className="kicker kicker-gold">AGI Counsel Note #01</p><h2>What Would an AI-Native Legal Department Look Like?</h2><a className="note-link" href="/notes/ai-native-legal-department/">Read Note <span>→</span></a></div></div></section>
-      <section className="section community-voices carousel-simple"><div className="voices-content"><div className="quote-grid single"><blockquote><p>"What does human judgment mean when legal analysis becomes abundant?"</p><cite>From the Network</cite></blockquote></div></div></section>
+      <section className="section community-voices carousel-simple"><div className="voices-content room-notes"><div className="room-notes-header"><p className="kicker kicker-gold">From the Room</p><h2>Legal AI Notes</h2><p>Editorially distilled from a recent discussion; not verbatim quotations. Speakers are unnamed pending approval.</p></div><div className="room-notes-grid">{roomNotes.map((note, index) => <article key={note}><span>0{index + 1}</span><p>{note}</p></article>)}</div></div></section>
     </SectionCarousel>
 
     <section className="contribute section fade-in" id="contribute"><div className="contribute-card"><div><h2>Bring your perspective.</h2><p>Share a question, a practice, or a point of view.</p><a className="join-email" href="mailto:hello@agicounsel.org?subject=Starting%20a%20conversation%20with%20AGI%20Counsel%20Network&body=What%20question%2C%20practice%2C%20or%20perspective%20would%20you%20like%20to%20share%3F%0A%0AWhy%20does%20it%20matter%20now%3F%0A%0AWould%20you%20be%20interested%20in%20joining%20the%20conversation%3F%0A%0AName%20(optional)%3A">Start a conversation <span>↗</span></a></div><aside><span>Invitation-based membership</span><a href="mailto:hello@agicounsel.org?subject=AGI%20Counsel%20Network%20—%20Membership%20interest">hello@agicounsel.org</a></aside></div></section>

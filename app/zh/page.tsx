@@ -24,6 +24,14 @@ const principles = [
   '个人参与',
 ];
 
+const roomNotes = [
+  'AI 转型，本质上也是组织转型。',
+  '业务必须参与共创。',
+  'AI 首先是业务问题，其次才是技术问题。要创造真实价值，不做技术炫技。',
+  '真正有价值的系统，一定要能够自学习。',
+  '未来的律师，可能更像 Agent 的 Chief of Staff。',
+];
+
 export default function ChineseHome() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -65,7 +73,7 @@ export default function ChineseHome() {
       <nav aria-label="主导航"><a href="#about">关于</a><a href="#community">社群动态</a><a href="/zh/notes/">社群笔记</a><a className="language-switch" href="/?lang=en">EN</a><a className="nav-join" href="#contribute">参与</a></nav>
     </header>
 
-    <SectionCarousel id="top" title="" labels={['愿景', '我们为何存在']}>
+    <SectionCarousel id="top" title="" labels={['愿景', '我们为何存在']} locale="zh">
       <section className="hero carousel-slide-hero">
         <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
         <div className="eyebrow"><span /> 独立同行社群</div>
@@ -76,22 +84,22 @@ export default function ChineseHome() {
       <section className="hero carousel-slide-hero">
         <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
         <div className="eyebrow"><span /> 我们为何存在</div>
-        <h1>交流实践，磨砺判断。<br />共建未来。</h1>
+        <h1 className="hero-long-title">交流实践，磨砺判断。<br />共建未来。</h1>
         <p className="hero-copy">AI 正在改变我们的工作。</p>
         <div className="hero-actions"><a className="button button-light" href="#about">继续了解 <span>↓</span></a></div>
       </section>
     </SectionCarousel>
 
-    <SectionCarousel id="about" title="" labels={['贯穿 AI 产业链', '我们如何交流', '社群原则']}>
+    <SectionCarousel id="about" title="" labels={['贯穿 AI 产业链', '我们如何交流', '社群原则']} locale="zh">
       <section className="foundation-panel foundation-stack"><div className="foundation-intro"><p className="kicker">我们连接谁</p><h2>贯穿 AI<br />产业链</h2><p>连接智能经济每一层的法律专业人士。</p></div><div className="layer-cake" role="list" aria-label="人工智能生态的五个层次">{layers.map(([name, note]) => <div className="layer" role="listitem" tabIndex={0} key={name}><strong>{name}</strong><small>{note}</small></div>)}</div></section>
       <section className="foundation-panel foundation-work"><div className="foundation-intro"><p className="kicker">我们如何交流</p><h2>问题形成对话。<br />对话沉淀洞见。</h2></div><div className="foundation-actions"><article><span>01</span><h3>交流实践</h3></article><article><span>02</span><h3>检验假设</h3></article><article><span>03</span><h3>磨砺判断</h3></article></div></section>
       <section className="principles foundation-panel" id="principles"><div className="principles-statement"><p className="kicker kicker-gold">我们共同遵循</p><h2>信任让坦诚交流成为可能。<br />从真实实践中相互启发。<br />以个人身份参与，自由表达判断。</h2></div><div className="principles-strip">{principles.map((title, index) => <div className="principle-item" key={title}><span>0{index + 1}</span><strong>{title}</strong></div>)}</div></section>
     </SectionCarousel>
 
-    <SectionCarousel id="community" title="" labels={['当前议题', '精选笔记', '来自社群']}>
+    <SectionCarousel id="community" title="" labels={['当前议题', '精选笔记', '现场摘记']} locale="zh">
       <section className="section discussions carousel-simple"><div className="discussion-content"><h2>当前议题</h2><div className="discussion-grid compact">{discussions.map((title) => <article key={title}><h3>{title}</h3></article>)}</div></div></section>
       <section className="featured-note"><div className="section featured-note-inner carousel-simple"><div className="featured-note-content"><p className="kicker kicker-gold">AGI Counsel Note #01</p><h2>AI 原生法务部门会是什么样？</h2><a className="note-link" href="/zh/notes/ai-native-legal-department/">阅读笔记 <span>→</span></a></div></div></section>
-      <section className="section community-voices carousel-simple"><div className="voices-content"><div className="quote-grid single"><blockquote><p>“当法律分析变得充裕，人类判断意味着什么？”</p><cite>来自 Network</cite></blockquote></div></div></section>
+      <section className="section community-voices carousel-simple"><div className="voices-content room-notes"><div className="room-notes-header"><p className="kicker kicker-gold">现场摘记</p><h2>法律 AI 五则</h2><p>根据近期现场讨论整理，并非逐字引述。相关发言人暂不署名，待本人同意后再补充。</p></div><div className="room-notes-grid">{roomNotes.map((note, index) => <article key={note}><span>0{index + 1}</span><p>{note}</p></article>)}</div></div></section>
     </SectionCarousel>
 
     <section className="contribute section fade-in" id="contribute"><div className="contribute-card"><div><h2>带来你的思考。</h2><p>分享一个问题、一段实践，或一种判断。</p><a className="join-email" href="mailto:hello@agicounsel.org?subject=%E4%B8%8E%20AGI%20Counsel%20Network%20%E5%BC%80%E5%A7%8B%E5%AF%B9%E8%AF%9D&body=%E4%BD%A0%E5%B8%8C%E6%9C%9B%E5%88%86%E4%BA%AB%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E3%80%81%E5%AE%9E%E8%B7%B5%E6%88%96%E8%A7%82%E7%82%B9%EF%BC%9F%0A%0A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%83%E5%9C%A8%E6%AD%A4%E5%88%BB%E5%80%BC%E5%BE%97%E8%AE%A8%E8%AE%BA%EF%BC%9F%0A%0A%E4%BD%A0%E6%98%AF%E5%90%A6%E6%84%BF%E6%84%8F%E5%8F%82%E4%B8%8E%E6%8E%A5%E4%B8%8B%E6%9D%A5%E7%9A%84%E4%BA%A4%E6%B5%81%EF%BC%9F%0A%0A%E5%A7%93%E5%90%8D%EF%BC%88%E9%80%89%E5%A1%AB%EF%BC%89%EF%BC%9A">与我们联系 <span>↗</span></a></div><aside><span>会员邀请制</span><a href="mailto:hello@agicounsel.org?subject=AGI%20Counsel%20Network%20—%20加入意向">hello@agicounsel.org</a></aside></div></section>
