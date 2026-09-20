@@ -7,12 +7,10 @@ type Locale = 'en' | 'zh';
 const BLUEPRINT_MARKDOWN = `# AGI Counsel Network — Note #01 Executive Architecture Blueprint
 ## What Would an AI-Native Legal Department Look Like? (2026 Reference Edition)
 
-### 1. The Five-Layer Legal AI Value Stack
-- **Layer 5 · Human-in-the-Loop (HITL) Governance**: Lawyer as Chief of Staff to specialized agent fleets; non-delegable fiduciary judgment and final signature authority.
-- **Layer 4 · System of Record (SoR)**: Durable enterprise matter lifecycle state machine, contract repository, and immutable compliance audit trails (highest switching-cost moat).
-- **Layer 3 · Proprietary Context & Memory**: Hybrid vector + knowledge-graph RAG with passive SOP extraction from senior counsel redlines (self-learning knowledge flywheel).
-- **Layer 2 · Workflow & Agentic Orchestration**: Automated intake triage and multi-step task decomposition (Planner -> Retriever -> Verifier agents).
-- **Layer 1 · Commoditized Model APIs**: Generic LLM token generation; zero defensive moat without Layers 2-5.
+### 1. Three Structural Shifts from Legal Production to Legal Judgment
+- **Shift 01 · Workflow Architecture (From Point Plug-ins to End-to-End Redesign)**: Dismantling legacy bureaucratic handoffs; re-engineering intake, autonomous triage, and business delivery around multi-step agentic execution.
+- **Shift 02 · Institutional Memory (From Static Prompts to Compounding Flywheels)**: Structuring commercial precedent, negotiation boundaries, and senior counsel redlines into a self-learning knowledge architecture.
+- **Shift 03 · Human Governance (From Manual Drafting to Accountable Judgment)**: Positioning human counsel as Chief of Staff to specialized agent fleets, retaining non-delegable fiduciary accountability and final signature authority.
 
 ### 2. Three Non-Negotiable Security Guardrails
 1. **Adversarial Prompt Injection Defense**: Sanitizing counterparty documents against hidden instructions.
@@ -22,7 +20,7 @@ const BLUEPRINT_MARKDOWN = `# AGI Counsel Network — Note #01 Executive Archite
 ### 3. Four Iron Laws of Enterprise Deployment
 1. **Ruthless Elimination of Spectacle**: Terminate any AI feature that does not measurably compress cycle time or reduce verifiable risk.
 2. **Deep Business Co-Creation**: Pair legal counsel directly with R&D, supply chain, and sales operators to define edge-case acceptance criteria.
-3. **Mandatory Unified Intake Gateway**: Eliminate "dark knowledge" in fragmented chat apps; cross the 30% adoption threshold to ignite the self-learning flywheel.
+3. **Mandatory Unified Intake Gateway**: Eliminate "dark knowledge" in fragmented chat apps to fuel the self-learning SOP flywheel.
 4. **Graduated Autonomy**: Full agent autonomy on routine low-risk certificates; 100% human counsel accountability on high-stakes transactions.
 
 ---
@@ -34,7 +32,7 @@ export default function NetworkBriefingForm({ locale = 'en' }: { locale?: Locale
   const isZh = locale === 'zh';
   const [tab, setTab] = useState<'subscribe' | 'propose'>('subscribe');
   const [email, setEmail] = useState('');
-  const [layer, setLayer] = useState('L5 · Agentic Applications & Enterprise Legal');
+  const [layer, setLayer] = useState('Applications & Enterprise Legal');
   const [question, setQuestion] = useState('');
   const [role, setRole] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -71,8 +69,8 @@ export default function NetworkBriefingForm({ locale = 'en' }: { locale?: Locale
       `AGI Counsel Network — Peer Contribution / Membership Inquiry`,
       `Email: ${email || 'Not provided'}`,
       `Role / Organization: ${role || 'Personal capacity'}`,
-      `AI Stack Layer: ${layer}`,
-      `Architectural Question / Benchmark:`,
+      `Domain: ${layer}`,
+      `Question / Perspective:`,
       question || '(Interested in peer roundtable participation)',
     ].join('\n');
     navigator.clipboard?.writeText(text);
@@ -81,9 +79,9 @@ export default function NetworkBriefingForm({ locale = 'en' }: { locale?: Locale
   };
 
   const mailtoHref = `mailto:hello@agicounsel.org?subject=${encodeURIComponent(
-    isZh ? `AGI Counsel 同行交流与架构议题 — ${layer}` : `AGI Counsel Peer Inquiry — ${layer}`
+    isZh ? `AGI Counsel 同行交流与议题分享 — ${layer}` : `AGI Counsel Peer Inquiry — ${layer}`
   )}&body=${encodeURIComponent(
-    `Email: ${email}\nRole: ${role}\nStack Layer: ${layer}\n\nQuestion / Benchmark:\n${question}`
+    `Email: ${email}\nRole: ${role}\nDomain: ${layer}\n\nQuestion / Perspective:\n${question}`
   )}`;
 
   return (
@@ -99,7 +97,7 @@ export default function NetworkBriefingForm({ locale = 'en' }: { locale?: Locale
           }}
           className={`network-console-tab ${tab === 'subscribe' ? 'is-active' : ''}`}
         >
-          {isZh ? '01 · 订阅研究简报 & 下载架构蓝图' : '01 · Subscribe to Notes & Download Blueprint'}
+          {isZh ? '01 · 订阅社群笔记 & 下载 Note #01 速查蓝图' : '01 · Subscribe to Notes & Download Blueprint'}
         </button>
         <button
           type="button"
@@ -108,7 +106,7 @@ export default function NetworkBriefingForm({ locale = 'en' }: { locale?: Locale
           onClick={() => setTab('propose')}
           className={`network-console-tab ${tab === 'propose' ? 'is-active' : ''}`}
         >
-          {isZh ? '02 · 提交研讨议题 / 申请加入社群' : '02 · Propose Roundtable Question / Request Invite'}
+          {isZh ? '02 · 提交研讨问题 / 申请参与交流' : '02 · Share a Question / Request Invite'}
         </button>
       </div>
 
@@ -118,8 +116,8 @@ export default function NetworkBriefingForm({ locale = 'en' }: { locale?: Locale
             <form onSubmit={handleSubscribe} className="network-form">
               <p className="network-form-lead">
                 {isZh
-                  ? '输入您的工作或个人邮箱，即可在新一期《AGI Counsel Note》及闭门研讨纪要发布时收到通知，并立即下载《Note #01：AI 原生法务五层架构速查蓝图》。'
-                  : 'Enter your email to receive future AGI Counsel Notes and closed-door roundtable syntheses—and immediately download the Note #01 Executive Architecture Blueprint.'}
+                  ? '输入您的邮箱，即可在新一期《AGI Counsel Note》发布时收到通知，并立即下载《Note #01：AI 原生法务核心要点蓝图》。'
+                  : 'Enter your email to receive future AGI Counsel Notes and immediately download the Note #01 Executive Summary Blueprint.'}
               </p>
               <div className="network-form-row">
                 <input

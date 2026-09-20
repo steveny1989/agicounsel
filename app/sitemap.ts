@@ -81,31 +81,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
-    {
-      url: `${baseUrl}/stack/`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/stack/`,
-          'zh-CN': `${baseUrl}/zh/stack/`,
-          'x-default': `${baseUrl}/stack/`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/zh/stack/`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/stack/`,
-          'zh-CN': `${baseUrl}/zh/stack/`,
-          'x-default': `${baseUrl}/stack/`,
-        },
-      },
-    },
   ];
 }

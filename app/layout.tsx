@@ -4,23 +4,20 @@ import LanguageRouter from './components/LanguageRouter';
 
 export const metadata: Metadata = {
   title: {
-    default: 'AGI Counsel Network | AI Systems Governance, Multi-Agent Legal Architecture & Compute Law',
+    default: 'AGI Counsel Network | Intelligence expands possibility',
     template: '%s | AGI Counsel Network',
   },
   description:
-    'An independent peer network for General Counsel, frontier AI lab attorneys, and legal systems engineers across the 5-layer intelligence stack: agentic applications, foundation models, cloud/RAG infrastructure, silicon compute clusters, and gigawatt energy.',
+    'An independent peer community for legal professionals across the AI ecosystem: Applications, Models, Infrastructure, Chips, and Energy.',
   keywords: [
     'AGI Counsel',
     'AGI Counsel Network',
     'AI-Native Legal Department',
-    'Legal AI Architecture',
+    'AI Legal Governance',
     'Multi-Agent Legal Workflows',
-    'AI Systems Governance',
+    'Lawyer as Chief of Staff',
     'Human-in-the-Loop Legal Governance',
-    'Legal System of Record',
     'Frontier Model Law',
-    'AI Compute & Semiconductor Export Controls',
-    'Enterprise Legal Engineering',
     'General Counsel AI Network',
   ],
   authors: [{ name: 'AGI Counsel Network', url: 'https://agicounsel.org' }],
@@ -40,9 +37,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'AGI Counsel Network | Legal Architecture Across the 5-Layer AI Stack',
+    title: 'AGI Counsel Network',
     description:
-      'Intelligence expands possibility. Judgment shapes what comes next. Peer network for legal architects across Applications, Frontier Models, RAG/Cloud Infrastructure, Silicon Chips, and Energy.',
+      'Intelligence expands possibility. Judgment shapes what comes next. A peer network for legal professionals across the AI ecosystem.',
     url: 'https://agicounsel.org',
     siteName: 'AGI Counsel Network',
     locale: 'en_US',
@@ -53,15 +50,15 @@ export const metadata: Metadata = {
         url: '/og.png',
         width: 1730,
         height: 909,
-        alt: 'AGI Counsel Network — Legal Engineering & Governance Across the 5-Layer AI Stack',
+        alt: 'AGI Counsel Network — Intelligence expands possibility. Judgment shapes what comes next.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AGI Counsel Network | AI Systems & Legal Architecture',
+    title: 'AGI Counsel Network',
     description:
-      'Peer engineering and governance network for legal professionals across frontier models, agentic workflows, silicon supply chains, and compute infrastructure.',
+      'Intelligence expands possibility. Judgment shapes what comes next. A peer network for legal professionals across the AI ecosystem.',
     images: ['/og.png'],
   },
   alternates: { canonical: '/', languages: { en: '/', 'zh-CN': '/zh/', 'x-default': '/' } },
@@ -78,16 +75,14 @@ const rootJsonLd = {
       url: 'https://agicounsel.org',
       email: 'hello@agicounsel.org',
       description:
-        'Independent peer network for General Counsel, frontier lab counsel, and legal systems architects across the five layers of the AI ecosystem: Agentic Applications, Foundation Models, Cloud/RAG Infrastructure, Silicon & Compute Clusters, and Energy.',
+        'Independent peer community for legal professionals across the AI ecosystem: Applications, Models, Infrastructure, Chips, and Energy.',
       knowsAbout: [
         'AI-Native Legal Department Architecture',
         'Multi-Agent Legal Orchestration',
-        'Human-in-the-Loop (HITL) Governance',
-        'Legal System of Record (SoR)',
-        'Retrieval-Augmented Generation (RAG) & Context Architecture',
-        'Frontier Foundation Model Compliance & Alignment',
-        'GPU/TPU Compute Cluster Procurement & Semiconductor Export Controls',
-        'Hyperscale Data Center & Energy Infrastructure Law',
+        'Human-in-the-Loop Governance',
+        'Compounding Institutional Memory',
+        'Frontier Foundation Model Compliance',
+        'AI Compute & Infrastructure Law',
       ],
     },
     {

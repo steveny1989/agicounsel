@@ -5,13 +5,13 @@ import NetworkBriefingForm from '../../../components/NetworkBriefingForm';
 export const metadata: Metadata = {
   title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01 深度研究',
   description:
-    '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 颗粒度拆解、System of Record 核心记录底座与人机协同治理。',
+    '超越外挂插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析从法律生产到法律判断的三重跃迁、多 Agent 参谋长机制、自学习知识飞轮与企业落地实战。',
   keywords: [
     'AI 原生法务部门',
-    'Legal AI 五层价值架构',
+    '法律判断与人机协同',
     '多 Agent 法务编排',
     'Chief of Staff 法务参谋长',
-    'System of Record 法务核心记录系统',
+    '自学习知识飞轮',
     '企业法务 AI 转型',
     'AGI Counsel Note 01',
   ],
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01 深度研究',
     description:
-      '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
+      '超越外挂插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析工作流重塑、复利知识飞轮与多 Agent 统筹治理。',
     url: 'https://agicounsel.org/zh/notes/ai-native-legal-department/',
     siteName: 'AGI Counsel Network',
     locale: 'zh_CN',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
     description:
-      '超越 Copilot 插件思维：系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
+      '超越外挂插件思维：系统剖析工作流重塑、自学习知识飞轮与多 Agent 参谋长治理机制。',
     images: ['/og-note-01.png'],
   },
 };
@@ -53,7 +53,7 @@ const zhNoteOneJsonLd = {
       '@id': 'https://agicounsel.org/zh/notes/ai-native-legal-department/#article',
       headline: 'AI 原生法务部门会是什么样？ (AGI Counsel Note #01)',
       description:
-        '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 颗粒度拆解、System of Record 核心记录底座与人机协同治理。',
+        '超越外挂插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析从法律生产到法律判断的三重跃迁、多 Agent 参谋长机制、自学习知识飞轮与企业落地实战。',
       datePublished: '2026-09-20',
       dateModified: '2026-09-20',
       inLanguage: 'zh-CN',
@@ -61,11 +61,11 @@ const zhNoteOneJsonLd = {
       publisher: { '@id': 'https://agicounsel.org/#organization' },
       mainEntityOfPage: 'https://agicounsel.org/zh/notes/ai-native-legal-department/',
       about: [
-        'Legal AI 五层价值架构',
+        'AI 原生法务工作流重塑',
         'Multi-Agent 多智能体法务编排',
         'Human-in-the-Loop 人机协同治理',
-        'System of Record 法务核心记录系统',
-        '企业专有 RAG 与自学习知识飞轮',
+        '企业专有知识资产与自学习飞轮',
+        'Chief of Staff 参谋长角色转型',
       ],
     },
     {
@@ -98,7 +98,6 @@ export default function ChineseNoteOne() {
         </a>
         <nav aria-label="主导航">
           <a href="/zh/">首页</a>
-          <a href="/zh/stack/">五层栈与词典</a>
           <a href="/zh/notes/">全部笔记</a>
           <a className="language-switch" href="/notes/ai-native-legal-department/?lang=en">EN</a>
           <a className="nav-join" href="#subscribe-note-zh">订阅</a>
@@ -111,7 +110,7 @@ export default function ChineseNoteOne() {
           <p className="kicker">AGI Counsel Note #01 · 深度观察 · 2026 年 9 月 · 约 10 分钟深读</p>
           <h1>AI 原生法务部门会是什么样？</h1>
           <p className="article-deck">
-            超越工具采购与提示词技巧：基于 AGI Counsel Network 首场闭门同行研讨，关于价值层级、工作流重构与人机协同治理的体系化思考。
+            超越工具采购与提示词技巧：基于 AGI Counsel Network 首场闭门同行研讨，关于工作流重构、复利知识资产与人机协同治理的体系化思考。
           </p>
         </header>
 
@@ -128,57 +127,47 @@ export default function ChineseNoteOne() {
 
           <div className="article-quote-block">
             <p>“AI 转型，本质上也是组织转型。”</p>
-            <span>研讨核心共识 · 组织维度</span>
+            <span>研讨核心共识 · 组织范式</span>
           </div>
 
-          <span className="article-section-tag">架构演进</span>
-          <h2>01 — 认知升维：打破套壳陷阱与 Legal AI 五层价值阶梯</h2>
+          <span className="article-section-tag">范式跃迁</span>
+          <h2>01 — 超越“外挂助手”悖论：从法律生产到法律判断的三重跃迁</h2>
           <p>
-            过去两年间，法律行业经历了第一波由大语言模型直接催生的工具浪潮。然而，绝大多数尝试很快陷入了“生产力悖论”：在原有的传统审批链条上生硬外挂一个 Copilot 助手，虽然局部提升了文本初筛与打字速度，却往往制造了海量未经验证的“半成品”草稿，反而加重了资深法务的复核负担与责任风险。
+            过去两年间，法律行业经历了第一波由大语言模型直接催生的工具浪潮。然而，绝大多数尝试很快陷入了“生产力悖论”：在原有的传统审批链条上生硬外挂一个对话助手，虽然局部提升了文本初筛与打字速度，却往往制造了海量未经验证的“半成品”草稿，反而加重了资深法务的复核负担与责任风险。
           </p>
           <p>
-            在经历了前沿法律科技团队长达 100 天的“AI 原生组织模拟实验”后，与会专家提炼出清晰的 <strong>Legal AI 五层递进价值模型</strong>：
+            真正从“单点工具采购”迈向<strong>“AI 原生法务组织”</strong>，核心在于完成三重结构性跃迁：
           </p>
 
           <table>
             <thead>
               <tr>
-                <th style={{ width: '22%' }}>价值层级</th>
-                <th style={{ width: '28%' }}>形态定位</th>
-                <th>核心特征与竞争壁垒</th>
+                <th style={{ width: '24%' }}>结构演进维度</th>
+                <th style={{ width: '28%' }}>传统外挂式插件模式</th>
+                <th>AI 原生法务架构范式</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Layer 5<br />人机混合模式</strong></td>
-                <td>终极协同组织<br />(Human-in-the-Loop)</td>
-                <td>以人类法律判断力为最高决策中枢，统筹调度垂直智能体集群。责任可追溯、决策可解释。</td>
+                <td><strong>跃迁一<br />工作流架构</strong></td>
+                <td>旧审批链上的单点外挂</td>
+                <td>打破传统部门交接摩擦，围绕智能体的自主执行能力重新定义业务发起、初审分流与端到端交付闭环。</td>
               </tr>
               <tr>
-                <td><strong>Layer 4<br />核心记录系统</strong></td>
-                <td>不可替代工作底座<br />(System of Record)</td>
-                <td>深度沉淀企业全生命周期的案卷、合同履约与合规决策资产。具备极高转换壁垒。</td>
+                <td><strong>跃迁二<br />组织记忆资产</strong></td>
+                <td>易贬值的静态提示词模板</td>
+                <td>将企业历史商业判例、谈判容忍底线与资深律师修订逻辑结构化，建立持续进化的自学习知识飞轮。</td>
               </tr>
               <tr>
-                <td><strong>Layer 3<br />专有知识架构</strong></td>
-                <td>动态知识网络<br />(Proprietary Context)</td>
-                <td>结构化企业内部私有规则与先例，建立自学习飞轮与 SOP 自动沉淀机制。</td>
-              </tr>
-              <tr>
-                <td><strong>Layer 2<br />业务工作流嵌入</strong></td>
-                <td>端到端流程重塑<br />(Workflow Redesign)</td>
-                <td>彻底打破旧流程，围绕 AI 的自主能力重新定义业务发起、初审、分流与交付闭环。</td>
-              </tr>
-              <tr>
-                <td><strong>Layer 1<br />原生模型能力</strong></td>
-                <td>通用算力供给<br />(Base Model & Tools)</td>
-                <td>基础语义理解、摘要与翻译。纯套壳工具在此层级无任何防御壁垒，已被证明无法支撑严肃企业法务。</td>
+                <td><strong>跃迁三<br />人机治理契约</strong></td>
+                <td>人工逐行起草与机械复核</td>
+                <td>以人类法律判断力为最高受托责任中枢，统筹调度垂直智能体梯队，确保责任可追溯、决策可审计。</td>
               </tr>
             </tbody>
           </table>
 
           <p>
-            真正的 AI 原生团队，绝不会停留在 Layer 1 的工具采购层面。他们的战略焦点从第一天起就锁定在 <strong>Layer 2 业务重塑与 Layer 4 记录系统的占领</strong>。
+            真正的 AI 原生团队，绝不会停留在采购若干个对话账号的表面功夫。他们的战略重心从第一天起就锁定在<strong>端到端业务工作流重塑与可持续复利的组织知识资产</strong>。
           </p>
 
           <span className="article-section-tag">人机分工</span>

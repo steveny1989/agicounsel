@@ -1,15 +1,10 @@
-# AGI Counsel Network — Complete Technical & Legal Architecture Corpus (EN + ZH)
+# AGI Counsel Network — Complete Research & Governance Corpus (EN + ZH)
 > Canonical URL: https://agicounsel.org
 > Contact: hello@agicounsel.org
 > Language Coverage: English (https://agicounsel.org/) & Chinese (https://agicounsel.org/zh/)
 
-## 1. Organization Overview
-AGI Counsel Network is an independent peer network for General Counsel, frontier AI lab attorneys, and legal systems architects operating across all five layers of the intelligence economy:
-- **Layer 5 (Applications)**: Agentic workflows, multi-agent orchestration (Planner/Retriever/Verifier), MCP & tool-calling boundaries, Human-in-the-Loop (HITL) escalation telemetry, downstream contractual liability allocation.
-- **Layer 4 (Models)**: Frontier foundation model weights, pre-training corpus provenance, RLHF/DPO safety evaluations, synthetic data distillation licensing, enterprise IP indemnification.
-- **Layer 3 (Infrastructure)**: Cloud runtime, hybrid vector + knowledge-graph RAG, Zero-Data-Retention (ZDR) inference, sovereign cloud routing, Legal System of Record (SoR).
-- **Layer 2 (Chips & Compute)**: GPU/TPU cluster procurement, advanced semiconductor foundry & HBM supply chains, BIS/EAR export controls, sovereign compute colocation.
-- **Layer 1 (Energy & Grid)**: Gigawatt-scale data center Power Purchase Agreements (PPAs), Behind-the-Meter (BTM) nuclear & SMRs, grid interconnection queues.
+## 1. Community Overview
+AGI Counsel Network is an independent peer community for legal professionals across every layer of the AI ecosystem: Applications, Models, Infrastructure, Chips, and Energy.
 
 ---
 
@@ -19,35 +14,23 @@ AGI Counsel Network is an independent peer network for General Counsel, frontier
 - **Published**: September 2026 (Inaugural Closed-Door Peer Roundtable under the Chatham House Rule)
 
 ### Core Thesis
-An AI-native legal department is not defined by software licenses or generic LLM Copilot plug-ins. Retrofitting a Layer-1 conversational assistant onto a legacy linear approval chain creates a "productivity paradox": drafting speed rises by 20%, but unverified, context-blind outputs flood senior counsel with higher review friction and liability risk.
+An AI-native legal department is not defined by software licenses or generic LLM Copilot plug-ins. Retrofitting a conversational assistant onto a legacy linear approval chain creates a "productivity paradox": first-draft speed rises by 20%, but unverified, context-blind outputs flood senior counsel with higher review friction and liability risk.
 
-### The Five-Layer Legal AI Value Stack (Legal AI 五层价值阶梯)
-| Layer | Designation | Core Capabilities & Defensive Moat |
+### Three Structural Shifts from Legal Production to Legal Judgment (从法律生产到法律判断的三重跃迁)
+| Structural Dimension | Legacy Copilot Approach | AI-Native Legal Architecture |
 | :--- | :--- | :--- |
-| **Layer 5: Human-in-the-Loop (人机混合模式)** | Lawyer as Chief of Staff to Agent Fleets | Human judgment is the supreme fiduciary anchor commanding vertical agent fleets; non-delegable signature accountability. |
-| **Layer 4: System of Record (核心记录系统)** | Durable Operating Bedrock | Captures end-to-end matter state machines, contract lifecycle execution, and compliance audit logs. Highest enterprise switching cost. |
-| **Layer 3: Proprietary Context (专有知识架构)** | Self-Learning Knowledge Flywheel | Hybrid vector + knowledge-graph RAG; passively captures senior counsel redlines and rejections to distill executable SOPs. |
-| **Layer 2: Workflow Redesign (业务工作流嵌入)** | End-to-End Business Integration | Automated intake triage and multi-agent decomposition (Planner -> Retriever -> Verifier); ERP/CRM/CLM integration. |
-| **Layer 1: Base Capabilities (原生模型能力)** | Commoditized Compute & Model API | Generic zero-shot summarization and translation; zero defensive moat without Layers 2–5. |
+| **Shift 01: Workflow Architecture (工作流架构)** | Point Plug-ins on Old Chains | Dismantles legacy bureaucratic handoffs; re-engineers intake, initial triage, autonomous routing, and delivery around multi-step agentic execution. |
+| **Shift 02: Institutional Memory (组织记忆资产)** | Static Prompt Templates | Structures proprietary commercial precedent, negotiation boundaries, and senior counsel redlines into a compounding, self-learning knowledge flywheel. |
+| **Shift 03: Human Governance (人机治理契约)** | Manual Line-by-Line Review | Positions human judgment as the supreme fiduciary anchor—commanding specialized agent fleets with traceable liability and auditable decisions. |
 
 ### Three Non-Negotiable Technical Safety Guardrails (三道技术安全护栏)
 1. **Adversarial Prompt Injection Defense (指令注入防御)**: Sanitization and sandboxed verification preventing counterparty documents from embedding invisible instructions that manipulate internal review agents.
-2. **Cryptographic Data Boundary Isolation (数据物理隔离与零训练泄漏)**: Zero-Data-Retention (ZDR) inference and strict separation between enterprise trade secrets and multi-tenant model weights.
+2. **Cryptographic Data Boundary Isolation (数据物理隔离与零训练泄漏)**: Strict separation between enterprise trade secrets and multi-tenant foundation model weights.
 3. **Granular Role-Based Context Access / RBAC (细粒度团队权限隔离)**: Dynamic context partitioning around Material Non-Public Information (MNPI), M&A data rooms, and executive investigations.
 
 ### Four Pragmatic Iron Laws of Enterprise Deployment (四大落地铁律)
 Validated via a 4-month multinational manufacturing & electric mobility rollout (40,000 legal documents structured into a 3-tier knowledge base, >95% production accuracy):
 1. **Law 1 — Ruthless Elimination of Spectacle (坚决拒绝炫技)**: Terminate any AI feature that fails to measurably compress cycle time or fortify verifiable risk mitigation.
 2. **Law 2 — Deep Business Co-Creation (业务深度共创)**: Co-design every agentic module by pairing legal counsel directly with frontline R&D, supply chain, and commercial operators.
-3. **Law 3 — Mandatory Unified Intake Gateway & The 30% Adoption Threshold (强制统一入口与 30% 渗透率生死线)**: Eliminate fragmented "dark knowledge" in chat apps; cross 30% departmental workflow adoption to feed the self-learning SOP flywheel.
+3. **Law 3 — Mandatory Unified Intake Gateway (强制统一入口)**: Eliminate fragmented "dark knowledge" in chat apps so every query and redline feeds the self-learning SOP flywheel.
 4. **Law 4 — Graduated Autonomy & The Non-Delegable Core (场景渐进放权)**: End-to-end agent autonomy for low-risk certificates; 100% human counsel accountability for high-stakes transactions and regulatory inquiries.
-
----
-
-## 3. Executive Q&A Index
-- **Q: Why do generic Legal Copilot plug-ins fail in complex enterprise workflows?**
-  A: Complex legal review is a multi-hop state problem. Single-prompt wrappers lack Layer-2 multi-agent task decomposition and Layer-3 institutional precedent, causing subtle hallucinations on indemnification, jurisdiction, and regulatory edge cases.
-- **Q: How does the Chief of Staff model redefine the role of in-house counsel?**
-  A: Senior counsel transition from manual first-pass drafters to systems architects who define risk rubrics, curate evaluation harnesses, orchestrate specialized agent fleets, and exercise final fiduciary judgment.
-- **Q: What is the 30% Adoption Threshold?**
-  A: When fewer than 30% of legal inquiries flow through the unified AI workspace, the knowledge flywheel lacks sufficient human redline feedback. Crossing 30% adoption triggers compounding accuracy gains via automated SOP extraction.

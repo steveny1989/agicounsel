@@ -5,15 +5,15 @@ import NetworkBriefingForm from '../../components/NetworkBriefingForm';
 export const metadata: Metadata = {
   title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
   description:
-    'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on the 5-Layer Legal AI Value Stack, multi-agent orchestration, System-of-Record lock-in, and human-in-the-loop governance.',
+    'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on workflow re-engineering, compounding institutional memory, multi-agent orchestration, and human-in-the-loop governance.',
   keywords: [
     'AI-Native Legal Department',
-    'Five-Layer Legal AI Value Stack',
+    'Legal Judgment vs Legal Production',
     'Multi-Agent Legal Orchestration',
     'Lawyer as Chief of Staff',
-    'Legal System of Record',
+    'Compounding Institutional Memory',
     'Human-in-the-Loop Legal Governance',
-    'Enterprise RAG Legal Architecture',
+    'Enterprise Legal Architecture',
     'AGI Counsel Note 01',
   ],
   alternates: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
     description:
-      'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance from our inaugural closed-door peer roundtable.',
+      'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on workflow re-engineering, compounding institutional memory, and human-in-the-loop governance from our inaugural closed-door peer roundtable.',
     url: 'https://agicounsel.org/notes/ai-native-legal-department/',
     siteName: 'AGI Counsel Network',
     type: 'article',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
     description:
-      'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance.',
+      'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on workflow re-engineering, compounding institutional memory, and human-in-the-loop governance.',
     images: ['/og-note-01.png'],
   },
 };
@@ -53,7 +53,7 @@ const noteOneJsonLd = {
       '@id': 'https://agicounsel.org/notes/ai-native-legal-department/#article',
       headline: 'What Would an AI-Native Legal Department Look Like? (AGI Counsel Note #01)',
       description:
-        'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on the 5-Layer Legal AI Value Stack, multi-agent orchestration, System-of-Record lock-in, and human-in-the-loop governance.',
+        'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on workflow re-engineering, compounding institutional memory, multi-agent orchestration, and human-in-the-loop governance.',
       datePublished: '2026-09-20',
       dateModified: '2026-09-20',
       inLanguage: 'en',
@@ -61,11 +61,11 @@ const noteOneJsonLd = {
       publisher: { '@id': 'https://agicounsel.org/#organization' },
       mainEntityOfPage: 'https://agicounsel.org/notes/ai-native-legal-department/',
       about: [
-        'Five-Layer Legal AI Value Stack',
+        'AI-Native Legal Workflow Architecture',
         'Multi-Agent Legal Orchestration',
         'Human-in-the-Loop Governance',
-        'Legal System of Record (SoR)',
-        'Self-Learning Enterprise RAG',
+        'Compounding Institutional Memory',
+        'Lawyer as Chief of Staff',
       ],
     },
     {
@@ -98,7 +98,6 @@ export default function NoteOne() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="/">Home</a>
-          <a href="/stack/">AI Stack &amp; Glossary</a>
           <a href="/notes/">All notes</a>
           <a className="language-switch" href="/zh/notes/ai-native-legal-department/?lang=zh">中文</a>
           <a className="nav-join" href="#subscribe-note">Subscribe</a>
@@ -111,7 +110,7 @@ export default function NoteOne() {
           <p className="kicker">AGI Counsel Note #01 · Deep Observation · September 2026 · 10 min read</p>
           <h1>What Would an AI-Native Legal Department Look Like?</h1>
           <p className="article-deck">
-            Beyond tool procurement and prompt engineering: Systems-level observations on value layers, workflow re-engineering, and human-in-the-loop governance from AGI Counsel Network&apos;s inaugural closed-door peer roundtable.
+            Beyond tool procurement and prompt engineering: Systems-level observations on workflow re-engineering, compounding institutional memory, and human-in-the-loop governance from AGI Counsel Network&apos;s inaugural closed-door peer roundtable.
           </p>
         </header>
 
@@ -128,57 +127,47 @@ export default function NoteOne() {
 
           <div className="article-quote-block">
             <p>“AI transformation is also organizational transformation.”</p>
-            <span>Roundtable Core Insight · Organizational Layer</span>
+            <span>Roundtable Core Insight · Organizational Paradigm</span>
           </div>
 
-          <span className="article-section-tag">Architecture</span>
-          <h2>01 — Beyond the Wrapper Trap: The Five-Layer Legal AI Stack</h2>
+          <span className="article-section-tag">Structural Shift</span>
+          <h2>01 — Beyond the Copilot Paradox: Three Shifts from Legal Production to Legal Judgment</h2>
           <p>
-            Over the past two years, enterprise legal departments underwent an initial wave of experimentation characterized by generic LLM wrappers and point solutions. Most quickly encountered the classic “productivity paradox”: retrofitting an AI assistant onto a legacy, linear approval chain might accelerate drafting speed by 20%, but it frequently inundates senior counsel with unverified, semi-hallucinated drafts—ultimately compounding review friction and amplifying liability risks.
+            Over the past two years, enterprise legal departments underwent an initial wave of experimentation dominated by generic chat assistants and point plug-ins. Most quickly encountered the classic “productivity paradox”: retrofitting an AI assistant onto a legacy, linear approval chain might accelerate first-draft typing speed by 20%, but it frequently inundates senior counsel with unverified, context-blind drafts—ultimately compounding review friction and amplifying liability risks.
           </p>
           <p>
-            Following a 100-day experimental simulation of an AI-native legal organization, participants codified the <strong>Five-Layer Legal AI Value Stack</strong>:
+            Moving from superficial tool adoption to an <strong>AI-native legal architecture</strong> requires three fundamental structural shifts:
           </p>
 
           <table>
             <thead>
               <tr>
-                <th style={{ width: '22%' }}>Layer</th>
-                <th style={{ width: '28%' }}>Designation</th>
-                <th>Core Capabilities & Structural Moat</th>
+                <th style={{ width: '24%' }}>Structural Dimension</th>
+                <th style={{ width: '28%' }}>Legacy Copilot Approach</th>
+                <th>AI-Native Legal Architecture</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Layer 5<br />Human-in-the-Loop</strong></td>
-                <td>Autonomous Collaborative Organization</td>
-                <td>Human judgment serves as the supreme governance anchor, commanding domain-specific agent fleets. Liability is traceable; decisions are auditable.</td>
+                <td><strong>Shift 01<br />Workflow Architecture</strong></td>
+                <td>Point Plug-ins on Old Chains</td>
+                <td>Dismantles legacy bureaucratic handoffs; re-engineers intake, initial triage, autonomous routing, and business delivery around multi-step agentic execution.</td>
               </tr>
               <tr>
-                <td><strong>Layer 4<br />System of Record</strong></td>
-                <td>Durable Operating Bedrock</td>
-                <td>Captures end-to-end matter history, contract lifecycle execution, and compliance precedent. Extremely high switching costs create the deepest enterprise moat.</td>
+                <td><strong>Shift 02<br />Institutional Memory</strong></td>
+                <td>Static Prompt Templates</td>
+                <td>Structures proprietary commercial precedent, negotiation boundaries, and senior counsel redlines into a compounding, self-learning knowledge flywheel.</td>
               </tr>
               <tr>
-                <td><strong>Layer 3<br />Proprietary Context</strong></td>
-                <td>Dynamic Knowledge Architecture</td>
-                <td>Structures institutional precedent and proprietary risk tolerances into multi-tier knowledge repositories with self-learning reinforcement loops.</td>
-              </tr>
-              <tr>
-                <td><strong>Layer 2<br />Workflow Redesign</strong></td>
-                <td>End-to-End Business Integration</td>
-                <td>Dismantles legacy bureaucratic handoffs; re-engineers intake, initial triage, autonomous routing, and delivery around AI capabilities.</td>
-              </tr>
-              <tr>
-                <td><strong>Layer 1<br />Base Capabilities</strong></td>
-                <td>Commoditized Compute & Model API</td>
-                <td>Generic semantic parsing, translation, and summary. Thin UI wrappers at this layer offer zero defensive moat and cannot sustain serious enterprise legal work.</td>
+                <td><strong>Shift 03<br />Human Governance</strong></td>
+                <td>Manual Line-by-Line Review</td>
+                <td>Positions human judgment as the supreme fiduciary anchor—commanding specialized agent fleets with traceable liability and auditable decisions.</td>
               </tr>
             </tbody>
           </table>
 
           <p>
-            Truly AI-native legal teams refuse to linger at Layer 1. Their strategic capital is directed immediately toward <strong>Layer 2 workflow re-engineering and Layer 4 System of Record lock-in</strong>.
+            Truly AI-native legal teams do not measure success by how many chat seats they buy. Their strategic capital is directed toward <strong>end-to-end workflow re-engineering and durable institutional memory</strong>.
           </p>
 
           <span className="article-section-tag">Governance</span>

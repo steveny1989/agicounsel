@@ -282,15 +282,6 @@ footer>div a { color: var(--gold); }
 #top .carousel-tab-label { color: rgba(250, 249, 245, 0.75); }
 #top .carousel-tab-dot.is-active .carousel-tab-label { color: var(--gold); }
 
-/* Upgraded 5-Layer AI Stack Cards */
-.layer { height: auto; min-height: 82px; padding: 16px 28px; grid-template-columns: minmax(240px, 1fr) 1.45fr; gap: 24px; text-align: left; cursor: pointer; }
-.layer-primary { display: flex; flex-direction: column; gap: 4px; }
-.layer-primary strong { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 14px; letter-spacing: .04em; }
-.layer-sub { font-size: 13px; color: var(--gold); font-weight: 600; }
-.layer small { text-transform: none; letter-spacing: .01em; font-size: 12.5px; line-height: 1.5; text-align: right; }
-.foundation-action-desc { margin: 8px 0 0; font-size: 13px; color: var(--gray); line-height: 1.6; max-width: 260px; text-align: center; }
-.principle-desc { color: var(--gray); font-size: 12px; line-height: 1.55; }
-
 /* Static Reference Architecture Matrix (#architecture) */
 .tech-architecture-section { background: var(--navy); color: var(--paper); padding: 110px clamp(24px, 7vw, 110px); border-top: 1px solid var(--gray); border-bottom: 1px solid var(--gray); }
 .tech-arch-container { max-width: 1240px; margin: 0 auto; }

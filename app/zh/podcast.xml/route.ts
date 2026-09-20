@@ -6,7 +6,7 @@ export async function GET(): Promise<Response> {
   <channel>
     <title>AGI Counsel Network — 播客深读 (中文版)</title>
     <link>https://agicounsel.org/zh/notes/</link>
-    <description>AGI Counsel Network 核心研究音频对谈（林薇 × 姚迪）：系统拆解 AI 原生法务部门五层价值架构、多智能体编排治理、自学习知识飞轮与全栈算力合规。</description>
+    <description>AGI Counsel Network 核心研究音频对谈（林薇 × 姚迪）：系统拆解 AI 原生法务部门的三重结构性跃迁、多智能体参谋长机制与自学习知识飞轮。</description>
     <language>zh-cn</language>
     <itunes:author>AGI Counsel Network (林薇 × 姚迪)</itunes:author>
     <itunes:explicit>false</itunes:explicit>
@@ -18,7 +18,7 @@ export async function GET(): Promise<Response> {
       <link>https://agicounsel.org/zh/notes/ai-native-legal-department/</link>
       <guid isPermaLink="true">https://agicounsel.org/zh/notes/ai-native-legal-department/#deep-dive-podcast</guid>
       <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
-      <description>林薇与姚迪深度拆解《AGI Counsel Note #01》：为什么外挂式 Copilot 陷入生产力悖论？如何占领 Layer 4 核心记录系统（System of Record）并构建自学习知识飞轮？</description>
+      <description>林薇与姚迪深度拆解《AGI Counsel Note #01》：为什么外挂式对话插件陷入生产力悖论？如何完成工作流重构、自学习知识飞轮与人机协同治理的三重跃迁？</description>
       <itunes:duration>05:18</itunes:duration>
     </item>
   </channel>

@@ -6,7 +6,7 @@ export async function GET(): Promise<Response> {
   <channel>
     <title>AGI Counsel Network — Deep Dive Podcast</title>
     <link>https://agicounsel.org/notes/</link>
-    <description>Executive audio briefings and conversational walkthroughs on Legal AI engineering, the Five-Layer Legal AI Value Stack, multi-agent governance, and full-stack compute compliance from the AGI Counsel Network.</description>
+    <description>Executive audio briefings and conversational walkthroughs on AI-native legal departments, workflow architecture, compounding institutional memory, and multi-agent governance from the AGI Counsel Network.</description>
     <language>en-us</language>
     <itunes:author>AGI Counsel Network (Sarah × Yao Di)</itunes:author>
     <itunes:explicit>false</itunes:explicit>
@@ -18,7 +18,7 @@ export async function GET(): Promise<Response> {
       <link>https://agicounsel.org/notes/ai-native-legal-department/</link>
       <guid isPermaLink="true">https://agicounsel.org/notes/ai-native-legal-department/#deep-dive-podcast</guid>
       <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
-      <description>Sarah and Yao Di unpack AGI Counsel Note #01: Why Layer-1 Legal Copilot wrappers hit a productivity paradox, how the 5-Layer Legal AI Value Stack builds a durable System-of-Record moat, and how senior counsel operate as Chief of Staff to specialized agent fleets.</description>
+      <description>Sarah and Yao Di unpack AGI Counsel Note #01: Why generic Copilot plug-ins hit a productivity paradox, how the Three Structural Shifts move teams from legal production to legal judgment, and how senior counsel operate as Chief of Staff to specialized agent fleets.</description>
       <itunes:duration>05:12</itunes:duration>
     </item>
   </channel>

@@ -37,72 +37,72 @@ const DIALOGUE_TURNS: DialogueTurn[] = [
     speaker: 'Sarah / 林薇',
     role: 'Host · Ecosystem Strategist',
     textEn:
-      'Welcome to the AGI Counsel Deep Dive. Today we are unpacking Note #01: What would a genuinely AI-native legal department look like—and why did 80% of first-wave Legal Copilot pilots hit a wall?',
+      'Welcome to the AGI Counsel Deep Dive. Today we are unpacking Note #01: What would a genuinely AI-native legal department look like—and why did first-wave Legal Copilot pilots hit a productivity paradox?',
     textZh:
-      '欢迎收听 AGI Counsel 播客深读。今天我们拆解 Note #01 核心报告：真正的“AI 原生法务部门”究竟长什么样？为什么过去两年绝大多数外挂式 Copilot 试点最终陷入了生产力悖论？',
+      '欢迎收听 AGI Counsel 播客深读。今天我们拆解 Note #01 核心报告：真正的“AI 原生法务部门”究竟长什么样？为什么过去两年许多外挂式对话插件最终陷入了生产力悖论？',
   },
   {
     speaker: 'Yao Di / 姚迪',
     role: 'Systems Counsel',
     textEn:
-      'The core finding from our 100-day simulation and closed-door roundtable is simple: bolting a Layer-1 chat assistant onto a legacy linear approval chain speeds up typing by 20%, but floods senior counsel with unverified, context-blind drafts.',
+      'The core finding from our closed-door roundtable is clear: bolting a chat assistant onto a legacy linear approval chain speeds up typing by 20%, but floods senior counsel with unverified, context-blind drafts.',
     textZh:
-      '基于 100 天 AI 原生组织模拟和闭门同行研讨，结论非常明确：在传统串联审批流上硬塞一个 Layer 1 对话插件，虽然打字快了 20%，却制造了海量缺乏上下文的半成品草稿，反而加重了资深法务的复核风险。',
+      '基于闭门同行研讨的实证复盘，结论非常明确：在传统串联审批流上生硬外挂一个对话插件，虽然打字快了 20%，却制造了海量缺乏上下文的半成品草稿，反而加重了资深法务的复核负担与风险。',
   },
   {
     speaker: 'Sarah / 林薇',
     role: 'Host · Ecosystem Strategist',
     textEn:
-      'And that leads directly to the Five-Layer Legal AI Value Stack. Where does durable enterprise value actually sit?',
+      'So instead of buying more point plug-ins, Note #01 frames the transition around three structural shifts from legal production to legal judgment.',
     textZh:
-      '这就引出了报告最核心的“Legal AI 五层价值阶梯”。真正的企业级壁垒究竟在哪一层？',
+      '因此，报告提出不能停留在工具采购，而必须完成从“法律生产”向“法律判断”的三重结构性跃迁。',
   },
   {
     speaker: 'Yao Di / 姚迪',
     role: 'Systems Counsel',
     textEn:
-      'Layer 1—raw model APIs—is rapidly commoditizing with zero moat. Real leverage starts at Layer 2, re-engineering end-to-end intake and multi-agent triage; Layer 3, building a self-learning knowledge flywheel from senior counsel edits; and Layer 4, owning the durable System of Record.',
+      'Exactly. First, Workflow Architecture: redesigning intake, triage, and delivery end-to-end. Second, Institutional Memory: capturing senior counsel redlines and reasoning into a compounding, self-learning knowledge flywheel.',
     textZh:
-      'Layer 1 的通用模型 API 正在快速商品化，毫无防御壁垒。真正的护城河始于 Layer 2 的端到端工作流与多 Agent 拆解、Layer 3 从资深律师修订痕迹中自学习的专有知识架构，以及 Layer 4 占领高转换壁垒的核心记录系统（System of Record）。',
+      '没错。第一重跃迁是端到端工作流重构，围绕智能体重新定义业务发起与分流；第二重跃迁是组织记忆资产，在日常审查中无感捕获资深律师的修订底线，建立持续进化的自学习知识飞轮。',
   },
   {
     speaker: 'Sarah / 林薇',
     role: 'Host · Ecosystem Strategist',
     textEn:
-      'And at Layer 5, the human lawyer becomes a Chief of Staff orchestrating fleets of specialized agents—guarded by prompt-injection defense, zero-training data isolation, and granular MNPI access controls.',
+      'And the third shift is Human Governance: the lawyer operates as a Chief of Staff orchestrating specialized agents—backed by prompt-injection defense, data isolation, and non-delegable human judgment.',
     textZh:
-      '而在最高层 Layer 5，人类律师蜕变为统筹垂直 Agent 集群的参谋长（Chief of Staff）——在底层刚性部署防指令注入、零训练泄漏物理隔离与细粒度 MNPI 权限管控，牢牢守住不可委派的终极签字权。',
+      '第三重跃迁则是人机治理契约：人类律师化身为统筹垂直 Agent 梯队的参谋长（Chief of Staff），在底层部署防指令注入、数据物理隔离与细粒度权限管控，牢牢守住不可委派的终极判断力。',
   },
 ];
 
 const PODCAST_QAS: QAItem[] = [
   {
-    qEn: 'Why do thin Layer-1 Legal Copilot wrappers fail in production?',
-    qZh: '为什么薄套壳的 Layer 1 法律 Copilot 插件在生产环境中容易失效？',
-    aEn: 'Because complex legal review is a multi-hop state problem, not a single-turn text completion problem. Without Layer-2 task decomposition (Planner → Retriever → Verifier agents) and Layer-3 institutional precedent, single-prompt wrappers hallucinate subtle indemnification and regulatory edge cases.',
-    aZh: '因为复杂的商业法务审查是多跳状态推演，而非单轮文本续写。如果缺乏 Layer 2 的多步子任务颗粒度拆解（规划 → 检索 → 校验 Agent）与 Layer 3 的企业历史判例库支撑，单轮套壳工具极易在赔偿上限、管辖权与数据出境等关键红线上产生隐性幻觉。',
+    qEn: 'Why do generic chat plug-ins create a "productivity paradox" in enterprise legal teams?',
+    qZh: '为什么通用的外挂式对话插件在企业法务场景中容易引发“生产力悖论”？',
+    aEn: 'Because complex legal review is a multi-hop state and judgment problem, not a single-turn text completion problem. Without redesigned intake triage, sub-task decomposition, and proprietary corporate precedent, generic wrappers produce plausible-looking drafts that miss critical commercial and regulatory edge cases.',
+    aZh: '因为复杂的商业法务审查是多跳状态推演与风险权衡，而非简单的文本续写。如果缺乏端到端的任务拆解与企业历史判例库支撑，单点对话插件极易在赔偿上限、管辖权与数据合规等红线上产生隐性偏差。',
   },
   {
     qEn: 'How did the multinational manufacturing case study achieve >95% accuracy in 4 months?',
     qZh: '案例中的跨国制造巨头是如何在 4 个月内实现高频场景 95% 以上准确率的？',
-    aEn: 'By cleaning 40,000 core legal documents into a 3-tier knowledge architecture (Statutory Baseline → Corporate Policy → Clause Playbooks), mandating a single unified intake gateway to eliminate "dark knowledge" in chat apps, and co-creating acceptance criteria directly with frontline supply chain and R&D teams.',
-    aZh: '核心在于三步工程实操：第一，将 4 万份核心法律文件清洗为“法规底座—公司制度—条款实操手册”三层知识架构；第二，强制设立统一智能法务入口，消灭散落在群聊中的“暗知识”；第三，法务与研发、供应链一线结对共创边界验收标准。',
+    aEn: 'By structuring 40,000 core legal documents into a 3-tier knowledge hierarchy (Statutory Baseline → Corporate Policy → Clause Playbooks), mandating a single unified intake gateway to eliminate "dark knowledge" in chat apps, and co-creating acceptance criteria directly with frontline supply chain and R&D teams.',
+    aZh: '核心在于三步实操：第一，将 4 万份核心法律文件梳理为“法规底座—公司制度—条款实操手册”三层知识架构；第二，强制设立统一智能法务入口，消灭散落在群聊中的“暗知识”；第三，法务与研发、供应链一线结对共创边界验收标准。',
   },
   {
-    qEn: 'What is the "30% Adoption Threshold" and why does it matter?',
-    qZh: '什么是“30% 组织渗透率生死线”？为什么它决定了转型成败？',
-    aEn: 'Organizational telemetry shows that when fewer than 30% of matter workflows pass through the AI workspace, the knowledge flywheel starves of human feedback annotations. Once adoption crosses 30%, passive SOP extraction from senior counsel redlines compounds accuracy across the entire department.',
-    aZh: '组织工程遥测表明：当智能工作台在日常涉法需求中的渗透率低于 30% 时，知识飞轮缺乏足够的人工修订反馈样本；一旦跨过 30% 临界点，从资深律师红线批注中自动蒸馏 SOP 的自学习闭环就会产生跨团队的准确率复利效应。',
+    qEn: 'How does the "Chief of Staff" model change how legal teams are structured?',
+    qZh: '“参谋长（Chief of Staff）”模式如何改变法务团队的分工与能力要求？',
+    aEn: 'When first-pass analysis becomes abundant compute, lawyers stop spending 70% of their hours drafting boilerplate recitals. Instead, they set risk rubrics, orchestrate specialized agent fleets (NDA triage, cross-border data scan, M&A variance tracking), audit inter-agent conflicts, and exercise final fiduciary judgment.',
+    aZh: '当基础文本分析变成充裕算力，律师不再把 70% 的时间花在机械改字上，而是负责设定风控标尺、调度垂直 Agent 梯队（如 NDA 初审、数据出境扫描、并购偏离预警）、裁决多智能体交叉矛盾，并承担最终受托签字责任。',
   },
 ];
 
 const PARALLEL_SECTIONS: BilingualBlock[] = [
   {
     id: 'section-01',
-    tagEn: '01 · ARCHITECTURE',
-    tagZh: '01 · 架构演进',
-    titleEn: 'Beyond the Wrapper Trap: The Five-Layer Legal AI Stack',
-    titleZh: '认知升维：打破套壳陷阱与 Legal AI 五层价值阶梯',
+    tagEn: '01 · STRUCTURAL SHIFT',
+    tagZh: '01 · 范式跃迁',
+    titleEn: 'Beyond the Copilot Paradox: Three Shifts from Legal Production to Legal Judgment',
+    titleZh: '超越“外挂助手”悖论：从法律生产到法律判断的三重跃迁',
     paragraphs: [
       {
         en: 'An AI-native legal department is not defined by the volume of software licenses it procures nor the number of API endpoints it provisions. When legal intelligence shifts from a scarce, artisanal craft to an abundant computational utility, the underlying architecture and organizational paradigm of legal work must be fundamentally re-engineered.',
@@ -111,8 +111,8 @@ const PARALLEL_SECTIONS: BilingualBlock[] = [
         quoteZh: '“AI 转型，本质上也是组织转型。”',
       },
       {
-        en: 'Retrofitting a generic LLM assistant onto a legacy, linear approval chain might accelerate drafting speed by 20%, but it frequently inundates senior counsel with unverified, semi-hallucinated drafts—compounding review friction. The Five-Layer Legal AI Value Stack progresses from Layer 1 (Commoditized Model API) → Layer 2 (Workflow Redesign) → Layer 3 (Proprietary Context & RAG) → Layer 4 (System of Record) → Layer 5 (Human-in-the-Loop Chief of Staff).',
-        zh: '在传统串联审批链条上生硬外挂一个 Copilot 助手，虽然局部提升了 20% 打字速度，却往往制造了海量未经验证的“半成品”草稿，反而加重了资深法务的复核负担。Legal AI 五层价值模型自下而上依次为：Layer 1（通用算力 API）→ Layer 2（业务工作流重塑）→ Layer 3（专有知识网络与 RAG）→ Layer 4（核心记录系统 SoR）→ Layer 5（人机混合协同中枢）。',
+        en: 'Retrofitting a generic chat assistant onto a legacy, linear approval chain might accelerate first-draft speed by 20%, but it frequently inundates senior counsel with unverified, context-blind drafts. True transformation requires three shifts: (1) Workflow Architecture—from point plug-ins to end-to-end redesign; (2) Institutional Memory—from static prompt templates to compounding self-learning knowledge flywheels; and (3) Human Governance—from manual line-by-line review to accountable Chief-of-Staff orchestration.',
+        zh: '在传统串联审批链条上生硬外挂一个对话助手，虽然局部提升了 20% 打字速度，却往往制造了海量未经验证的半成品草稿。真正的转型必须完成三重结构性跃迁：（1）工作流架构——从单点外挂到端到端流程重塑；（2）组织记忆资产——从静态提示词模板到持续进化的自学习知识飞轮；（3）人机治理契约——从人工逐行起草到统筹智能体梯队的参谋长模式。',
       },
     ],
   },
@@ -182,28 +182,28 @@ const PARALLEL_SECTIONS: BilingualBlock[] = [
 
 const GLOSSARY_TERMS = [
   {
-    term: 'System of Record (SoR)',
-    layer: 'Layer 4',
-    en: 'The authoritative enterprise repository capturing end-to-end matter state, contract execution history, and audit trails—creating the deepest switching-cost moat.',
-    zh: '沉淀案件生命周期、合同履约状态机与合规决策轨迹的权威底层系统，具备极高的转换壁垒。',
-  },
-  {
-    term: 'Chief of Staff Topology',
-    layer: 'Layer 5',
+    term: 'Chief of Staff Model',
+    layer: 'Governance',
     en: 'Operating paradigm where human counsel stop drafting routine clauses manually and instead define risk rubrics, orchestrate specialized agent fleets, and adjudicate edge cases.',
     zh: '人类律师从手工改合同转向制定风控标尺、统筹垂直 Agent 梯队并裁决复杂商业博弈的组织范式。',
   },
   {
-    term: 'Multi-Agent Decomposition',
-    layer: 'Layer 2',
-    en: 'Breaking monolithic legal tasks into deterministic pipelines (Intake Triage → Clause Extraction → Policy RAG → Verification Agent) to eliminate single-prompt hallucination.',
-    zh: '将复杂法务审查拆解为“分流 → 抽取 → 法规比对 → 交叉校验”多智能体流水线，解决单轮对话幻觉。',
+    term: 'Multi-Agent Task Decomposition',
+    layer: 'Workflow',
+    en: 'Breaking monolithic legal tasks into verifiable pipelines (Intake Triage → Clause Extraction → Policy Retrieval → Verification Agent) to eliminate single-prompt hallucination.',
+    zh: '将复杂法务审查拆解为“分流 → 抽取 → 制度比对 → 交叉校验”多智能体流水线，解决单轮对话幻觉。',
   },
   {
     term: 'Self-Learning Knowledge Flywheel',
-    layer: 'Layer 3',
-    en: 'Passively capturing senior counsel redlines and rejections to automatically distill machine-executable SOPs and update proprietary RAG context.',
+    layer: 'Memory',
+    en: 'Passively capturing senior counsel redlines and rejections to automatically distill machine-executable SOPs and continuously refine institutional precedent.',
     zh: '无感捕获资深律师对 Agent 初审意见的修订与驳回理由，自动蒸馏为可执行 SOP 反哺私有知识库。',
+  },
+  {
+    term: 'Unified Intake Gateway',
+    layer: 'Operations',
+    en: 'Routing all business legal inquiries through a single structured workspace rather than fragmented chat threads, preventing commercial precedent from evaporating as "dark knowledge."',
+    zh: '设立企业统一法务智能工作台承接所有涉法请求，杜绝高价值商业判断散落在群聊中沦为“暗知识”。',
   },
   {
     term: 'Granular Context RBAC (MNPI)',
@@ -234,14 +234,14 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
 
   const tocItems = isZh
     ? [
-        '01 · Legal AI 五层价值阶梯',
+        '01 · 从法律生产到判断的三重跃迁',
         '02 · 律师作为 Agent 参谋长',
         '03 · 自学习知识飞轮构建',
         '04 · 企业落地实战四大铁律',
         '05 · 2027 终局组织范式预判',
       ]
     : [
-        '01 · Five-Layer Legal AI Stack',
+        '01 · Three Structural Shifts',
         '02 · Lawyer as Chief of Staff',
         '03 · Self-Learning Flywheel',
         '04 · Four Iron Laws of Rollout',
@@ -509,8 +509,8 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
                       ? `${DIALOGUE_TURNS[activeTurn].speaker}：${DIALOGUE_TURNS[activeTurn].textZh}`
                       : `${DIALOGUE_TURNS[activeTurn].speaker}: ${DIALOGUE_TURNS[activeTurn].textEn}`
                     : isZh
-                    ? '用几分钟双人对谈拆解本文五层架构与落地铁律 · 点击播放或展开问答'
-                    : 'Conversational walkthrough of the 5-Layer Legal AI Stack & rollout playbook'}
+                    ? '用几分钟双人对谈拆解本文三大结构跃迁与落地铁律 · 点击播放或展开问答'
+                    : 'Conversational walkthrough of the Three Structural Shifts & rollout playbook'}
                 </p>
               </div>
             </div>
