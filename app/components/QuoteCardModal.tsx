@@ -230,10 +230,18 @@ export default function QuoteCardModal({ isOpen, onClose, quote, index, locale =
         </div>
 
         <footer className="quote-modal-actions">
-          <button className="button button-gold" onClick={handleCopy}>
+          <button
+            type="button"
+            className="quote-modal-btn quote-modal-btn-primary"
+            onClick={handleCopy}
+          >
             {copied ? (isZh ? '✓ 已复制到剪贴板' : '✓ Copied to clipboard') : (isZh ? '复制图片' : 'Copy Image')}
           </button>
-          <button className="button button-light" onClick={handleDownload}>
+          <button
+            type="button"
+            className="quote-modal-btn quote-modal-btn-secondary"
+            onClick={handleDownload}
+          >
             {isZh ? '下载高清卡片' : 'Download PNG'}
           </button>
         </footer>
