@@ -2,9 +2,22 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
-  description: 'Three emerging ideas from an anonymized AGI Counsel Network conversation.',
+  description: 'Three emerging ideas from a conversation among AGI Counsel Network members.',
   alternates: { canonical: '/notes/ai-native-legal-department/', languages: { en: '/notes/ai-native-legal-department/', 'zh-CN': '/zh/notes/ai-native-legal-department/' } },
-  openGraph: { images: [] }, twitter: { images: [] },
+  openGraph: {
+    title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
+    description: 'Three emerging ideas about workflows, knowledge architecture, and the changing value of human judgment.',
+    url: 'https://agicounsel.org/notes/ai-native-legal-department/',
+    siteName: 'AGI Counsel Network',
+    type: 'article',
+    images: [{ url: '/og.png', width: 1730, height: 909, alt: 'AGI Counsel Note #01 — AI-Native Legal Department' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
+    description: 'Three emerging ideas about workflows, knowledge architecture, and the changing value of human judgment.',
+    images: ['/og.png'],
+  },
 };
 
 export default function NoteOne() {

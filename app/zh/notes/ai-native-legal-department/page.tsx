@@ -2,9 +2,23 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
-  description: '来自 AGI Counsel Network 成员匿名对话的三点初步观察。',
+  description: '来自 AGI Counsel Network 成员对话的三点初步观察。',
   alternates: { canonical: '/zh/notes/ai-native-legal-department/', languages: { en: '/notes/ai-native-legal-department/', 'zh-CN': '/zh/notes/ai-native-legal-department/' } },
-  openGraph: { images: [] }, twitter: { images: [] },
+  openGraph: {
+    title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
+    description: '关于工作流、知识架构，以及人类判断力价值变化的三点初步观察。',
+    url: 'https://agicounsel.org/zh/notes/ai-native-legal-department/',
+    siteName: 'AGI Counsel Network',
+    locale: 'zh_CN',
+    type: 'article',
+    images: [{ url: '/og.png', width: 1730, height: 909, alt: 'AGI Counsel Note #01 — AI 原生法务部门' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
+    description: '关于工作流、知识架构，以及人类判断力价值变化的三点初步观察。',
+    images: ['/og.png'],
+  },
 };
 
 export default function ChineseNoteOne() {

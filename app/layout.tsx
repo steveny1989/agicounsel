@@ -12,5 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><LanguageRouter />{children}</body></html>;
+  return (
+    <html lang="en">
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="AGI Counsel Network Notes (RSS)" href="/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="AGI Counsel Network 社群笔记 (RSS)" href="/zh/feed.xml" />
+      </head>
+      <body>
+        <LanguageRouter />
+        {children}
+      </body>
+    </html>
+  );
 }

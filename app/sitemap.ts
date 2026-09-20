@@ -1,0 +1,83 @@
+import type { MetadataRoute } from 'next';
+
+export const dynamic = 'force-static';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://agicounsel.org';
+  const currentDate = new Date().toISOString().split('T')[0];
+
+  return [
+    {
+      url: `${baseUrl}/`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/`,
+          'zh-CN': `${baseUrl}/zh/`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/zh/`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/`,
+          'zh-CN': `${baseUrl}/zh/`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/notes/`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/notes/`,
+          'zh-CN': `${baseUrl}/zh/notes/`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/zh/notes/`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/notes/`,
+          'zh-CN': `${baseUrl}/zh/notes/`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/notes/ai-native-legal-department/`,
+      lastModified: '2026-08-01',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/notes/ai-native-legal-department/`,
+          'zh-CN': `${baseUrl}/zh/notes/ai-native-legal-department/`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/zh/notes/ai-native-legal-department/`,
+      lastModified: '2026-08-01',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/notes/ai-native-legal-department/`,
+          'zh-CN': `${baseUrl}/zh/notes/ai-native-legal-department/`,
+        },
+      },
+    },
+  ];
+}
