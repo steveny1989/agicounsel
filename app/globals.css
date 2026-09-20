@@ -194,6 +194,7 @@ footer>div a { color: var(--gold); }
 .note-index-card strong { display: inline-block; color: var(--gold); margin-top: 22px; }
 .notes-context { margin-top: 70px; padding-top: 55px; border-top: 1px solid var(--gray); }
 .notes-context .note-link { margin-top: 22px; color: var(--navy); }
+.notes-disclaimer { margin-top: 55px; padding-top: 30px; border-top: 1px solid var(--gray); color: var(--gray); font-size: 13px; line-height: 1.65; }
 
 .note-article>header { padding: 180px clamp(24px,12vw,190px) 95px; background: var(--navy); color: var(--paper); }
 .note-article>header>a { display: inline-block; margin-bottom: 65px; color: var(--gold); }
