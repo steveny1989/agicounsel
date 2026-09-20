@@ -5,15 +5,19 @@ import QuoteCardModal from './QuoteCardModal';
 
 type Locale = 'en' | 'zh';
 
-interface DialogueTurn {
-  speakerEn: string;
-  speakerZh: string;
-  textEn: string;
-  textZh: string;
-  startEn: number;
-  endEn: number;
+interface NarrationChapter {
+  id: string;
+  headingIndex: number; // -1 for intro, 0..4 for h2[0..4]
+  shortZh: string;
+  shortEn: string;
+  titleZh: string;
+  titleEn: string;
+  summaryZh: string;
+  summaryEn: string;
   startZh: number;
   endZh: number;
+  startEn: number;
+  endEn: number;
 }
 
 interface BilingualBlock {
@@ -30,66 +34,90 @@ interface BilingualBlock {
   }>;
 }
 
-const DIALOGUE_TURNS: DialogueTurn[] = [
+const NARRATION_CHAPTERS: NarrationChapter[] = [
   {
-    speakerEn: 'Moderator',
-    speakerZh: '主持',
-    textEn:
-      'Welcome to the AGI Counsel audio briefing for Note #01: What would a genuinely AI-native legal department look like—and why did first-wave chat plug-ins hit a productivity paradox?',
-    textZh:
-      '欢迎收听 AGI Counsel 第一期研究笔记音频导读：真正的 AI 原生法务部门会是什么样？为什么早期的单点对话插件往往陷入生产力悖论？',
-    startEn: 0,
-    endEn: 11.77,
+    id: 'intro',
+    headingIndex: -1,
+    shortZh: '00 · 导言',
+    shortEn: '00 · Intro',
+    titleZh: '导言：当法律分析成为丰裕的计算公用事业',
+    titleEn: 'Intro: When Legal Intelligence Becomes an Abundant Utility',
+    summaryZh: 'AGI Counsel Note #01 标题、核心导读与首场闭门行业交流会背景综述。',
+    summaryEn: 'Full narration of the Note #01 title, executive deck, and inaugural roundtable premise.',
     startZh: 0,
-    endZh: 11.01,
+    endZh: 82.97,
+    startEn: 0,
+    endEn: 83.81,
   },
   {
-    speakerEn: 'Network Counsel',
-    speakerZh: '与会法务代表',
-    textEn:
-      'The core finding from our roundtable is straightforward: bolting a chat assistant onto a legacy linear approval chain speeds up first-draft typing by 20%, but floods senior counsel with unverified, context-blind drafts.',
-    textZh:
-      '闭门研讨的核心共识非常明确：在传统串联审批链上生硬外挂一个对话插件，虽然局部提升了 20% 的初稿打字速度，却制造了大量缺乏业务上下文的半成品草稿，反而加重了资深法务的复核负担。',
-    startEn: 12.12,
-    endEn: 26.69,
-    startZh: 11.36,
-    endZh: 29.97,
+    id: 'sec-01',
+    headingIndex: 0,
+    shortZh: '01 · 三重跃迁',
+    shortEn: '01 · Three Shifts',
+    titleZh: '01 — 超越“外挂助手”悖论：从法律生产到法律判断的三重跃迁',
+    titleEn: '01 — Beyond the Copilot Paradox: Three Shifts from Production to Judgment',
+    summaryZh: '工作流架构重塑、组织记忆资产沉淀与人机治理契约的完整对比与解析。',
+    summaryEn: 'Unabridged narration of Workflow Architecture, Institutional Memory, and Human Governance.',
+    startZh: 83.57,
+    endZh: 206.06,
+    startEn: 84.41,
+    endEn: 191.94,
   },
   {
-    speakerEn: 'Moderator',
-    speakerZh: '主持',
-    textEn:
-      'Instead of procuring more point tools, Note #01 outlines three structural shifts from legal production to legal judgment.',
-    textZh:
-      '因此，报告提出必须超越单纯的工具采购，完成从“法律生产”向“法律判断”的三重结构性跃迁。',
-    startEn: 27.04,
-    endEn: 35.25,
-    startZh: 30.32,
-    endZh: 39.53,
+    id: 'sec-02',
+    headingIndex: 1,
+    shortZh: '02 · Chief of Staff',
+    shortEn: '02 · Chief of Staff',
+    titleZh: '02 — 角色重塑：律师作为统筹众多 Agent 的 Chief of Staff',
+    titleEn: '02 — Role Re-Engineering: The Lawyer as Chief of Staff to Multi-Agent Fleets',
+    summaryZh: '多智能体分工矩阵、参谋长职责定位，以及指令注入防御、数据隔离与细粒度权限三道护栏。',
+    summaryEn: 'Specialized agent fleets, Chief of Staff mandate, and the three non-negotiable technical guardrails.',
+    startZh: 206.66,
+    endZh: 344.43,
+    startEn: 192.54,
+    endEn: 319.75,
   },
   {
-    speakerEn: 'Network Counsel',
-    speakerZh: '与会法务代表',
-    textEn:
-      'First is Workflow Architecture—redesigning intake, triage, and business delivery end-to-end. Second is Institutional Memory—passively capturing senior counsel redlines into a self-learning knowledge flywheel.',
-    textZh:
-      '第一重跃迁是端到端工作流重构，围绕智能体重新定义业务发起与初审分流；第二重跃迁是组织记忆资产，在日常审批中无感捕获资深律师的修订底线，沉淀为自学习知识飞轮。',
-    startEn: 35.6,
-    endEn: 49.37,
-    startZh: 39.88,
-    endZh: 55.01,
+    id: 'sec-03',
+    headingIndex: 2,
+    shortZh: '03 · 自学习飞轮',
+    shortEn: '03 · Self-Learning',
+    titleZh: '03 — 知识架构胜于工具：系统自学习飞轮的构建',
+    titleEn: '03 — Knowledge Architecture Over Tooling: The Self-Learning Imperative',
+    summaryZh: '为什么静态提示词会迅速贬值，以及如何无感捕获资深法务修订逻辑构建自学习闭环。',
+    summaryEn: 'Why static prompts depreciate and how senior counsel redlines compound into machine-executable SOPs.',
+    startZh: 345.03,
+    endZh: 421.32,
+    startEn: 320.35,
+    endEn: 392.76,
   },
   {
-    speakerEn: 'Moderator',
-    speakerZh: '主持',
-    textEn:
-      'And the third shift is Human Governance: positioning the lawyer as a Chief of Staff orchestrating specialized agent fleets while holding non-delegable judgment and accountability.',
-    textZh:
-      '第三重跃迁则是人机治理契约：未来的律师更像统筹众多垂直智能体的参谋长，在底层安全护栏之上，牢牢守住不可委派的人类判断力与最终责任。',
-    startEn: 49.72,
-    endEn: 60.61,
-    startZh: 55.36,
-    endZh: 69.13,
+    id: 'sec-04',
+    headingIndex: 3,
+    shortZh: '04 · 四大铁律',
+    shortEn: '04 · Four Iron Laws',
+    titleZh: '04 — 一线落地实战：跨国实体企业法务转型的四大铁律',
+    titleEn: '04 — Frontline Playbook: Four Pragmatic Iron Laws of Enterprise Deployment',
+    summaryZh: '4万份法律文件三层知识库实战：拒绝炫技算真实 ROI、业务深度共创、强制统一入口与渐进放权。',
+    summaryEn: 'The 40,000-document enterprise rollout and the Four Iron Laws of legal AI transformation.',
+    startZh: 421.92,
+    endZh: 583.57,
+    startEn: 393.36,
+    endEn: 536.21,
+  },
+  {
+    id: 'sec-05',
+    headingIndex: 4,
+    shortZh: '05 · 2027 终局预判',
+    shortEn: '05 · 2027 Paradigm',
+    titleZh: '05 — 行业瓶颈与 2027 年终局组织范式预判',
+    titleEn: '05 — Ecosystem Bottlenecks & The 2027 Institutional Paradigm',
+    summaryZh: '三大行业客观瓶颈、2027 年底标杆组织预判，以及留给下一场对话的核心设问。',
+    summaryEn: 'Industry bottlenecks, the 2027 institutional inflection point, and the closing strategic inquiry.',
+    startZh: 584.17,
+    endZh: 708.47,
+    startEn: 536.81,
+    endEn: 662.71,
   },
 ];
 
@@ -177,12 +205,21 @@ const PARALLEL_SECTIONS: BilingualBlock[] = [
   },
 ];
 
+function formatTime(seconds: number): string {
+  if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
 export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
   const isZh = locale === 'zh';
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeTurn, setActiveTurn] = useState(0);
-  const [showTranscript, setShowTranscript] = useState(false);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(isZh ? 708.47 : 662.71);
+  const [playbackRate, setPlaybackRate] = useState<number>(1);
   const [bilingualMode, setBilingualMode] = useState(false);
   const [quoteModal, setQuoteModal] = useState<{ isOpen: boolean; quote: string; index: number }>({
     isOpen: false,
@@ -190,7 +227,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     index: 0,
   });
 
-  // Make every quote box (.article-quote-block) open the QuoteCardModal popup cleanly on click (without adding any extra text to the box!)
+  // Make every quote box (.article-quote-block) open the QuoteCardModal popup cleanly on click
   useEffect(() => {
     const quoteBlocks = Array.from(document.querySelectorAll('.article-body .article-quote-block'));
     quoteBlocks.forEach((qb, idx) => {
@@ -217,13 +254,18 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     const audio = audioRef.current;
     if (!audio) return;
     const t = audio.currentTime;
-    const idx = DIALOGUE_TURNS.findIndex((turn) => {
-      const start = isZh ? turn.startZh : turn.startEn;
-      const end = isZh ? turn.endZh : turn.endEn;
-      return t >= start && t <= end + 0.3;
+    setCurrentTime(t);
+    if (audio.duration && Number.isFinite(audio.duration)) {
+      setDuration(audio.duration);
+    }
+
+    const idx = NARRATION_CHAPTERS.findIndex((chap) => {
+      const start = isZh ? chap.startZh : chap.startEn;
+      const end = isZh ? chap.endZh : chap.endEn;
+      return t >= start && t <= end + 0.6;
     });
-    if (idx !== -1 && idx !== activeTurn) {
-      setActiveTurn(idx);
+    if (idx !== -1 && idx !== activeChapter) {
+      setActiveChapter(idx);
     }
   };
 
@@ -234,22 +276,54 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
       audio.pause();
       setIsPlaying(false);
     } else {
+      audio.playbackRate = playbackRate;
       audio.play().catch(() => {});
       setIsPlaying(true);
     }
   };
 
-  const playTurnAt = (index: number) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const turn = DIALOGUE_TURNS[index];
-    audio.currentTime = isZh ? turn.startZh : turn.startEn;
-    setActiveTurn(index);
-    audio.play().catch(() => {});
-    setIsPlaying(true);
+  const handleCycleSpeed = () => {
+    const speeds = [1, 1.25, 1.5];
+    const nextSpeed = speeds[(speeds.indexOf(playbackRate) + 1) % speeds.length];
+    setPlaybackRate(nextSpeed);
+    if (audioRef.current) {
+      audioRef.current.playbackRate = nextSpeed;
+    }
   };
 
-  const currentTurn = DIALOGUE_TURNS[activeTurn] || DIALOGUE_TURNS[0];
+  const handleSeek = (newTime: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
+  const jumpToChapter = (index: number, scrollArticle = false) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const chap = NARRATION_CHAPTERS[index];
+    const targetTime = isZh ? chap.startZh : chap.startEn;
+    audio.currentTime = targetTime;
+    audio.playbackRate = playbackRate;
+    setCurrentTime(targetTime);
+    setActiveChapter(index);
+    audio.play().catch(() => {});
+    setIsPlaying(true);
+
+    if (scrollArticle && !bilingualMode) {
+      if (chap.headingIndex === -1) {
+        const introEl = document.querySelector('.article-body .article-intro');
+        introEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        const headings = document.querySelectorAll('.article-body h2');
+        const targetHeading = headings[chap.headingIndex];
+        targetHeading?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  const currentChapter = NARRATION_CHAPTERS[activeChapter] || NARRATION_CHAPTERS[0];
+  const progressPct = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   return (
     <div style={{ maxWidth: bilingualMode ? '1080px' : '880px', margin: '52px auto 0', padding: '0 24px', transition: 'max-width 0.25s ease' }}>
@@ -257,176 +331,207 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
         ref={audioRef}
         src={isZh ? '/audio/note-01-zh.mp3' : '/audio/note-01-en.mp3'}
         preload="metadata"
+        onLoadedMetadata={(e) => {
+          const d = e.currentTarget.duration;
+          if (d && Number.isFinite(d)) setDuration(d);
+        }}
         onTimeUpdate={handleTimeUpdate}
         onEnded={() => {
           setIsPlaying(false);
-          setActiveTurn(0);
+          setActiveChapter(0);
+          setCurrentTime(0);
         }}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
       />
 
-      {/* Clean, Minimalist Editorial Bar (Studio Neural Audio Briefing + EN/ZH Parallel Toggle) */}
+      {/* Full-Article Studio Audio Narrator Box */}
       <div
         style={{
-          borderTop: '1px solid #71808b',
+          borderTop: '2px solid #071a2b',
           borderBottom: '1px solid #71808b',
           background: '#fbf9f3',
-          padding: '20px 26px',
+          padding: '22px 26px',
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '22px',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
+          gap: '16px',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flex: '1 1 280px', minWidth: 0 }}>
-          <button
-            type="button"
-            onClick={handleTogglePlay}
-            aria-label={isPlaying ? 'Pause audio briefing' : 'Play audio briefing'}
-            style={{
-              width: '44px',
-              height: '44px',
-              borderRadius: '50%',
-              border: '1px solid #071a2b',
-              background: isPlaying ? '#ba9360' : '#071a2b',
-              color: '#faf9f5',
-              fontSize: '14px',
-              cursor: 'pointer',
-              flexShrink: 0,
-              display: 'grid',
-              placeItems: 'center',
-            }}
-          >
-            {isPlaying ? '❚❚' : '▶'}
-          </button>
-
-          <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-              <span
-                style={{
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: '#ba9360',
-                }}
-              >
-                {isZh ? '音频导读 · 1 分钟对谈' : 'Audio Briefing · 1 min Dialogue'}
-              </span>
-              <button
-                type="button"
-                onClick={() => setShowTranscript((prev) => !prev)}
-                style={{
-                  background: 'transparent',
-                  border: 0,
-                  padding: 0,
-                  fontSize: '13.5px',
-                  color: '#5a6b78',
-                  cursor: 'pointer',
-                  textDecoration: 'underline',
-                }}
-              >
-                {showTranscript
-                  ? isZh
-                    ? '收起文稿 ▴'
-                    : 'Hide transcript ▴'
-                  : isZh
-                  ? '展开文稿 ▾'
-                  : 'Read transcript ▾'}
-              </button>
-            </div>
-
-            <p
-              style={{
-                margin: '5px 0 0',
-                fontSize: '15.5px',
-                color: '#071a2b',
-                lineHeight: 1.55,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {isPlaying
-                ? `${isZh ? currentTurn.speakerZh : currentTurn.speakerEn}: ${
-                    isZh ? currentTurn.textZh : currentTurn.textEn
-                  }`
-                : isZh
-                ? '收听本期闭门研讨核心摘要（工作流重构、知识飞轮与人机治理）'
-                : 'Listen to a concise synthesis of the roundtable findings'}
-            </p>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setBilingualMode((prev) => !prev)}
-          style={{
-            background: bilingualMode ? '#071a2b' : 'transparent',
-            color: bilingualMode ? '#faf9f5' : '#071a2b',
-            border: '1px solid #071a2b',
-            padding: '10px 18px',
-            fontSize: '12.5px',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {isZh
-            ? bilingualMode
-              ? '返回单语排版'
-              : 'EN ⇄ 中文 对照阅读'
-            : bilingualMode
-            ? 'Single Language'
-            : 'EN ⇄ 中文 Parallel View'}
-        </button>
-      </div>
-
-      {/* Collapsible Transcript */}
-      {showTranscript && (
+        {/* Top Row: Play Button, Active Chapter Title, Speed & Bilingual Toggle */}
         <div
           style={{
-            borderBottom: '1px solid #71808b',
-            background: '#faf9f5',
-            padding: '24px 26px',
-            display: 'grid',
-            gap: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '18px',
+            flexWrap: 'wrap',
           }}
         >
-          {DIALOGUE_TURNS.map((turn, idx) => (
-            <div
-              key={idx}
-              onClick={() => playTurnAt(idx)}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: '1 1 300px', minWidth: 0 }}>
+            <button
+              type="button"
+              onClick={handleTogglePlay}
+              aria-label={isPlaying ? 'Pause full article narration' : 'Play full article narration'}
               style={{
-                padding: '12px 16px',
-                borderLeft: activeTurn === idx && isPlaying ? '3px solid #ba9360' : '2px solid rgba(113,128,139,0.3)',
-                background: activeTurn === idx && isPlaying ? '#fbf7f0' : 'transparent',
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                border: '1px solid #071a2b',
+                background: isPlaying ? '#ba9360' : '#071a2b',
+                color: '#faf9f5',
+                fontSize: '15px',
+                cursor: 'pointer',
+                flexShrink: 0,
+                display: 'grid',
+                placeItems: 'center',
+                transition: 'background 0.2s ease',
+              }}
+            >
+              {isPlaying ? '❚❚' : '▶'}
+            </button>
+
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <span
+                  style={{
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: '#ba9360',
+                  }}
+                >
+                  {isZh
+                    ? '全文有声朗读 · 完整收录全篇 5 大章节 (11:48)'
+                    : 'Full-Article Audio Narration · Unabridged (11:03)'}
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                    fontSize: '12.5px',
+                    color: '#526372',
+                  }}
+                >
+                  {formatTime(currentTime)} / {formatTime(duration)}
+                </span>
+              </div>
+
+              <p
+                style={{
+                  margin: '4px 0 0',
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  color: '#071a2b',
+                  lineHeight: 1.5,
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {isZh ? currentChapter.titleZh : currentChapter.titleEn}
+              </p>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              onClick={handleCycleSpeed}
+              title={isZh ? '切换朗读倍速' : 'Change playback speed'}
+              style={{
+                background: 'transparent',
+                color: '#071a2b',
+                border: '1px solid rgba(7, 26, 43, 0.45)',
+                padding: '8px 12px',
+                fontSize: '12px',
+                fontWeight: 700,
+                fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
                 cursor: 'pointer',
               }}
             >
-              <strong
+              {playbackRate}x
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setBilingualMode((prev) => !prev)}
+              style={{
+                background: bilingualMode ? '#071a2b' : 'transparent',
+                color: bilingualMode ? '#faf9f5' : '#071a2b',
+                border: '1px solid #071a2b',
+                padding: '8px 16px',
+                fontSize: '12px',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {isZh
+                ? bilingualMode
+                  ? '返回单语排版'
+                  : 'EN ⇄ 中文 对照阅读'
+                : bilingualMode
+                ? 'Single Language'
+                : 'EN ⇄ 中文 Parallel View'}
+            </button>
+          </div>
+        </div>
+
+        {/* Scrubbable Timeline Progress Slider */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
+          <input
+            type="range"
+            min={0}
+            max={duration || 100}
+            step={0.5}
+            value={currentTime}
+            onChange={(e) => handleSeek(parseFloat(e.target.value))}
+            aria-label={isZh ? '音频进度条' : 'Audio progress'}
+            style={{
+              width: '100%',
+              accentColor: '#ba9360',
+              cursor: 'pointer',
+              height: '5px',
+              background: `linear-gradient(to right, #ba9360 ${progressPct}%, rgba(113,128,139,0.28) ${progressPct}%)`,
+            }}
+          />
+        </div>
+
+        {/* Interactive Chapter Pills (Jump to any section's exact audio timestamp) */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '8px',
+            paddingTop: '4px',
+          }}
+        >
+          {NARRATION_CHAPTERS.map((chap, idx) => {
+            const isCurrent = activeChapter === idx;
+            return (
+              <button
+                key={chap.id}
+                type="button"
+                onClick={() => jumpToChapter(idx, true)}
                 style={{
-                  display: 'block',
-                  fontSize: '12px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  color: '#ba9360',
-                  marginBottom: '6px',
+                  padding: '6px 12px',
+                  fontSize: '12.5px',
+                  fontWeight: isCurrent ? 700 : 500,
+                  background: isCurrent ? '#071a2b' : 'rgba(7, 26, 43, 0.04)',
+                  color: isCurrent ? '#ba9360' : '#182b3c',
+                  border: isCurrent ? '1px solid #071a2b' : '1px solid rgba(113, 128, 139, 0.35)',
+                  cursor: 'pointer',
+                  transition: 'all 0.18s ease',
                 }}
               >
-                {isZh ? turn.speakerZh : turn.speakerEn}
-              </strong>
-              <p style={{ margin: 0, fontSize: '16px', color: '#182b3c', lineHeight: 1.75 }}>
-                {isZh ? turn.textZh : turn.textEn}
-              </p>
-            </div>
-          ))}
+                {isZh ? chap.shortZh : chap.shortEn}
+              </button>
+            );
+          })}
         </div>
-      )}
+      </div>
 
       {/* Side-by-Side EN/ZH Parallel Reading View */}
       {bilingualMode && (
