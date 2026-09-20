@@ -78,8 +78,12 @@ export default function SectionCarousel({ id, title, labels, children, locale = 
 
     const observer = new ResizeObserver(updateHeight);
     observer.observe(activeSlide);
+    window.addEventListener('resize', updateHeight);
     document.fonts?.ready.then(updateHeight);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateHeight);
+    };
   }, [active]);
 
   const goTo = (index: number) => {
@@ -225,6 +229,9 @@ export default function SectionCarousel({ id, title, labels, children, locale = 
           </button>
         ))}
       </div>
+      <span className="carousel-mobile-status" aria-hidden="true">
+        {`0${active + 1} / 0${slides.length} · ${labels[active]}`}
+      </span>
       <button
         type="button"
         className="carousel-arrow"

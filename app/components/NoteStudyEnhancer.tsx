@@ -399,6 +399,19 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
       {/* 1. Executive Study Toolbar (Sticky TOC Jump + EN/ZH Parallel Toggle + Glossary + LLM Copy + PDF Print) */}
       <div className="study-utility-bar">
         <div className="study-utility-inner">
+          <select
+            className="study-mobile-toc-select"
+            value={activeSectionIdx}
+            onChange={(e) => jumpToSection(Number(e.target.value))}
+            aria-label={isZh ? '跳转章节' : 'Jump to section'}
+          >
+            {tocItems.map((label, idx) => (
+              <option key={label} value={idx}>
+                {label}
+              </option>
+            ))}
+          </select>
+
           <div className="study-toc-pills" role="navigation" aria-label={isZh ? '章节导航' : 'Section navigation'}>
             {tocItems.map((label, idx) => (
               <button
