@@ -210,11 +210,28 @@ export default function QuoteCardModal({ isOpen, onClose, quote, index, locale =
     link.click();
   };
 
+  const shareUrl = isZh
+    ? 'https://agicounsel.org/zh/notes/ai-native-legal-department/'
+    : 'https://agicounsel.org/notes/ai-native-legal-department/';
+
+  const handleLinkedInShare = () => {
+    const postText = `“${quote}”\n\n— AGI Counsel Network (Note #01: What Would an AI-Native Legal Department Look Like?)\n${shareUrl}`;
+    navigator.clipboard?.writeText(postText);
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+    window.open(linkedInUrl, '_blank', 'noopener,noreferrer,width=680,height=640');
+  };
+
+  const handleXShare = () => {
+    const tweetText = `“${quote}” — AGI Counsel Network`;
+    const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
+    window.open(xUrl, '_blank', 'noopener,noreferrer,width=640,height=520');
+  };
+
   return (
     <div className="quote-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-label="Quote Card Preview">
       <div className="quote-modal-panel" onClick={(e) => e.stopPropagation()}>
         <header className="quote-modal-header">
-          <h3>{isZh ? '金句分享卡片' : 'Quote Card Preview'}</h3>
+          <h3>{isZh ? '金句分享卡片 (适配 LinkedIn / 微信)' : 'Share Quote Card (LinkedIn / X / WeChat)'}</h3>
           <button className="quote-modal-close" onClick={onClose} aria-label="Close modal">×</button>
         </header>
 
@@ -235,14 +252,29 @@ export default function QuoteCardModal({ isOpen, onClose, quote, index, locale =
             className="quote-modal-btn quote-modal-btn-primary"
             onClick={handleCopy}
           >
-            {copied ? (isZh ? '✓ 已复制到剪贴板' : '✓ Copied to clipboard') : (isZh ? '复制图片' : 'Copy Image')}
+            {copied ? (isZh ? '✓ 已复制图片' : '✓ Image Copied') : (isZh ? '复制卡片图片' : 'Copy Card Image')}
           </button>
           <button
             type="button"
             className="quote-modal-btn quote-modal-btn-secondary"
             onClick={handleDownload}
           >
-            {isZh ? '下载高清卡片' : 'Download PNG'}
+            {isZh ? '下载高清 PNG' : 'Download PNG'}
+          </button>
+          <button
+            type="button"
+            className="quote-modal-btn quote-modal-btn-secondary"
+            onClick={handleLinkedInShare}
+            title={isZh ? '自动复制引文并打开 LinkedIn 分享窗口' : 'Copies quote text and opens LinkedIn share dialog'}
+          >
+            {isZh ? 'in 分享至 LinkedIn ↗' : 'in Share on LinkedIn ↗'}
+          </button>
+          <button
+            type="button"
+            className="quote-modal-btn quote-modal-btn-secondary"
+            onClick={handleXShare}
+          >
+            {isZh ? '𝕏 分享至 X ↗' : '𝕏 Post on X ↗'}
           </button>
         </footer>
       </div>

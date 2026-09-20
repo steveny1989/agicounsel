@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import QuoteCardModal from './QuoteCardModal';
 
 type Locale = 'en' | 'zh';
 
@@ -228,8 +229,13 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
   const [activeQA, setActiveQA] = useState<number | null>(null);
   const [bilingualMode, setBilingualMode] = useState(false);
   const [glossaryOpen, setGlossaryOpen] = useState(false);
-  const [copiedState, setCopiedState] = useState<'none' | 'link' | 'md'>('none');
+  const [copiedState, setCopiedState] = useState<'none' | 'link' | 'md' | 'linkedin'>('none');
   const [activeSectionIdx, setActiveSectionIdx] = useState(0);
+  const [quoteModal, setQuoteModal] = useState<{ isOpen: boolean; quote: string; index: number }>({
+    isOpen: false,
+    quote: '',
+    index: 0,
+  });
   const synthCancelRef = useRef(false);
 
   const tocItems = isZh
@@ -248,7 +254,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
         '05 · 2027 Institutional Paradigm',
       ];
 
-  // Assign stable IDs to the article's H2 headings and observe scroll position + add permalink copy buttons
+  // Assign stable IDs to the article's H2 headings + attach Share Card / LinkedIn buttons to every quote block
   useEffect(() => {
     const headings = Array.from(document.querySelectorAll('.article-body h2'));
     headings.forEach((h, i) => {
@@ -269,6 +275,22 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
           }, 1500);
         };
         h.appendChild(btn);
+      }
+    });
+
+    const quoteBlocks = Array.from(document.querySelectorAll('.article-body .article-quote-block'));
+    quoteBlocks.forEach((qb, idx) => {
+      if (!qb.querySelector('.inline-quote-share-btn')) {
+        const pEl = qb.querySelector('p');
+        const rawQuote = (pEl?.textContent || '').replace(/^[“"]|[”"]$/g, '').trim();
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'inline-quote-share-btn';
+        btn.textContent = isZh ? '生成金句卡片 / 分享 LinkedIn ↗' : 'Share Quote Card / LinkedIn ↗';
+        btn.onclick = () => {
+          setQuoteModal({ isOpen: true, quote: rawQuote, index: idx });
+        };
+        qb.appendChild(btn);
       }
     });
 
@@ -385,6 +407,23 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     setTimeout(() => setCopiedState('none'), 2200);
   };
 
+  const handleShareLinkedIn = () => {
+    const shareUrl = isZh
+      ? 'https://agicounsel.org/zh/notes/ai-native-legal-department/'
+      : 'https://agicounsel.org/notes/ai-native-legal-department/';
+    const postCopy = isZh
+      ? `推荐阅读 AGI Counsel Note #01：《AI 原生法务部门会是什么样？》\n\n核心洞见：\n1. 从单点外挂插件转向端到端工作流重构\n2. 从静态提示词转向持续复利的自学习知识飞轮\n3. 未来的律师更像统筹众多 Agent 的参谋长（Chief of Staff）\n\n全文链接：${shareUrl}`
+      : `What Would an AI-Native Legal Department Look Like? (AGI Counsel Note #01)\n\nKey shifts from our inaugural peer roundtable:\n1. From point plug-ins to end-to-end workflow redesign\n2. From static prompts to compounding institutional memory\n3. The lawyer of the future as a Chief of Staff orchestrating fleets of agents\n\nRead the full study: ${shareUrl}`;
+    navigator.clipboard?.writeText(postCopy);
+    setCopiedState('linkedin');
+    setTimeout(() => setCopiedState('none'), 3000);
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+      '_blank',
+      'noopener,noreferrer,width=680,height=640'
+    );
+  };
+
   const jumpToSection = (idx: number) => {
     const targetId = `section-0${idx + 1}`;
     const el = document.getElementById(targetId);
@@ -396,7 +435,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
 
   return (
     <div className="note-study-enhancer-wrap">
-      {/* 1. Executive Study Toolbar (Sticky TOC Jump + EN/ZH Parallel Toggle + Glossary + LLM Copy + PDF Print) */}
+      {/* 1. Executive Study Toolbar (Sticky TOC Jump + EN/ZH Parallel Toggle + Glossary + LinkedIn/Card Share) */}
       <div className="study-utility-bar">
         <div className="study-utility-inner">
           <select
@@ -435,10 +474,10 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
               {isZh
                 ? bilingualMode
                   ? '退出中英对照'
-                  : 'EN ⇄ 中文 双语对照'
+                  : 'EN ⇄ 中文 对照'
                 : bilingualMode
                 ? 'Single Language'
-                : 'EN ⇄ 中文 Parallel View'}
+                : 'EN ⇄ 中文 Parallel'}
             </button>
 
             <button
@@ -447,25 +486,50 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
               className={`study-ctrl-btn ${glossaryOpen ? 'is-active' : ''}`}
             >
               <span>◈</span>
-              {isZh ? '架构术语词典 (6)' : 'Tech Glossary (6)'}
+              {isZh ? '术语词典' : 'Glossary'}
+            </button>
+
+            <button
+              type="button"
+              onClick={() =>
+                setQuoteModal({
+                  isOpen: true,
+                  quote: isZh
+                    ? '未来的律师，更像统筹众多 Agent 的 Chief of Staff。'
+                    : 'The lawyer of the future will be a Chief of Staff orchestrating fleets of agents.',
+                  index: 1,
+                })
+              }
+              className="study-ctrl-btn"
+            >
+              {isZh ? '生成金句卡片' : 'Quote Card'}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleShareLinkedIn}
+              className="study-ctrl-btn"
+              title={isZh ? '自动复制推荐语并打开 LinkedIn 分享' : 'Copies executive summary and opens LinkedIn'}
+            >
+              {copiedState === 'linkedin'
+                ? isZh
+                  ? '✓ 已复制导语，正在打开 LinkedIn'
+                  : '✓ Copied Post & Opening LinkedIn'
+                : 'in LinkedIn ↗'}
             </button>
 
             <button type="button" onClick={handleCopyMarkdown} className="study-ctrl-btn">
               {copiedState === 'md'
                 ? isZh
                   ? '✓ 已复制 Markdown'
-                  : '✓ Copied Markdown'
+                  : '✓ Copied MD'
                 : isZh
-                ? '复制全文 (供 LLM 分析)'
-                : 'Copy Markdown for LLM'}
-            </button>
-
-            <button type="button" onClick={() => window.print()} className="study-ctrl-btn">
-              {isZh ? '打印 / 导出 PDF' : 'Print / Save PDF'}
+                ? '复制 Markdown'
+                : 'Copy MD'}
             </button>
 
             <button type="button" onClick={handleCopyLink} className="study-ctrl-btn">
-              {copiedState === 'link' ? (isZh ? '✓ 链接已复制' : '✓ Link Copied') : isZh ? '分享链接' : 'Share'}
+              {copiedState === 'link' ? (isZh ? '✓ 已复制链接' : '✓ Copied') : isZh ? '复制链接' : 'Copy Link'}
             </button>
           </div>
         </div>
@@ -670,6 +734,14 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
           </div>
         )}
       </div>
+
+      <QuoteCardModal
+        isOpen={quoteModal.isOpen}
+        onClose={() => setQuoteModal((prev) => ({ ...prev, isOpen: false }))}
+        quote={quoteModal.quote}
+        index={quoteModal.index}
+        locale={locale}
+      />
     </div>
   );
 }
