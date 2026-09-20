@@ -6,17 +6,10 @@ import { downloadQuoteCard } from './QuoteCardModal';
 type Locale = 'en' | 'zh';
 
 interface DialogueTurn {
-  speaker: string;
-  role: string;
+  speakerEn: string;
+  speakerZh: string;
   textEn: string;
   textZh: string;
-}
-
-interface QAItem {
-  qEn: string;
-  qZh: string;
-  aEn: string;
-  aZh: string;
 }
 
 interface BilingualBlock {
@@ -35,65 +28,44 @@ interface BilingualBlock {
 
 const DIALOGUE_TURNS: DialogueTurn[] = [
   {
-    speaker: 'Sarah / 林薇',
-    role: 'Host · Ecosystem Strategist',
+    speakerEn: 'Moderator',
+    speakerZh: '主持',
     textEn:
-      'Welcome to the AGI Counsel Deep Dive. Today we are unpacking Note #01: What would a genuinely AI-native legal department look like—and why did first-wave Legal Copilot pilots hit a productivity paradox?',
+      'Welcome to the AGI Counsel audio briefing for Note #01: What would a genuinely AI-native legal department look like—and why did first-wave chat plug-ins hit a productivity paradox?',
     textZh:
-      '欢迎收听 AGI Counsel 播客深读。今天我们拆解 Note #01 核心报告：真正的“AI 原生法务部门”究竟长什么样？为什么过去两年许多外挂式对话插件最终陷入了生产力悖论？',
+      '欢迎收听 AGI Counsel Note #01 音频导读：真正的“AI 原生法务部门”会是什么样？为什么早期的单点对话插件往往陷入生产力悖论？',
   },
   {
-    speaker: 'Yao Di / 姚迪',
-    role: 'Systems Counsel',
+    speakerEn: 'Network Counsel',
+    speakerZh: '与会法务代表',
     textEn:
-      'The core finding from our closed-door roundtable is clear: bolting a chat assistant onto a legacy linear approval chain speeds up typing by 20%, but floods senior counsel with unverified, context-blind drafts.',
+      'The core finding from our roundtable is straightforward: bolting a chat assistant onto a legacy linear approval chain speeds up first-draft typing by 20%, but floods senior counsel with unverified, context-blind drafts.',
     textZh:
-      '基于闭门同行研讨的实证复盘，结论非常明确：在传统串联审批流上生硬外挂一个对话插件，虽然打字快了 20%，却制造了海量缺乏上下文的半成品草稿，反而加重了资深法务的复核负担与风险。',
+      '闭门研讨的核心共识非常明确：在传统串联审批链上生硬外挂一个对话插件，虽然局部提升了 20% 的初稿打字速度，却制造了大量缺乏业务上下文的半成品草稿，反而加重了资深法务的复核负担。',
   },
   {
-    speaker: 'Sarah / 林薇',
-    role: 'Host · Ecosystem Strategist',
+    speakerEn: 'Moderator',
+    speakerZh: '主持',
     textEn:
-      'So instead of buying more point plug-ins, Note #01 frames the transition around three structural shifts from legal production to legal judgment.',
+      'Instead of procuring more point tools, Note #01 outlines three structural shifts from legal production to legal judgment.',
     textZh:
-      '因此，报告提出不能停留在工具采购，而必须完成从“法律生产”向“法律判断”的三重结构性跃迁。',
+      '因此，报告提出必须超越单纯的工具采购，完成从“法律生产”向“法律判断”的三重结构性跃迁。',
   },
   {
-    speaker: 'Yao Di / 姚迪',
-    role: 'Systems Counsel',
+    speakerEn: 'Network Counsel',
+    speakerZh: '与会法务代表',
     textEn:
-      'Exactly. First, Workflow Architecture: redesigning intake, triage, and delivery end-to-end. Second, Institutional Memory: capturing senior counsel redlines and reasoning into a compounding, self-learning knowledge flywheel.',
+      'First is Workflow Architecture—redesigning intake, triage, and business delivery end-to-end. Second is Institutional Memory—passively capturing senior counsel redlines into a self-learning knowledge flywheel.',
     textZh:
-      '没错。第一重跃迁是端到端工作流重构，围绕智能体重新定义业务发起与分流；第二重跃迁是组织记忆资产，在日常审查中无感捕获资深律师的修订底线，建立持续进化的自学习知识飞轮。',
+      '第一重跃迁是端到端工作流重构，围绕智能体重新定义业务发起与初审分流；第二重跃迁是组织记忆资产，在日常审批中无感捕获资深律师的修订底线，沉淀为自学习知识飞轮。',
   },
   {
-    speaker: 'Sarah / 林薇',
-    role: 'Host · Ecosystem Strategist',
+    speakerEn: 'Moderator',
+    speakerZh: '主持',
     textEn:
-      'And the third shift is Human Governance: the lawyer operates as a Chief of Staff orchestrating specialized agents—backed by prompt-injection defense, data isolation, and non-delegable human judgment.',
+      'And the third shift is Human Governance: positioning the lawyer as a Chief of Staff orchestrating specialized agent fleets while holding non-delegable judgment and accountability.',
     textZh:
-      '第三重跃迁则是人机治理契约：人类律师化身为统筹垂直 Agent 梯队的参谋长（Chief of Staff），在底层部署防指令注入、数据物理隔离与细粒度权限管控，牢牢守住不可委派的终极判断力。',
-  },
-];
-
-const PODCAST_QAS: QAItem[] = [
-  {
-    qEn: 'Why do generic chat plug-ins create a "productivity paradox" in enterprise legal teams?',
-    qZh: '为什么通用的外挂式对话插件在企业法务场景中容易引发“生产力悖论”？',
-    aEn: 'Because complex legal review is a multi-hop state and judgment problem, not a single-turn text completion problem. Without redesigned intake triage, sub-task decomposition, and proprietary corporate precedent, generic wrappers produce plausible-looking drafts that miss critical commercial and regulatory edge cases.',
-    aZh: '因为复杂的商业法务审查是多跳状态推演与风险权衡，而非简单的文本续写。如果缺乏端到端的任务拆解与企业历史判例库支撑，单点对话插件极易在赔偿上限、管辖权与数据合规等红线上产生隐性偏差。',
-  },
-  {
-    qEn: 'How did the multinational manufacturing case study achieve >95% accuracy in 4 months?',
-    qZh: '案例中的跨国制造巨头是如何在 4 个月内实现高频场景 95% 以上准确率的？',
-    aEn: 'By structuring 40,000 core legal documents into a 3-tier knowledge hierarchy (Statutory Baseline → Corporate Policy → Clause Playbooks), mandating a single unified intake gateway to eliminate "dark knowledge" in chat apps, and co-creating acceptance criteria directly with frontline supply chain and R&D teams.',
-    aZh: '核心在于三步实操：第一，将 4 万份核心法律文件梳理为“法规底座—公司制度—条款实操手册”三层知识架构；第二，强制设立统一智能法务入口，消灭散落在群聊中的“暗知识”；第三，法务与研发、供应链一线结对共创边界验收标准。',
-  },
-  {
-    qEn: 'How does the "Chief of Staff" model change how legal teams are structured?',
-    qZh: '“参谋长（Chief of Staff）”模式如何改变法务团队的分工与能力要求？',
-    aEn: 'When first-pass analysis becomes abundant compute, lawyers stop spending 70% of their hours drafting boilerplate recitals. Instead, they set risk rubrics, orchestrate specialized agent fleets (NDA triage, cross-border data scan, M&A variance tracking), audit inter-agent conflicts, and exercise final fiduciary judgment.',
-    aZh: '当基础文本分析变成充裕算力，律师不再把 70% 的时间花在机械改字上，而是负责设定风控标尺、调度垂直 Agent 梯队（如 NDA 初审、数据出境扫描、并购偏离预警）、裁决多智能体交叉矛盾，并承担最终受托签字责任。',
+      '第三重跃迁则是人机治理契约：未来的律师更像统筹众多垂直 Agent 的 Chief of Staff，在底层安全护栏之上，牢牢守住不可委派的人类判断力与最终责任。',
   },
 ];
 
@@ -181,103 +153,16 @@ const PARALLEL_SECTIONS: BilingualBlock[] = [
   },
 ];
 
-const GLOSSARY_TERMS = [
-  {
-    term: 'Chief of Staff Model',
-    layer: 'Governance',
-    en: 'Operating paradigm where human counsel stop drafting routine clauses manually and instead define risk rubrics, orchestrate specialized agent fleets, and adjudicate edge cases.',
-    zh: '人类律师从手工改合同转向制定风控标尺、统筹垂直 Agent 梯队并裁决复杂商业博弈的组织范式。',
-  },
-  {
-    term: 'Multi-Agent Task Decomposition',
-    layer: 'Workflow',
-    en: 'Breaking monolithic legal tasks into verifiable pipelines (Intake Triage → Clause Extraction → Policy Retrieval → Verification Agent) to eliminate single-prompt hallucination.',
-    zh: '将复杂法务审查拆解为“分流 → 抽取 → 制度比对 → 交叉校验”多智能体流水线，解决单轮对话幻觉。',
-  },
-  {
-    term: 'Self-Learning Knowledge Flywheel',
-    layer: 'Memory',
-    en: 'Passively capturing senior counsel redlines and rejections to automatically distill machine-executable SOPs and continuously refine institutional precedent.',
-    zh: '无感捕获资深律师对 Agent 初审意见的修订与驳回理由，自动蒸馏为可执行 SOP 反哺私有知识库。',
-  },
-  {
-    term: 'Unified Intake Gateway',
-    layer: 'Operations',
-    en: 'Routing all business legal inquiries through a single structured workspace rather than fragmented chat threads, preventing commercial precedent from evaporating as "dark knowledge."',
-    zh: '设立企业统一法务智能工作台承接所有涉法请求，杜绝高价值商业判断散落在群聊中沦为“暗知识”。',
-  },
-  {
-    term: 'Granular Context RBAC (MNPI)',
-    layer: 'Security',
-    en: 'Role-based dynamic context partitioning ensuring Material Non-Public Information (MNPI) and sensitive M&A data rooms are never exposed to unauthorized internal agents.',
-    zh: '基于角色的动态上下文加载隔离，防止未公开重大信息（MNPI）或涉密并购数据被内部智能体越权调阅。',
-  },
-  {
-    term: 'Adversarial Prompt Injection Defense',
-    layer: 'Security',
-    en: 'Input sanitization and sandboxed verification preventing counterparty contracts from embedding hidden instructions that manipulate internal review agents.',
-    zh: '防范外部交易对手在合同或附件中嵌入不可见的对抗性提示词、诱导内部审查智能体越界的安全护栏。',
-  },
-];
-
 export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
   const isZh = locale === 'zh';
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeTurn, setActiveTurn] = useState(0);
-  const [playbackRate, setPlaybackRate] = useState<1 | 1.25 | 1.5>(1);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeQA, setActiveQA] = useState<number | null>(null);
+  const [showTranscript, setShowTranscript] = useState(false);
   const [bilingualMode, setBilingualMode] = useState(false);
-  const [glossaryOpen, setGlossaryOpen] = useState(false);
-  const [copiedState, setCopiedState] = useState<'none' | 'link' | 'md' | 'linkedin'>('none');
-  const [activeSectionIdx, setActiveSectionIdx] = useState(0);
-  const [quoteModal, setQuoteModal] = useState<{ isOpen: boolean; quote: string; index: number }>({
-    isOpen: false,
-    quote: '',
-    index: 0,
-  });
   const synthCancelRef = useRef(false);
 
-  const tocItems = isZh
-    ? [
-        '01 · 从法律生产到判断的三重跃迁',
-        '02 · 律师作为 Agent 参谋长',
-        '03 · 自学习知识飞轮构建',
-        '04 · 企业落地实战四大铁律',
-        '05 · 2027 终局组织范式预判',
-      ]
-    : [
-        '01 · Three Structural Shifts',
-        '02 · Lawyer as Chief of Staff',
-        '03 · Self-Learning Flywheel',
-        '04 · Four Iron Laws of Rollout',
-        '05 · 2027 Institutional Paradigm',
-      ];
-
-  // Assign stable IDs to the article's H2 headings + attach Share Card / LinkedIn buttons to every quote block
+  // Make every quote box (.article-quote-block) in the article directly clickable to download its quote card
   useEffect(() => {
-    const headings = Array.from(document.querySelectorAll('.article-body h2'));
-    headings.forEach((h, i) => {
-      const id = `section-0${i + 1}`;
-      h.id = id;
-      if (!h.querySelector('.heading-anchor-btn')) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'heading-anchor-btn';
-        btn.title = isZh ? '复制本节链接' : 'Copy section link';
-        btn.textContent = '#';
-        btn.onclick = () => {
-          const url = `${window.location.origin}${window.location.pathname}#${id}`;
-          navigator.clipboard?.writeText(url);
-          btn.textContent = '✓';
-          setTimeout(() => {
-            btn.textContent = '#';
-          }, 1500);
-        };
-        h.appendChild(btn);
-      }
-    });
-
     const quoteBlocks = Array.from(document.querySelectorAll('.article-body .article-quote-block'));
     quoteBlocks.forEach((qb, idx) => {
       const box = qb as HTMLElement;
@@ -286,18 +171,18 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
       if (!box.dataset.clickableBound && pEl) {
         box.dataset.clickableBound = 'true';
         box.classList.add('clickable-quote-box');
-        box.title = isZh ? '点击此引用框直接下载分享卡片' : 'Click this quote box to download shareable card';
+        box.title = isZh ? '点击直接下载金句卡片' : 'Click to download quote card';
         const originalSpanText = spanEl ? spanEl.textContent || '' : '';
         if (spanEl) {
-          spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click box to download card ↓'}`;
+          spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click to download card ↓'}`;
         }
         box.onclick = () => {
           const rawQuote = (pEl.textContent || '').replace(/^[“"]|[”"]$/g, '').trim();
           downloadQuoteCard(rawQuote, idx, locale);
           if (spanEl) {
-            spanEl.textContent = `${originalSpanText} · ${isZh ? '✓ 卡片已下载并复制' : '✓ Card downloaded & copied'}`;
+            spanEl.textContent = `${originalSpanText} · ${isZh ? '✓ 卡片已下载' : '✓ Card downloaded'}`;
             setTimeout(() => {
-              spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click box to download card ↓'}`;
+              spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click to download card ↓'}`;
             }, 2200);
           }
         };
@@ -305,7 +190,6 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     });
   }, [isZh, locale]);
 
-  // Toggle visibility of original single-language .article-body when Side-by-Side Bilingual Mode is active
   useEffect(() => {
     const bodyEl = document.querySelector('.article-body') as HTMLElement | null;
     if (!bodyEl) return;
@@ -325,7 +209,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = isZh ? 'zh-CN' : 'en-US';
-    utterance.rate = playbackRate;
+    utterance.rate = 1.05;
     utterance.onend = () => {
       if (!synthCancelRef.current && onEndCallback) {
         onEndCallback();
@@ -341,7 +225,6 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
       return;
     }
     synthCancelRef.current = false;
-    setActiveQA(null);
     setActiveTurn(index);
     setIsPlaying(true);
     const turn = DIALOGUE_TURNS[index];
@@ -362,259 +245,222 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     }
   };
 
-  const handlePlayQA = (idx: number) => {
-    synthCancelRef.current = false;
-    setActiveQA(idx);
-    setIsPlaying(true);
-    const qa = PODCAST_QAS[idx];
-    const fullText = isZh ? `${qa.qZh}。${qa.aZh}` : `${qa.qEn}. ${qa.aEn}`;
-    speakText(fullText, () => {
-      setIsPlaying(false);
-    });
-  };
-
-  const handleCycleSpeed = () => {
-    const nextSpeed = playbackRate === 1 ? 1.25 : playbackRate === 1.25 ? 1.5 : 1;
-    setPlaybackRate(nextSpeed);
-  };
+  const currentTurn = DIALOGUE_TURNS[activeTurn];
 
   return (
-    <div className="note-study-enhancer-wrap">
-      {/* Quiet Study Bar: EN/ZH Parallel Toggle */}
-      <div className="study-utility-bar">
-        <div className="study-utility-inner">
-          <span className="study-quiet-label">
-            {isZh ? 'AGI Counsel Note #01 · 点击文中金句框可直接下载卡片' : 'AGI Counsel Note #01 · Click any quote box to download card'}
-          </span>
+    <div style={{ maxWidth: '790px', margin: '48px auto 0', padding: '0 24px' }}>
+      {/* Clean, Minimalist Editorial Bar (Audio Briefing + EN/ZH Parallel Toggle) */}
+      <div
+        style={{
+          borderTop: '1px solid #71808b',
+          borderBottom: '1px solid #71808b',
+          background: '#fbf9f3',
+          padding: '18px 22px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '20px',
+          flexWrap: 'wrap',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: '1 1 280px', minWidth: 0 }}>
+          <button
+            type="button"
+            onClick={handleTogglePlay}
+            aria-label={isPlaying ? 'Pause audio briefing' : 'Play audio briefing'}
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              border: '1px solid #071a2b',
+              background: isPlaying ? '#ba9360' : '#071a2b',
+              color: '#faf9f5',
+              fontSize: '13px',
+              cursor: 'pointer',
+              flexShrink: 0,
+              display: 'grid',
+              placeItems: 'center',
+            }}
+          >
+            {isPlaying ? '❚❚' : '▶'}
+          </button>
 
-          <div className="study-action-controls">
-            <button
-              type="button"
-              onClick={() => setBilingualMode((prev) => !prev)}
-              className={`study-ctrl-btn ${bilingualMode ? 'is-active' : ''}`}
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              <span
+                style={{
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: '#ba9360',
+                }}
+              >
+                {isZh ? '音频导读 · 3 分钟' : 'Audio Briefing · 3 min'}
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowTranscript((prev) => !prev)}
+                style={{
+                  background: 'transparent',
+                  border: 0,
+                  padding: 0,
+                  fontSize: '12px',
+                  color: '#71808b',
+                  cursor: 'pointer',
+                  textDecoration: 'underline',
+                }}
+              >
+                {showTranscript
+                  ? isZh
+                    ? '收起文稿 ▴'
+                    : 'Hide transcript ▴'
+                  : isZh
+                  ? '展开文稿 ▾'
+                  : 'Read transcript ▾'}
+              </button>
+            </div>
+
+            <p
+              style={{
+                margin: '4px 0 0',
+                fontSize: '13.5px',
+                color: '#071a2b',
+                lineHeight: 1.5,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
             >
-              <span>⇄</span>
-              {isZh
-                ? bilingualMode
-                  ? '返回单语'
-                  : 'EN ⇄ 中文'
-                : bilingualMode
-                ? 'Single Language'
-                : 'EN ⇄ 中文'}
-            </button>
+              {isPlaying
+                ? `${isZh ? currentTurn.speakerZh : currentTurn.speakerEn}: ${
+                    isZh ? currentTurn.textZh : currentTurn.textEn
+                  }`
+                : isZh
+                ? '收听本期闭门研讨核心摘要（工作流重构、知识飞轮与人机治理）'
+                : 'Listen to a concise synthesis of the roundtable findings'}
+            </p>
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setBilingualMode((prev) => !prev)}
+          style={{
+            background: bilingualMode ? '#071a2b' : 'transparent',
+            color: bilingualMode ? '#faf9f5' : '#071a2b',
+            border: '1px solid #071a2b',
+            padding: '8px 16px',
+            fontSize: '11.5px',
+            fontWeight: 600,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {isZh
+            ? bilingualMode
+              ? '返回单语排版'
+              : 'EN ⇄ 中文 对照阅读'
+            : bilingualMode
+            ? 'Single Language'
+            : 'EN ⇄ 中文 Parallel View'}
+        </button>
       </div>
 
-      <div className="note-enhancer-container">
-        {/* 2. Deep Dive Podcast Audio Player (Ported from theyaodi.com NotebookLMPodcastPlayer) */}
-        <div className="deep-dive-player">
-          <div className="deep-dive-bar">
-            <div className="deep-dive-left">
-              <button
-                type="button"
-                onClick={handleTogglePlay}
-                className="deep-dive-play-btn"
-                aria-label={isPlaying ? 'Pause' : 'Play'}
+      {/* Collapsible Transcript */}
+      {showTranscript && (
+        <div
+          style={{
+            borderBottom: '1px solid #71808b',
+            background: '#faf9f5',
+            padding: '20px 22px',
+            display: 'grid',
+            gap: '12px',
+          }}
+        >
+          {DIALOGUE_TURNS.map((turn, idx) => (
+            <div
+              key={idx}
+              onClick={() => playTurnAt(idx)}
+              style={{
+                padding: '10px 14px',
+                borderLeft: activeTurn === idx && isPlaying ? '3px solid #ba9360' : '2px solid rgba(113,128,139,0.3)',
+                background: activeTurn === idx && isPlaying ? '#fbf7f0' : 'transparent',
+                cursor: 'pointer',
+              }}
+            >
+              <strong
+                style={{
+                  display: 'block',
+                  fontSize: '11px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  color: '#ba9360',
+                  marginBottom: '4px',
+                }}
               >
-                {isPlaying ? '❚❚' : '▶'}
-              </button>
-              <div className="deep-dive-meta">
-                <div className="deep-dive-title-row">
-                  <strong>
-                    {activeQA !== null
-                      ? isZh
-                        ? `延伸问答 0${activeQA + 1}`
-                        : `Q&A 0${activeQA + 1}`
-                      : isZh
-                      ? '播客深读'
-                      : 'Deep Dive Podcast'}
-                  </strong>
-                  <span className="deep-dive-hosts">
-                    · {isZh ? '林薇 × 姚迪 · 5 分钟音频导读' : 'Sarah × Yao Di · 5 min Executive Audio Briefing'}
-                  </span>
-                </div>
-                <p className="deep-dive-subtitle">
-                  {isPlaying
-                    ? activeQA !== null
-                      ? isZh
-                        ? PODCAST_QAS[activeQA].qZh
-                        : PODCAST_QAS[activeQA].qEn
-                      : isZh
-                      ? `${DIALOGUE_TURNS[activeTurn].speaker}：${DIALOGUE_TURNS[activeTurn].textZh}`
-                      : `${DIALOGUE_TURNS[activeTurn].speaker}: ${DIALOGUE_TURNS[activeTurn].textEn}`
-                    : isZh
-                    ? '用几分钟双人对谈拆解本文三大结构跃迁与落地铁律 · 点击播放或展开问答'
-                    : 'Conversational walkthrough of the Three Structural Shifts & rollout playbook'}
-                </p>
-              </div>
+                {isZh ? turn.speakerZh : turn.speakerEn}
+              </strong>
+              <p style={{ margin: 0, fontSize: '13.5px', color: '#071a2b', lineHeight: 1.65 }}>
+                {isZh ? turn.textZh : turn.textEn}
+              </p>
             </div>
-
-            <div className="deep-dive-right">
-              <a
-                href={isZh ? '/zh/podcast.xml' : '/podcast.xml'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="deep-dive-pill-btn"
-                title="Podcast RSS Feed"
-              >
-                RSS
-              </a>
-              <button type="button" onClick={handleCycleSpeed} className="deep-dive-pill-btn">
-                {playbackRate}x
-              </button>
-              <button
-                type="button"
-                onClick={() => setDrawerOpen((prev) => !prev)}
-                className={`deep-dive-drawer-btn ${drawerOpen ? 'is-open' : ''}`}
-              >
-                <span>{isZh ? '问答 & 文稿' : 'Q&A & Transcript'}</span>
-                <span>{drawerOpen ? '▴' : '▾'}</span>
-              </button>
-            </div>
-          </div>
-
-          {drawerOpen && (
-            <div className="deep-dive-drawer">
-              <div className="deep-dive-qa-section">
-                <p className="deep-dive-section-label">
-                  {isZh ? '核心延伸追问（点击可直接语音播报）' : 'Executive Follow-Up Q&A (Click to Listen)'}
-                </p>
-                <div className="deep-dive-qa-grid">
-                  {PODCAST_QAS.map((qa, idx) => (
-                    <div
-                      key={qa.qEn}
-                      className={`deep-dive-qa-card ${activeQA === idx && isPlaying ? 'is-playing' : ''}`}
-                    >
-                      <div className="deep-dive-qa-head">
-                        <strong>{isZh ? qa.qZh : qa.qEn}</strong>
-                        <button type="button" onClick={() => handlePlayQA(idx)} className="deep-dive-mini-play">
-                          {activeQA === idx && isPlaying ? (isZh ? '播报中...' : 'Playing...') : isZh ? '▶ 听解答' : '▶ Listen'}
-                        </button>
-                      </div>
-                      <p>{isZh ? qa.aZh : qa.aEn}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="deep-dive-transcript-section">
-                <p className="deep-dive-section-label">
-                  {isZh ? '对谈实录（点击任意段落跳转播报）' : 'Synchronized Dialogue Transcript (Click any turn to play)'}
-                </p>
-                <div className="deep-dive-turns">
-                  {DIALOGUE_TURNS.map((turn, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => playTurnAt(idx)}
-                      className={`deep-dive-turn ${activeTurn === idx && isPlaying && activeQA === null ? 'is-active' : ''}`}
-                    >
-                      <span className="deep-dive-speaker">{turn.speaker}</span>
-                      <p>{isZh ? turn.textZh : turn.textEn}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+          ))}
         </div>
+      )}
 
-        {/* 3. Expandable Legal AI Engineering Glossary Drawer */}
-        {glossaryOpen && (
-          <div className="study-glossary-panel">
-            <div className="study-glossary-header">
-              <div>
-                <span className="kicker">{isZh ? '核心工程原语词典' : 'Legal AI Systems Taxonomy'}</span>
-                <h3>{isZh ? '本文核心架构术语对照 (EN / 中文)' : 'Core Architectural Primitives Defined'}</h3>
-              </div>
-              <button type="button" onClick={() => setGlossaryOpen(false)} className="study-glossary-close">
-                ×
-              </button>
-            </div>
-            <div className="study-glossary-grid">
-              {GLOSSARY_TERMS.map((item) => (
-                <div key={item.term} className="study-glossary-card">
-                  <div className="study-glossary-top">
-                    <strong>{item.term}</strong>
-                    <span className="arch-badge">{item.layer}</span>
-                  </div>
-                  <p>{isZh ? item.zh : item.en}</p>
-                  <small className="study-glossary-sub">{isZh ? item.en : item.zh}</small>
+      {/* Side-by-Side EN/ZH Parallel Reading View */}
+      {bilingualMode && (
+        <div className="bilingual-parallel-view">
+          {PARALLEL_SECTIONS.map((sec) => (
+            <section key={sec.id} id={sec.id} className="bilingual-section-block">
+              <div className="bilingual-row bilingual-row-head">
+                <div className="bilingual-col">
+                  <span className="article-section-tag">{sec.tagEn}</span>
+                  <h2>{sec.titleEn}</h2>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* 4. Side-by-Side EN ⇄ ZH Parallel Reading View (when activated) */}
-        {bilingualMode && (
-          <div className="bilingual-parallel-view">
-            <div className="bilingual-banner">
-              <div>
-                <strong>
-                  {isZh
-                    ? 'EN ⇄ 中文 双语平行对照模式已开启'
-                    : 'EN ⇄ 中文 Side-by-Side Parallel Reading Mode Active'}
-                </strong>
-                <span>
-                  {isZh
-                    ? '跨法域团队可逐章对照中英文核心架构定义、五层价值阶梯与四大落地铁律。'
-                    : 'Aligning English and Chinese architectural definitions, value layers, and enterprise rollout laws side-by-side.'}
-                </span>
+                <div className="bilingual-col" lang="zh-CN">
+                  <span className="article-section-tag">{sec.tagZh}</span>
+                  <h2>{sec.titleZh}</h2>
+                </div>
               </div>
-              <button type="button" onClick={() => setBilingualMode(false)} className="study-ctrl-btn is-active">
-                {isZh ? '返回单语排版' : 'Exit Parallel View'}
-              </button>
-            </div>
 
-            {PARALLEL_SECTIONS.map((sec) => (
-              <section key={sec.id} id={sec.id} className="bilingual-section-block">
-                <div className="bilingual-row bilingual-row-head">
+              {sec.paragraphs.map((p, pIdx) => (
+                <div key={pIdx} className="bilingual-row">
                   <div className="bilingual-col">
-                    <span className="article-section-tag">{sec.tagEn}</span>
-                    <h2>{sec.titleEn}</h2>
+                    {p.quoteEn && (
+                      <div
+                        className="article-quote-block clickable-quote-box"
+                        onClick={() => downloadQuoteCard(p.quoteEn!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'en')}
+                        title="Click quote box to download card"
+                      >
+                        <p>{p.quoteEn}</p>
+                        <span>Click box to download card ↓</span>
+                      </div>
+                    )}
+                    <p>{p.en}</p>
                   </div>
                   <div className="bilingual-col" lang="zh-CN">
-                    <span className="article-section-tag">{sec.tagZh}</span>
-                    <h2>{sec.titleZh}</h2>
+                    {p.quoteZh && (
+                      <div
+                        className="article-quote-block clickable-quote-box"
+                        onClick={() => downloadQuoteCard(p.quoteZh!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'zh')}
+                        title="点击此引用框直接下载卡片"
+                      >
+                        <p>{p.quoteZh}</p>
+                        <span>点击下载卡片 ↓</span>
+                      </div>
+                    )}
+                    <p>{p.zh}</p>
                   </div>
                 </div>
-
-                {sec.paragraphs.map((p, pIdx) => (
-                  <div key={pIdx} className="bilingual-row">
-                    <div className="bilingual-col">
-                      {p.quoteEn && (
-                        <div
-                          className="article-quote-block clickable-quote-box"
-                          onClick={() => downloadQuoteCard(p.quoteEn!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'en')}
-                          title="Click quote box to download card"
-                        >
-                          <p>{p.quoteEn}</p>
-                          <span>Click box to download card ↓</span>
-                        </div>
-                      )}
-                      <p>{p.en}</p>
-                    </div>
-                    <div className="bilingual-col" lang="zh-CN">
-                      {p.quoteZh && (
-                        <div
-                          className="article-quote-block clickable-quote-box"
-                          onClick={() => downloadQuoteCard(p.quoteZh!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'zh')}
-                          title="点击此引用框直接下载卡片"
-                        >
-                          <p>{p.quoteZh}</p>
-                          <span>点击下载卡片 ↓</span>
-                        </div>
-                      )}
-                      <p>{p.zh}</p>
-                    </div>
-                  </div>
-                ))}
-              </section>
-            ))}
-          </div>
-        )}
-      </div>
+              ))}
+            </section>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
