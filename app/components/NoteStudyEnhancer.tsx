@@ -280,34 +280,20 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
 
     const quoteBlocks = Array.from(document.querySelectorAll('.article-body .article-quote-block'));
     quoteBlocks.forEach((qb, idx) => {
-      if (!qb.querySelector('.inline-quote-share-btn')) {
-        const pEl = qb.querySelector('p');
-        const rawQuote = (pEl?.textContent || '').replace(/^[“"]|[”"]$/g, '').trim();
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'inline-quote-share-btn';
-        btn.textContent = isZh ? '生成金句卡片 / 分享 LinkedIn ↗' : 'Share Quote Card / LinkedIn ↗';
-        btn.onclick = () => {
+      const spanEl = qb.querySelector('span');
+      const pEl = qb.querySelector('p');
+      if (spanEl && pEl && !spanEl.querySelector('.inline-quote-share-link')) {
+        const rawQuote = (pEl.textContent || '').replace(/^[“"]|[”"]$/g, '').trim();
+        const linkBtn = document.createElement('button');
+        linkBtn.type = 'button';
+        linkBtn.className = 'inline-quote-share-link';
+        linkBtn.textContent = isZh ? ' · 分享卡片 ↗' : ' · Share Card ↗';
+        linkBtn.onclick = () => {
           setQuoteModal({ isOpen: true, quote: rawQuote, index: idx });
         };
-        qb.appendChild(btn);
+        spanEl.appendChild(linkBtn);
       }
     });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = headings.indexOf(entry.target as HTMLElement);
-            if (idx !== -1) setActiveSectionIdx(idx);
-          }
-        });
-      },
-      { rootMargin: '-15% 0px -70% 0px', threshold: 0.1 }
-    );
-
-    headings.forEach((h) => observer.observe(h));
-    return () => observer.disconnect();
   }, [isZh]);
 
   // Toggle visibility of original single-language .article-body when Side-by-Side Bilingual Mode is active
@@ -383,86 +369,14 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     setPlaybackRate(nextSpeed);
   };
 
-  const handleCopyMarkdown = () => {
-    const mdLines = [
-      `# ${isZh ? 'AI 原生法务部门会是什么样？ (AGI Counsel Note #01)' : 'What Would an AI-Native Legal Department Look Like? (AGI Counsel Note #01)'}`,
-      `Source: https://agicounsel.org${isZh ? '/zh' : ''}/notes/ai-native-legal-department/`,
-      '',
-      ...PARALLEL_SECTIONS.map((s) =>
-        [
-          `## ${isZh ? s.titleZh : s.titleEn}`,
-          ...s.paragraphs.map((p) => (isZh ? p.zh : p.en)),
-          '',
-        ].join('\n\n')
-      ),
-    ].join('\n');
-    navigator.clipboard?.writeText(mdLines);
-    setCopiedState('md');
-    setTimeout(() => setCopiedState('none'), 2200);
-  };
-
-  const handleCopyLink = () => {
-    navigator.clipboard?.writeText(window.location.href);
-    setCopiedState('link');
-    setTimeout(() => setCopiedState('none'), 2200);
-  };
-
-  const handleShareLinkedIn = () => {
-    const shareUrl = isZh
-      ? 'https://agicounsel.org/zh/notes/ai-native-legal-department/'
-      : 'https://agicounsel.org/notes/ai-native-legal-department/';
-    const postCopy = isZh
-      ? `推荐阅读 AGI Counsel Note #01：《AI 原生法务部门会是什么样？》\n\n核心洞见：\n1. 从单点外挂插件转向端到端工作流重构\n2. 从静态提示词转向持续复利的自学习知识飞轮\n3. 未来的律师更像统筹众多 Agent 的参谋长（Chief of Staff）\n\n全文链接：${shareUrl}`
-      : `What Would an AI-Native Legal Department Look Like? (AGI Counsel Note #01)\n\nKey shifts from our inaugural peer roundtable:\n1. From point plug-ins to end-to-end workflow redesign\n2. From static prompts to compounding institutional memory\n3. The lawyer of the future as a Chief of Staff orchestrating fleets of agents\n\nRead the full study: ${shareUrl}`;
-    navigator.clipboard?.writeText(postCopy);
-    setCopiedState('linkedin');
-    setTimeout(() => setCopiedState('none'), 3000);
-    window.open(
-      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-      '_blank',
-      'noopener,noreferrer,width=680,height=640'
-    );
-  };
-
-  const jumpToSection = (idx: number) => {
-    const targetId = `section-0${idx + 1}`;
-    const el = document.getElementById(targetId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSectionIdx(idx);
-    }
-  };
-
   return (
     <div className="note-study-enhancer-wrap">
-      {/* 1. Executive Study Toolbar (Sticky TOC Jump + EN/ZH Parallel Toggle + Glossary + LinkedIn/Card Share) */}
+      {/* Quiet 2-Button Study Bar: EN/ZH Toggle + Share Card */}
       <div className="study-utility-bar">
         <div className="study-utility-inner">
-          <select
-            className="study-mobile-toc-select"
-            value={activeSectionIdx}
-            onChange={(e) => jumpToSection(Number(e.target.value))}
-            aria-label={isZh ? '跳转章节' : 'Jump to section'}
-          >
-            {tocItems.map((label, idx) => (
-              <option key={label} value={idx}>
-                {label}
-              </option>
-            ))}
-          </select>
-
-          <div className="study-toc-pills" role="navigation" aria-label={isZh ? '章节导航' : 'Section navigation'}>
-            {tocItems.map((label, idx) => (
-              <button
-                key={label}
-                type="button"
-                onClick={() => jumpToSection(idx)}
-                className={`study-toc-pill ${activeSectionIdx === idx ? 'is-active' : ''}`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <span className="study-quiet-label">
+            {isZh ? 'AGI Counsel Note #01 · 深度研究' : 'AGI Counsel Note #01 · Deep Observation'}
+          </span>
 
           <div className="study-action-controls">
             <button
@@ -473,20 +387,11 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
               <span>⇄</span>
               {isZh
                 ? bilingualMode
-                  ? '退出中英对照'
-                  : 'EN ⇄ 中文 对照'
+                  ? '返回单语'
+                  : 'EN ⇄ 中文'
                 : bilingualMode
                 ? 'Single Language'
-                : 'EN ⇄ 中文 Parallel'}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setGlossaryOpen((prev) => !prev)}
-              className={`study-ctrl-btn ${glossaryOpen ? 'is-active' : ''}`}
-            >
-              <span>◈</span>
-              {isZh ? '术语词典' : 'Glossary'}
+                : 'EN ⇄ 中文'}
             </button>
 
             <button
@@ -502,34 +407,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
               }
               className="study-ctrl-btn"
             >
-              {isZh ? '生成金句卡片' : 'Quote Card'}
-            </button>
-
-            <button
-              type="button"
-              onClick={handleShareLinkedIn}
-              className="study-ctrl-btn"
-              title={isZh ? '自动复制推荐语并打开 LinkedIn 分享' : 'Copies executive summary and opens LinkedIn'}
-            >
-              {copiedState === 'linkedin'
-                ? isZh
-                  ? '✓ 已复制导语，正在打开 LinkedIn'
-                  : '✓ Copied Post & Opening LinkedIn'
-                : 'in LinkedIn ↗'}
-            </button>
-
-            <button type="button" onClick={handleCopyMarkdown} className="study-ctrl-btn">
-              {copiedState === 'md'
-                ? isZh
-                  ? '✓ 已复制 Markdown'
-                  : '✓ Copied MD'
-                : isZh
-                ? '复制 Markdown'
-                : 'Copy MD'}
-            </button>
-
-            <button type="button" onClick={handleCopyLink} className="study-ctrl-btn">
-              {copiedState === 'link' ? (isZh ? '✓ 已复制链接' : '✓ Copied') : isZh ? '复制链接' : 'Copy Link'}
+              {isZh ? '分享 / 金句卡片 ↗' : 'Share ↗'}
             </button>
           </div>
         </div>

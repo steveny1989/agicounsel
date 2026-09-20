@@ -214,8 +214,12 @@ footer>div a { color: var(--gold); }
 .article-quote-block { margin: 45px 0; padding: 24px 32px; border-left: 3px solid var(--gold); background: #fbf7f0; color: var(--navy); position: relative; }
 .article-quote-block p { color: var(--navy); font-size: 18px; font-weight: 600; line-height: 1.55; margin: 0 0 6px; }
 .article-quote-block span { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); font-weight: 700; display: block; }
-.inline-quote-share-btn { margin-top: 14px; background: transparent; border: 1px solid rgba(186, 147, 96, 0.55); color: var(--navy); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; transition: all .2s ease; }
-.inline-quote-share-btn:hover { background: var(--navy); color: var(--gold); border-color: var(--navy); }
+.inline-quote-share-link { background: transparent; border: 0; color: var(--gray); font: inherit; cursor: pointer; padding: 0; transition: color .2s ease; }
+.inline-quote-share-link:hover { color: var(--navy); text-decoration: underline; }
+.study-quiet-label { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.quote-modal-switcher { display: inline-flex; align-items: center; gap: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; color: var(--gold); letter-spacing: .12em; }
+.quote-switch-arrow { background: transparent; border: 1px solid rgba(186, 147, 96, 0.45); color: var(--gold); width: 28px; height: 28px; cursor: pointer; display: grid; place-items: center; transition: background .2s ease, color .2s ease; }
+.quote-switch-arrow:hover { background: var(--gold); color: var(--navy); }
 .article-section-tag { display: inline-block; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-top: 65px; margin-bottom: 8px; }
 .article-body table { width: 100%; border-collapse: collapse; margin: 35px 0; font-size: 14px; }
 .article-body th { background: var(--navy); color: var(--paper); padding: 12px 16px; text-align: left; font-weight: 600; }
