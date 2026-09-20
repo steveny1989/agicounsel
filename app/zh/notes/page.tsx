@@ -6,7 +6,7 @@ const roomNotes = [
   '业务必须参与共创。',
   'AI 首先是业务问题，其次才是技术问题。要创造真实价值，不做技术炫技。',
   '真正有价值的系统，一定要能够自学习。',
-  '未来的律师，可能更像 Agent 的 Chief of Staff。',
+  '未来的律师，更像统筹众多 Agent 的 Chief of Staff。',
 ];
 
 export const metadata: Metadata = {

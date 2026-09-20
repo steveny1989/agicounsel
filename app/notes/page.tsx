@@ -6,7 +6,7 @@ const roomNotes = [
   'The business must be part of the co-creation process.',
   'AI is a business problem first, and a technology problem second. Build for real value—not technical spectacle.',
   'A truly valuable system must be able to learn.',
-  'The lawyer of the future may become an Agent’s Chief of Staff.',
+  'The lawyer of the future will be a Chief of Staff orchestrating fleets of agents.',
 ];
 
 export const metadata: Metadata = {
