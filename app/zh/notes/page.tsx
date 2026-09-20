@@ -21,7 +21,7 @@ export default function ChineseNotesArchive() {
     <section className="notes-hero"><div className="eyebrow"><span /> 集体思考</div><h1>社群笔记</h1><p>将 Network 对话中出现的问题与洞见，沉淀为简短的共同记录。</p></section>
     <RoomNotesCarousel notes={roomNotes} locale="zh" />
     <section className="notes-list section"><div className="section-label">已发布笔记</div><div>
-      <a className="note-index-card" href="/zh/notes/ai-native-legal-department/"><span>Note #01 · 2026 年 8 月</span><h2>AI 原生法务部门会是什么样？</h2><p>关于工作流、知识架构，以及人类判断力价值变化的三点初步观察。</p><strong>阅读笔记 →</strong></a>
+      <a className="note-index-card" href="/zh/notes/ai-native-legal-department/"><span>Note #01 · 2026 年 9 月</span><h2>AI 原生法务部门会是什么样？</h2><p>超越 Copilot 插件思维：系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。</p><strong>阅读深度笔记 →</strong></a>
       <div className="notes-context"><p className="kicker">接下来</p><h2>每一篇笔记，都始于一个值得讨论的问题。</h2><p>当前议题包括 AI 智能体与法律责任，以及未来 AI 法律人需要具备的关键能力。</p><a className="note-link" href="/zh/#contribute">贡献一个问题 <span>→</span></a></div>
       <p className="notes-disclaimer">遵循查塔姆研究所规则（Chatham House Rule）整理，观点仅代表个人实践思考。</p>
     </div></section>

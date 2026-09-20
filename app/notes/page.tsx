@@ -21,7 +21,7 @@ export default function NotesArchive() {
     <section className="notes-hero"><div className="eyebrow"><span /> Collective thinking</div><h1>Community Notes</h1><p>Short distillations of questions and insights emerging from Network conversations.</p></section>
     <RoomNotesCarousel notes={roomNotes} locale="en" />
     <section className="notes-list section"><div className="section-label">Published notes</div><div>
-      <a className="note-index-card" href="/notes/ai-native-legal-department/"><span>Note #01 · August 2026</span><h2>What Would an AI-Native Legal Department Look Like?</h2><p>Three emerging ideas about workflows, knowledge architecture, and the changing value of human judgment.</p><strong>Read the note →</strong></a>
+      <a className="note-index-card" href="/notes/ai-native-legal-department/"><span>Note #01 · September 2026</span><h2>What Would an AI-Native Legal Department Look Like?</h2><p>Beyond Copilot plug-ins: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance.</p><strong>Read the note →</strong></a>
       <div className="notes-context"><p className="kicker">What comes next</p><h2>Notes begin with a question worth discussing.</h2><p>Current conversations include AI agents and legal responsibility, and the capabilities that will define the future of AI counsel.</p><a className="note-link" href="/#contribute">Contribute a question <span>→</span></a></div>
       <p className="notes-disclaimer">Distilled under the Chatham House Rule from recent peer discussions. Perspectives are personal.</p>
     </div></section>
