@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import SectionCarousel from './components/SectionCarousel';
+import NetworkBriefingForm from './components/NetworkBriefingForm';
 
 const layers = [
   [
@@ -479,19 +480,19 @@ export default function Home() {
           <div>
             <h2>Bring an architectural question or deployment benchmark.</h2>
             <p>
-              We convene in-house counsel, frontier lab legal architects, and legal systems engineers under the Chatham House Rule. Share a technical question, an evaluation framework, or request an invitation.
+              We convene in-house counsel, frontier lab legal architects, and legal systems engineers under the Chatham House Rule. Subscribe to receive future Notes, download the Note #01 Executive Blueprint, or propose a roundtable topic below.
             </p>
-            <a
-              className="join-email"
-              href="mailto:hello@agicounsel.org?subject=Starting%20a%20conversation%20with%20AGI%20Counsel%20Network&body=What%20architectural%20question%2C%20deployment%20practice%2C%20or%20perspective%20would%20you%20like%20to%20share%3F%0A%0AWhich%20layer%20of%20the%20AI%20stack%20do%20you%20work%20in%3F%0A%0AName%20%26%20Role%20(optional)%3A"
-            >
-              Start a conversation <span>↗</span>
-            </a>
+            <div style={{ marginTop: '28px' }}>
+              <NetworkBriefingForm locale="en" />
+            </div>
           </div>
           <aside>
             <span>Invitation-Based Peer Network</span>
             <a href="mailto:hello@agicounsel.org?subject=AGI%20Counsel%20Network%20—%20Membership%20interest">
               hello@agicounsel.org
+            </a>
+            <a href="/stack/" style={{ marginTop: '14px', fontSize: '12px' }}>
+              Explore 5-Layer AI Stack &amp; Glossary →
             </a>
           </aside>
         </div>
@@ -507,7 +508,10 @@ export default function Home() {
         </p>
         <div>
           <a href="/notes/ai-native-legal-department/">Note #01: AI-Native Legal Dept</a>
-          <a href="/feed.xml">RSS Feed</a>
+          <a href="/stack/">5-Layer AI Stack &amp; Glossary</a>
+          <a href="/podcast.xml">Deep Dive Podcast RSS</a>
+          <a href="/feed.xml">Notes RSS Feed</a>
+          <a href="/llms-full.txt">LLMs Full Corpus</a>
           <a href="/sitemap.xml">Sitemap</a>
           <a href="mailto:hello@agicounsel.org">hello@agicounsel.org</a>
           <span>© 2026 AGI Counsel Network</span>

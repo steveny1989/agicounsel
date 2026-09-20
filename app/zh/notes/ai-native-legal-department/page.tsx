@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import NoteStudyEnhancer from '../../../components/NoteStudyEnhancer';
+import NetworkBriefingForm from '../../../components/NetworkBriefingForm';
 
 export const metadata: Metadata = {
   title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01 深度研究',
@@ -32,14 +34,14 @@ export const metadata: Metadata = {
     publishedTime: '2026-09-20T00:00:00.000Z',
     modifiedTime: '2026-09-20T00:00:00.000Z',
     authors: ['AGI Counsel Network'],
-    images: [{ url: '/og.png', width: 1730, height: 909, alt: 'AGI Counsel Note #01 — AI 原生法务部门' }],
+    images: [{ url: '/og-note-01.png', width: 1200, height: 630, alt: 'AGI Counsel Note #01 — AI 原生法务部门' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
     description:
       '超越 Copilot 插件思维：系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
-    images: ['/og.png'],
+    images: ['/og-note-01.png'],
   },
 };
 
@@ -96,21 +98,24 @@ export default function ChineseNoteOne() {
         </a>
         <nav aria-label="主导航">
           <a href="/zh/">首页</a>
+          <a href="/zh/stack/">五层栈与词典</a>
           <a href="/zh/notes/">全部笔记</a>
           <a className="language-switch" href="/notes/ai-native-legal-department/?lang=en">EN</a>
-          <a className="nav-join" href="/zh/#contribute">参与</a>
+          <a className="nav-join" href="#subscribe-note-zh">订阅</a>
         </nav>
       </header>
 
       <article className="note-article">
         <header>
           <a href="/zh/notes/">← 社群笔记</a>
-          <p className="kicker">AGI Counsel Note #01 · 深度观察 · 2026 年 9 月</p>
+          <p className="kicker">AGI Counsel Note #01 · 深度观察 · 2026 年 9 月 · 约 10 分钟深读</p>
           <h1>AI 原生法务部门会是什么样？</h1>
           <p className="article-deck">
             超越工具采购与提示词技巧：基于 AGI Counsel Network 首场闭门同行研讨，关于价值层级、工作流重构与人机协同治理的体系化思考。
           </p>
         </header>
+
+        <NoteStudyEnhancer locale="zh" />
 
         <div className="article-body">
           <p className="article-intro">
@@ -287,6 +292,10 @@ export default function ChineseNoteOne() {
             <p>
               如果今天允许你彻底清空技术与组织债务，从零搭建一家跨国企业的法务部门，你会最先围绕哪一个业务场景重新设计人机协作工作流？为什么？
             </p>
+          </div>
+
+          <div id="subscribe-note-zh" style={{ marginTop: '54px' }}>
+            <NetworkBriefingForm locale="zh" />
           </div>
 
           <p className="article-disclaimer">

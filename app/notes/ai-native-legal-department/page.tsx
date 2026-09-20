@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import NoteStudyEnhancer from '../../components/NoteStudyEnhancer';
+import NetworkBriefingForm from '../../components/NetworkBriefingForm';
 
 export const metadata: Metadata = {
   title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
@@ -32,14 +34,14 @@ export const metadata: Metadata = {
     publishedTime: '2026-09-20T00:00:00.000Z',
     modifiedTime: '2026-09-20T00:00:00.000Z',
     authors: ['AGI Counsel Network'],
-    images: [{ url: '/og.png', width: 1730, height: 909, alt: 'AGI Counsel Note #01 — AI-Native Legal Department' }],
+    images: [{ url: '/og-note-01.png', width: 1200, height: 630, alt: 'AGI Counsel Note #01 — AI-Native Legal Department' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
     description:
       'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance.',
-    images: ['/og.png'],
+    images: ['/og-note-01.png'],
   },
 };
 
@@ -96,21 +98,24 @@ export default function NoteOne() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="/">Home</a>
+          <a href="/stack/">AI Stack &amp; Glossary</a>
           <a href="/notes/">All notes</a>
           <a className="language-switch" href="/zh/notes/ai-native-legal-department/?lang=zh">中文</a>
-          <a className="nav-join" href="/#contribute">Contribute</a>
+          <a className="nav-join" href="#subscribe-note">Subscribe</a>
         </nav>
       </header>
 
       <article className="note-article">
         <header>
           <a href="/notes/">← Community Notes</a>
-          <p className="kicker">AGI Counsel Note #01 · Deep Observation · September 2026</p>
+          <p className="kicker">AGI Counsel Note #01 · Deep Observation · September 2026 · 10 min read</p>
           <h1>What Would an AI-Native Legal Department Look Like?</h1>
           <p className="article-deck">
-            Beyond tool procurement and prompt engineering: Systems-level observations on value layers, workflow re-engineering, and human-in-the-loop governance from AGI Counsel Network's inaugural closed-door peer roundtable.
+            Beyond tool procurement and prompt engineering: Systems-level observations on value layers, workflow re-engineering, and human-in-the-loop governance from AGI Counsel Network&apos;s inaugural closed-door peer roundtable.
           </p>
         </header>
+
+        <NoteStudyEnhancer locale="en" />
 
         <div className="article-body">
           <p className="article-intro">
@@ -289,8 +294,12 @@ export default function NoteOne() {
             </p>
           </div>
 
+          <div id="subscribe-note" style={{ marginTop: '54px' }}>
+            <NetworkBriefingForm locale="en" />
+          </div>
+
           <p className="article-disclaimer">
-            This note was synthesized from proceedings of the AGI Counsel Network's inaugural closed-door peer roundtable under the Chatham House Rule. Insights are intended to advance peer analysis and do not represent the formal institutional endorsements of participating organizations or individual attendees.
+            This note was synthesized from proceedings of the AGI Counsel Network&apos;s inaugural closed-door peer roundtable under the Chatham House Rule. Insights are intended to advance peer analysis and do not represent the formal institutional endorsements of participating organizations or individual attendees.
           </p>
         </div>
       </article>

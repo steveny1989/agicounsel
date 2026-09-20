@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import SectionCarousel from '../components/SectionCarousel';
+import NetworkBriefingForm from '../components/NetworkBriefingForm';
 
 const layers = [
   [
@@ -487,19 +488,19 @@ export default function ChineseHome() {
           <div>
             <h2>带来你的架构问题或工程实践基准。</h2>
             <p>
-              我们在查塔姆研究所规则（Chatham House Rule）下连接企业总法律顾问、前沿大模型实验室法务专家与法律系统架构师。欢迎分享一个真实架构难题、一套评测方案，或申请加入同行交流。
+              我们在查塔姆研究所规则（Chatham House Rule）下连接企业总法律顾问、前沿大模型实验室法务专家与法律系统架构师。欢迎订阅最新《AGI Counsel Note》、下载《Note #01 五层架构速查蓝图》，或提交下一场闭门研讨议题。
             </p>
-            <a
-              className="join-email"
-              href="mailto:hello@agicounsel.org?subject=%E4%B8%8E%20AGI%20Counsel%20Network%20%E5%BC%80%E5%A7%8B%E5%AF%B9%E8%AF%9D&body=%E4%BD%A0%E5%B8%8C%E6%9C%9B%E5%88%86%E4%BA%AB%E4%BB%80%E4%B9%88%E6%9E%B6%E6%9E%84%E9%97%AE%E9%A2%98%E3%80%81%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5%E6%88%96%E8%A7%82%E7%82%B9%EF%BC%9F%0A%0A%E4%BD%A0%E6%89%80%E5%9C%A8%E7%9A%84%E5%9B%A2%E9%98%9F%E5%A4%84%E4%BA%8E%20AI%20%E6%8A%80%E6%9C%AF%E6%A0%88%E7%9A%84%E5%93%AA%E4%B8%80%E5%B1%82%EF%BC%9F%0A%0A%E5%A7%93%E5%90%8D%E4%B8%8E%E8%81%8C%E5%8A%A1%EF%BC%88%E9%80%89%E5%A1%AB%EF%BC%89%EF%BC%9A"
-            >
-              与我们联系 <span>↗</span>
-            </a>
+            <div style={{ marginTop: '28px' }}>
+              <NetworkBriefingForm locale="zh" />
+            </div>
           </div>
           <aside>
             <span>会员邀请制同行网络</span>
             <a href="mailto:hello@agicounsel.org?subject=AGI%20Counsel%20Network%20—%20加入意向">
               hello@agicounsel.org
+            </a>
+            <a href="/zh/stack/" style={{ marginTop: '14px', fontSize: '12px' }}>
+              浏览五层 AI 技术栈与工程词典 →
             </a>
           </aside>
         </div>
@@ -515,7 +516,10 @@ export default function ChineseHome() {
         </p>
         <div>
           <a href="/zh/notes/ai-native-legal-department/">Note #01：AI 原生法务部门架构</a>
-          <a href="/zh/feed.xml">RSS 订阅</a>
+          <a href="/zh/stack/">五层 AI 技术栈与词典</a>
+          <a href="/zh/podcast.xml">播客深读 RSS</a>
+          <a href="/zh/feed.xml">笔记 RSS 订阅</a>
+          <a href="/llms-full.txt">LLMs 完整索引</a>
           <a href="/sitemap.xml">站点地图 (Sitemap)</a>
           <a href="mailto:hello@agicounsel.org">hello@agicounsel.org</a>
           <span>© 2026 AGI Counsel Network</span>
