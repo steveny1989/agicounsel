@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { downloadQuoteCard } from './QuoteCardModal';
+import QuoteCardModal from './QuoteCardModal';
 
 type Locale = 'en' | 'zh';
 
@@ -10,6 +10,10 @@ interface DialogueTurn {
   speakerZh: string;
   textEn: string;
   textZh: string;
+  startEn: number;
+  endEn: number;
+  startZh: number;
+  endZh: number;
 }
 
 interface BilingualBlock {
@@ -33,7 +37,11 @@ const DIALOGUE_TURNS: DialogueTurn[] = [
     textEn:
       'Welcome to the AGI Counsel audio briefing for Note #01: What would a genuinely AI-native legal department look like—and why did first-wave chat plug-ins hit a productivity paradox?',
     textZh:
-      '欢迎收听 AGI Counsel Note #01 音频导读：真正的“AI 原生法务部门”会是什么样？为什么早期的单点对话插件往往陷入生产力悖论？',
+      '欢迎收听 AGI Counsel 第一期研究笔记音频导读：真正的 AI 原生法务部门会是什么样？为什么早期的单点对话插件往往陷入生产力悖论？',
+    startEn: 0,
+    endEn: 11.77,
+    startZh: 0,
+    endZh: 11.01,
   },
   {
     speakerEn: 'Network Counsel',
@@ -42,6 +50,10 @@ const DIALOGUE_TURNS: DialogueTurn[] = [
       'The core finding from our roundtable is straightforward: bolting a chat assistant onto a legacy linear approval chain speeds up first-draft typing by 20%, but floods senior counsel with unverified, context-blind drafts.',
     textZh:
       '闭门研讨的核心共识非常明确：在传统串联审批链上生硬外挂一个对话插件，虽然局部提升了 20% 的初稿打字速度，却制造了大量缺乏业务上下文的半成品草稿，反而加重了资深法务的复核负担。',
+    startEn: 12.12,
+    endEn: 26.69,
+    startZh: 11.36,
+    endZh: 29.97,
   },
   {
     speakerEn: 'Moderator',
@@ -50,6 +62,10 @@ const DIALOGUE_TURNS: DialogueTurn[] = [
       'Instead of procuring more point tools, Note #01 outlines three structural shifts from legal production to legal judgment.',
     textZh:
       '因此，报告提出必须超越单纯的工具采购，完成从“法律生产”向“法律判断”的三重结构性跃迁。',
+    startEn: 27.04,
+    endEn: 35.25,
+    startZh: 30.32,
+    endZh: 39.53,
   },
   {
     speakerEn: 'Network Counsel',
@@ -58,6 +74,10 @@ const DIALOGUE_TURNS: DialogueTurn[] = [
       'First is Workflow Architecture—redesigning intake, triage, and business delivery end-to-end. Second is Institutional Memory—passively capturing senior counsel redlines into a self-learning knowledge flywheel.',
     textZh:
       '第一重跃迁是端到端工作流重构，围绕智能体重新定义业务发起与初审分流；第二重跃迁是组织记忆资产，在日常审批中无感捕获资深律师的修订底线，沉淀为自学习知识飞轮。',
+    startEn: 35.6,
+    endEn: 49.37,
+    startZh: 39.88,
+    endZh: 55.01,
   },
   {
     speakerEn: 'Moderator',
@@ -65,7 +85,11 @@ const DIALOGUE_TURNS: DialogueTurn[] = [
     textEn:
       'And the third shift is Human Governance: positioning the lawyer as a Chief of Staff orchestrating specialized agent fleets while holding non-delegable judgment and accountability.',
     textZh:
-      '第三重跃迁则是人机治理契约：未来的律师更像统筹众多垂直 Agent 的 Chief of Staff，在底层安全护栏之上，牢牢守住不可委派的人类判断力与最终责任。',
+      '第三重跃迁则是人机治理契约：未来的律师更像统筹众多垂直智能体的参谋长，在底层安全护栏之上，牢牢守住不可委派的人类判断力与最终责任。',
+    startEn: 49.72,
+    endEn: 60.61,
+    startZh: 55.36,
+    endZh: 69.13,
   },
 ];
 
@@ -155,40 +179,33 @@ const PARALLEL_SECTIONS: BilingualBlock[] = [
 
 export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
   const isZh = locale === 'zh';
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeTurn, setActiveTurn] = useState(0);
   const [showTranscript, setShowTranscript] = useState(false);
   const [bilingualMode, setBilingualMode] = useState(false);
-  const synthCancelRef = useRef(false);
+  const [quoteModal, setQuoteModal] = useState<{ isOpen: boolean; quote: string; index: number }>({
+    isOpen: false,
+    quote: '',
+    index: 0,
+  });
 
-  // Make every quote box (.article-quote-block) in the article directly clickable to download its quote card
+  // Make every quote box (.article-quote-block) open the QuoteCardModal popup cleanly on click (without adding any extra text to the box!)
   useEffect(() => {
     const quoteBlocks = Array.from(document.querySelectorAll('.article-body .article-quote-block'));
     quoteBlocks.forEach((qb, idx) => {
       const box = qb as HTMLElement;
-      const spanEl = box.querySelector('span');
       const pEl = box.querySelector('p');
       if (!box.dataset.clickableBound && pEl) {
         box.dataset.clickableBound = 'true';
         box.classList.add('clickable-quote-box');
-        box.title = isZh ? '点击直接下载金句卡片' : 'Click to download quote card';
-        const originalSpanText = spanEl ? spanEl.textContent || '' : '';
-        if (spanEl) {
-          spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click to download card ↓'}`;
-        }
         box.onclick = () => {
           const rawQuote = (pEl.textContent || '').replace(/^[“"]|[”"]$/g, '').trim();
-          downloadQuoteCard(rawQuote, idx, locale);
-          if (spanEl) {
-            spanEl.textContent = `${originalSpanText} · ${isZh ? '✓ 卡片已下载' : '✓ Card downloaded'}`;
-            setTimeout(() => {
-              spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click to download card ↓'}`;
-            }, 2200);
-          }
+          setQuoteModal({ isOpen: true, quote: rawQuote, index: idx });
         };
       }
     });
-  }, [isZh, locale]);
+  }, [isZh]);
 
   useEffect(() => {
     const bodyEl = document.querySelector('.article-body') as HTMLElement | null;
@@ -196,60 +213,60 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
     bodyEl.style.display = bilingualMode ? 'none' : '';
   }, [bilingualMode]);
 
-  useEffect(() => {
-    return () => {
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
-
-  const speakText = (text: string, onEndCallback?: () => void) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = isZh ? 'zh-CN' : 'en-US';
-    utterance.rate = 1.05;
-    utterance.onend = () => {
-      if (!synthCancelRef.current && onEndCallback) {
-        onEndCallback();
-      }
-    };
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const playTurnAt = (index: number) => {
-    if (index >= DIALOGUE_TURNS.length) {
-      setIsPlaying(false);
-      setActiveTurn(0);
-      return;
-    }
-    synthCancelRef.current = false;
-    setActiveTurn(index);
-    setIsPlaying(true);
-    const turn = DIALOGUE_TURNS[index];
-    speakText(isZh ? turn.textZh : turn.textEn, () => {
-      playTurnAt(index + 1);
+  const handleTimeUpdate = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const t = audio.currentTime;
+    const idx = DIALOGUE_TURNS.findIndex((turn) => {
+      const start = isZh ? turn.startZh : turn.startEn;
+      const end = isZh ? turn.endZh : turn.endEn;
+      return t >= start && t <= end + 0.3;
     });
+    if (idx !== -1 && idx !== activeTurn) {
+      setActiveTurn(idx);
+    }
   };
 
   const handleTogglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
     if (isPlaying) {
-      synthCancelRef.current = true;
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
+      audio.pause();
       setIsPlaying(false);
     } else {
-      playTurnAt(activeTurn);
+      audio.play().catch(() => {});
+      setIsPlaying(true);
     }
   };
 
-  const currentTurn = DIALOGUE_TURNS[activeTurn];
+  const playTurnAt = (index: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const turn = DIALOGUE_TURNS[index];
+    audio.currentTime = isZh ? turn.startZh : turn.startEn;
+    setActiveTurn(index);
+    audio.play().catch(() => {});
+    setIsPlaying(true);
+  };
+
+  const currentTurn = DIALOGUE_TURNS[activeTurn] || DIALOGUE_TURNS[0];
 
   return (
     <div style={{ maxWidth: '790px', margin: '48px auto 0', padding: '0 24px' }}>
-      {/* Clean, Minimalist Editorial Bar (Audio Briefing + EN/ZH Parallel Toggle) */}
+      <audio
+        ref={audioRef}
+        src={isZh ? '/audio/note-01-zh.mp3' : '/audio/note-01-en.mp3'}
+        preload="metadata"
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={() => {
+          setIsPlaying(false);
+          setActiveTurn(0);
+        }}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+      />
+
+      {/* Clean, Minimalist Editorial Bar (Studio Neural Audio Briefing + EN/ZH Parallel Toggle) */}
       <div
         style={{
           borderTop: '1px solid #71808b',
@@ -296,7 +313,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
                   color: '#ba9360',
                 }}
               >
-                {isZh ? '音频导读 · 3 分钟' : 'Audio Briefing · 3 min'}
+                {isZh ? '音频导读 · 1 分钟对谈' : 'Audio Briefing · 1 min Dialogue'}
               </span>
               <button
                 type="button"
@@ -433,11 +450,16 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
                     {p.quoteEn && (
                       <div
                         className="article-quote-block clickable-quote-box"
-                        onClick={() => downloadQuoteCard(p.quoteEn!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'en')}
-                        title="Click quote box to download card"
+                        onClick={() =>
+                          setQuoteModal({
+                            isOpen: true,
+                            quote: p.quoteEn!.replace(/^[“"]|[”"]$/g, ''),
+                            index: pIdx,
+                          })
+                        }
                       >
                         <p>{p.quoteEn}</p>
-                        <span>Click box to download card ↓</span>
+                        <span>Roundtable Core Insight</span>
                       </div>
                     )}
                     <p>{p.en}</p>
@@ -446,11 +468,16 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
                     {p.quoteZh && (
                       <div
                         className="article-quote-block clickable-quote-box"
-                        onClick={() => downloadQuoteCard(p.quoteZh!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'zh')}
-                        title="点击此引用框直接下载卡片"
+                        onClick={() =>
+                          setQuoteModal({
+                            isOpen: true,
+                            quote: p.quoteZh!.replace(/^[“"]|[”"]$/g, ''),
+                            index: pIdx,
+                          })
+                        }
                       >
                         <p>{p.quoteZh}</p>
-                        <span>点击下载卡片 ↓</span>
+                        <span>研讨核心共识</span>
                       </div>
                     )}
                     <p>{p.zh}</p>
@@ -461,6 +488,14 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
           ))}
         </div>
       )}
+
+      <QuoteCardModal
+        isOpen={quoteModal.isOpen}
+        onClose={() => setQuoteModal((prev) => ({ ...prev, isOpen: false }))}
+        quote={quoteModal.quote}
+        index={quoteModal.index}
+        locale={locale}
+      />
     </div>
   );
 }
