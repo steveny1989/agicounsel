@@ -1,318 +1,167 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+export function downloadQuoteCard(quote: string, index: number, locale: 'zh' | 'en' = 'en') {
+  if (typeof document === 'undefined' || !quote) return;
 
-interface QuoteCardModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  quote: string;
-  index: number;
-  locale?: 'zh' | 'en';
-  quotesList?: string[];
-}
-
-const DEFAULT_QUOTES_EN = [
-  'AI transformation is also organizational transformation.',
-  'The lawyer of the future will be a Chief of Staff orchestrating fleets of agents.',
-  'A truly valuable system must be able to learn.',
-  'AI is a business problem first, and a technology problem second. Build for real value—not technical spectacle.',
-  'The business must be part of the co-creation process.',
-];
-
-const DEFAULT_QUOTES_ZH = [
-  'AI 转型，本质上也是组织转型。',
-  '未来的律师，更像统筹众多 Agent 的 Chief of Staff。',
-  '真正有价值的系统，一定要能够自学习。',
-  'AI 首先是业务问题，其次才是技术问题。要创造真实价值，不做技术炫技。',
-  '业务必须参与共创。',
-];
-
-export default function QuoteCardModal({
-  isOpen,
-  onClose,
-  quote,
-  index,
-  locale = 'en',
-  quotesList,
-}: QuoteCardModalProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [imageUrl, setImageUrl] = useState<string>('');
-  const [copied, setCopied] = useState<boolean>(false);
   const isZh = locale === 'zh';
+  const canvas = document.createElement('canvas');
+  const size = 1200;
+  canvas.width = size;
+  canvas.height = size;
 
-  const pool = quotesList && quotesList.length > 0 ? quotesList : isZh ? DEFAULT_QUOTES_ZH : DEFAULT_QUOTES_EN;
-  const [activeIndex, setActiveIndex] = useState<number>(index);
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
 
-  useEffect(() => {
-    if (isOpen) {
-      const matchedIdx = pool.indexOf(quote);
-      setActiveIndex(matchedIdx !== -1 ? matchedIdx : Math.min(Math.max(0, index), pool.length - 1));
-    }
-  }, [isOpen, quote, index, pool]);
+  // Background
+  ctx.fillStyle = '#071a2b';
+  ctx.fillRect(0, 0, size, size);
 
-  const activeQuote = pool[activeIndex] || quote;
+  // Decorative ambient circles (orbits)
+  ctx.save();
+  ctx.strokeStyle = 'rgba(186, 147, 96, 0.12)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, 480, 0, Math.PI * 2);
+  ctx.stroke();
 
-  useEffect(() => {
-    if (!isOpen || !activeQuote) return;
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, 540, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.restore();
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  // Outer decorative border
+  const pad = 64;
+  ctx.strokeStyle = 'rgba(186, 147, 96, 0.35)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(pad, pad, size - pad * 2, size - pad * 2);
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+  // Header: Logo and Brand
+  const headerY = pad + 70;
+  const logoX = pad + 50;
+  const logoSize = 52;
 
-    const size = 1200;
-    canvas.width = size;
-    canvas.height = size;
+  ctx.strokeStyle = '#ba9360';
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(logoX, headerY - logoSize / 2, logoSize, logoSize);
 
-    // Background
-    ctx.fillStyle = '#071a2b';
-    ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = '#ba9360';
+  ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('A', logoX + logoSize / 2, headerY);
 
-    // Decorative ambient circles (orbits)
-    ctx.save();
-    ctx.strokeStyle = 'rgba(186, 147, 96, 0.12)';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.arc(size / 2, size / 2, 480, 0, Math.PI * 2);
-    ctx.stroke();
+  ctx.textAlign = 'left';
+  ctx.font = '600 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  ctx.letterSpacing = '3px';
+  ctx.fillStyle = '#faf9f5';
+  ctx.fillText('AGI COUNSEL NETWORK', logoX + logoSize + 22, headerY);
 
-    ctx.beginPath();
-    ctx.arc(size / 2, size / 2, 540, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.restore();
+  const numberText = `0${index + 1}`;
+  ctx.textAlign = 'right';
+  ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  ctx.letterSpacing = '2px';
+  ctx.fillStyle = '#ba9360';
+  ctx.fillText(numberText, size - pad - 50, headerY);
 
-    // Outer decorative border
-    const pad = 64;
-    ctx.strokeStyle = 'rgba(186, 147, 96, 0.35)';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(pad, pad, size - pad * 2, size - pad * 2);
+  // Eyebrow tag
+  const eyebrowY = headerY + 75;
+  ctx.textAlign = 'left';
+  ctx.font = '600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  ctx.letterSpacing = '2px';
+  ctx.fillStyle = 'rgba(186, 147, 96, 0.9)';
+  const eyebrowText = isZh ? '现场摘记 · 法律 AI 洞察' : 'FROM THE ROOM · LEGAL AI NOTES';
+  ctx.fillText(eyebrowText, logoX, eyebrowY);
 
-    // Header: Logo and Brand
-    const headerY = pad + 70;
-    const logoX = pad + 50;
-    const logoSize = 52;
+  // Top divider
+  ctx.strokeStyle = 'rgba(113, 128, 139, 0.35)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(pad + 50, eyebrowY + 28);
+  ctx.lineTo(size - pad - 50, eyebrowY + 28);
+  ctx.stroke();
 
-    // Logo box
-    ctx.strokeStyle = '#ba9360';
-    ctx.lineWidth = 1.5;
-    ctx.strokeRect(logoX, headerY - logoSize / 2, logoSize, logoSize);
+  // Quote statement text
+  const textMaxWidth = size - (pad + 60) * 2;
+  const fontSize = quote.length > 35 ? 46 : 54;
+  const lineHeight = fontSize * 1.5;
 
-    // Logo "A"
-    ctx.fillStyle = '#ba9360';
-    ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('A', logoX + logoSize / 2, headerY);
+  ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", serif`;
+  ctx.fillStyle = '#faf9f5';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
 
-    // Brand text
-    ctx.textAlign = 'left';
-    ctx.font = '600 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.letterSpacing = '3px';
-    ctx.fillStyle = '#faf9f5';
-    ctx.fillText('AGI COUNSEL NETWORK', logoX + logoSize + 22, headerY);
+  const words = isZh ? quote.split('') : quote.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
 
-    // Slide number pill on top right
-    const numberText = `0${activeIndex + 1} / 0${pool.length}`;
-    ctx.textAlign = 'right';
-    ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.letterSpacing = '2px';
-    ctx.fillStyle = '#ba9360';
-    ctx.fillText(numberText, size - pad - 50, headerY);
-
-    // Eyebrow tag
-    const eyebrowY = headerY + 75;
-    ctx.textAlign = 'left';
-    ctx.font = '600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.letterSpacing = '2px';
-    ctx.fillStyle = 'rgba(186, 147, 96, 0.9)';
-    const eyebrowText = isZh ? '现场摘记 · 法律 AI 洞察' : 'FROM THE ROOM · LEGAL AI NOTES';
-    ctx.fillText(eyebrowText, logoX, eyebrowY);
-
-    // Top divider
-    ctx.strokeStyle = 'rgba(113, 128, 139, 0.35)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(pad + 50, eyebrowY + 28);
-    ctx.lineTo(size - pad - 50, eyebrowY + 28);
-    ctx.stroke();
-
-    // Quote statement text
-    const textMaxWidth = size - (pad + 60) * 2;
-    const fontSize = activeQuote.length > 35 ? 46 : 54;
-    const lineHeight = fontSize * 1.5;
-
-    ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", serif`;
-    ctx.fillStyle = '#faf9f5';
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-
-    const words = isZh ? activeQuote.split('') : activeQuote.split(' ');
-    const lines: string[] = [];
-    let currentLine = '';
-
-    for (let i = 0; i < words.length; i++) {
-      const testLine = currentLine + (isZh ? words[i] : (currentLine ? ' ' : '') + words[i]);
-      const metrics = ctx.measureText(testLine);
-      if (metrics.width > textMaxWidth && currentLine !== '') {
-        lines.push(currentLine);
-        currentLine = words[i];
-      } else {
-        currentLine = testLine;
-      }
-    }
-    if (currentLine) {
+  for (let i = 0; i < words.length; i++) {
+    const testLine = currentLine + (isZh ? words[i] : (currentLine ? ' ' : '') + words[i]);
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > textMaxWidth && currentLine !== '') {
       lines.push(currentLine);
+      currentLine = words[i];
+    } else {
+      currentLine = testLine;
     }
+  }
+  if (currentLine) {
+    lines.push(currentLine);
+  }
 
-    const textBlockHeight = lines.length * lineHeight;
-    const startY = (size - textBlockHeight) / 2 + 10;
+  const textBlockHeight = lines.length * lineHeight;
+  const startY = (size - textBlockHeight) / 2 + 10;
 
-    // Quote watermark
-    ctx.font = 'bold 90px serif';
-    ctx.fillStyle = 'rgba(186, 147, 96, 0.3)';
-    ctx.fillText('“', pad + 50, startY - 70);
+  ctx.font = 'bold 90px serif';
+  ctx.fillStyle = 'rgba(186, 147, 96, 0.3)';
+  ctx.fillText('“', pad + 50, startY - 70);
 
-    // Draw lines
-    ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Serif SC", "Segoe UI", serif`;
-    ctx.fillStyle = '#faf9f5';
-    for (let i = 0; i < lines.length; i++) {
-      ctx.fillText(lines[i], pad + 50, startY + i * lineHeight);
-    }
+  ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Serif SC", "Segoe UI", serif`;
+  ctx.fillStyle = '#faf9f5';
+  for (let i = 0; i < lines.length; i++) {
+    ctx.fillText(lines[i], pad + 50, startY + i * lineHeight);
+  }
 
-    // Footer divider
-    const footerY = size - pad - 90;
-    ctx.strokeStyle = 'rgba(113, 128, 139, 0.35)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(pad + 50, footerY);
-    ctx.lineTo(size - pad - 50, footerY);
-    ctx.stroke();
+  const footerY = size - pad - 90;
+  ctx.strokeStyle = 'rgba(113, 128, 139, 0.35)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(pad + 50, footerY);
+  ctx.lineTo(size - pad - 50, footerY);
+  ctx.stroke();
 
-    // Footer text
-    ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillStyle = '#71808b';
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'alphabetic';
-    const ruleText = isZh ? '遵循查塔姆研究所规则整理 · 观点仅代表个人思考' : 'Chatham House Rule · Perspectives reflect personal observations';
-    ctx.fillText(ruleText, pad + 50, footerY + 42);
+  ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  ctx.fillStyle = '#71808b';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  const ruleText = isZh ? '遵循查塔姆研究所规则整理 · 观点仅代表个人思考' : 'Chatham House Rule · Perspectives reflect personal observations';
+  ctx.fillText(ruleText, pad + 50, footerY + 42);
 
-    ctx.textAlign = 'right';
-    ctx.fillStyle = '#ba9360';
-    ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.letterSpacing = '1px';
-    ctx.fillText('agicounsel.org', size - pad - 50, footerY + 42);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#ba9360';
+  ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  ctx.letterSpacing = '1px';
+  ctx.fillText('agicounsel.org', size - pad - 50, footerY + 42);
 
-    try {
-      const dataUrl = canvas.toDataURL('image/png');
-      setImageUrl(dataUrl);
-    } catch {
-      // ignore
-    }
-  }, [isOpen, activeQuote, activeIndex, pool.length, isZh]);
-
-  if (!isOpen) return null;
-
-  const handleDownload = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const link = document.createElement('a');
-    link.download = `agi-counsel-quote-0${activeIndex + 1}.png`;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  };
-
-  const handleCopyOrDownload = async () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    try {
-      canvas.toBlob(async (blob) => {
-        if (blob && navigator.clipboard && window.ClipboardItem) {
+  // Also copy image to clipboard if browser supports it
+  try {
+    canvas.toBlob(async (blob) => {
+      if (blob && navigator.clipboard && window.ClipboardItem) {
+        try {
           await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2500);
-        } else {
-          handleDownload();
+        } catch {
+          // ignore clipboard error
         }
-      });
-    } catch {
-      handleDownload();
-    }
-  };
+      }
+    });
+  } catch {
+    // ignore
+  }
 
-  const shareUrl = isZh
-    ? 'https://agicounsel.org/zh/notes/ai-native-legal-department/'
-    : 'https://agicounsel.org/notes/ai-native-legal-department/';
-
-  const handleLinkedInShare = () => {
-    const postText = `“${activeQuote}”\n\n— AGI Counsel Network (Note #01: What Would an AI-Native Legal Department Look Like?)\n${shareUrl}`;
-    navigator.clipboard?.writeText(postText);
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-    window.open(linkedInUrl, '_blank', 'noopener,noreferrer,width=680,height=640');
-  };
-
-  return (
-    <div className="quote-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-label="Quote Card Preview">
-      <div className="quote-modal-panel" onClick={(e) => e.stopPropagation()}>
-        <header className="quote-modal-header">
-          <div className="quote-modal-switcher">
-            <button
-              type="button"
-              className="quote-switch-arrow"
-              onClick={() => setActiveIndex((prev) => (prev - 1 + pool.length) % pool.length)}
-              aria-label="Previous quote"
-            >
-              ←
-            </button>
-            <span>{`0${activeIndex + 1} / 0${pool.length}`}</span>
-            <button
-              type="button"
-              className="quote-switch-arrow"
-              onClick={() => setActiveIndex((prev) => (prev + 1) % pool.length)}
-              aria-label="Next quote"
-            >
-              →
-            </button>
-          </div>
-          <button className="quote-modal-close" onClick={onClose} aria-label="Close modal">×</button>
-        </header>
-
-        <div className="quote-modal-canvas-wrap">
-          <canvas ref={canvasRef} style={{ display: 'none' }} />
-          {imageUrl && (
-            <img
-              src={imageUrl}
-              alt={activeQuote}
-              className="quote-card-preview-image"
-            />
-          )}
-        </div>
-
-        <footer className="quote-modal-actions">
-          <button
-            type="button"
-            className="quote-modal-btn quote-modal-btn-primary"
-            onClick={handleCopyOrDownload}
-          >
-            {copied
-              ? isZh
-                ? '✓ 已复制卡片'
-                : '✓ Card Copied'
-              : isZh
-              ? '复制 / 下载卡片'
-              : 'Copy / Download Card'}
-          </button>
-          <button
-            type="button"
-            className="quote-modal-btn quote-modal-btn-secondary"
-            onClick={handleLinkedInShare}
-          >
-            {isZh ? 'in 分享至 LinkedIn ↗' : 'in Share on LinkedIn ↗'}
-          </button>
-        </footer>
-      </div>
-    </div>
-  );
+  // Trigger immediate PNG download
+  const link = document.createElement('a');
+  link.download = `agi-counsel-quote-0${index + 1}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
 }
+
+export default downloadQuoteCard;

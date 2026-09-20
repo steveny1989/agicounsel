@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import QuoteCardModal from './QuoteCardModal';
+import { downloadQuoteCard } from './QuoteCardModal';
 
 type Locale = 'en' | 'zh';
 
@@ -280,21 +280,30 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
 
     const quoteBlocks = Array.from(document.querySelectorAll('.article-body .article-quote-block'));
     quoteBlocks.forEach((qb, idx) => {
-      const spanEl = qb.querySelector('span');
-      const pEl = qb.querySelector('p');
-      if (spanEl && pEl && !spanEl.querySelector('.inline-quote-share-link')) {
-        const rawQuote = (pEl.textContent || '').replace(/^[“"]|[”"]$/g, '').trim();
-        const linkBtn = document.createElement('button');
-        linkBtn.type = 'button';
-        linkBtn.className = 'inline-quote-share-link';
-        linkBtn.textContent = isZh ? ' · 分享卡片 ↗' : ' · Share Card ↗';
-        linkBtn.onclick = () => {
-          setQuoteModal({ isOpen: true, quote: rawQuote, index: idx });
+      const box = qb as HTMLElement;
+      const spanEl = box.querySelector('span');
+      const pEl = box.querySelector('p');
+      if (!box.dataset.clickableBound && pEl) {
+        box.dataset.clickableBound = 'true';
+        box.classList.add('clickable-quote-box');
+        box.title = isZh ? '点击此引用框直接下载分享卡片' : 'Click this quote box to download shareable card';
+        const originalSpanText = spanEl ? spanEl.textContent || '' : '';
+        if (spanEl) {
+          spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click box to download card ↓'}`;
+        }
+        box.onclick = () => {
+          const rawQuote = (pEl.textContent || '').replace(/^[“"]|[”"]$/g, '').trim();
+          downloadQuoteCard(rawQuote, idx, locale);
+          if (spanEl) {
+            spanEl.textContent = `${originalSpanText} · ${isZh ? '✓ 卡片已下载并复制' : '✓ Card downloaded & copied'}`;
+            setTimeout(() => {
+              spanEl.textContent = `${originalSpanText} · ${isZh ? '点击下载卡片 ↓' : 'Click box to download card ↓'}`;
+            }, 2200);
+          }
         };
-        spanEl.appendChild(linkBtn);
       }
     });
-  }, [isZh]);
+  }, [isZh, locale]);
 
   // Toggle visibility of original single-language .article-body when Side-by-Side Bilingual Mode is active
   useEffect(() => {
@@ -371,11 +380,11 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
 
   return (
     <div className="note-study-enhancer-wrap">
-      {/* Quiet 2-Button Study Bar: EN/ZH Toggle + Share Card */}
+      {/* Quiet Study Bar: EN/ZH Parallel Toggle */}
       <div className="study-utility-bar">
         <div className="study-utility-inner">
           <span className="study-quiet-label">
-            {isZh ? 'AGI Counsel Note #01 · 深度研究' : 'AGI Counsel Note #01 · Deep Observation'}
+            {isZh ? 'AGI Counsel Note #01 · 点击文中金句框可直接下载卡片' : 'AGI Counsel Note #01 · Click any quote box to download card'}
           </span>
 
           <div className="study-action-controls">
@@ -392,22 +401,6 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
                 : bilingualMode
                 ? 'Single Language'
                 : 'EN ⇄ 中文'}
-            </button>
-
-            <button
-              type="button"
-              onClick={() =>
-                setQuoteModal({
-                  isOpen: true,
-                  quote: isZh
-                    ? '未来的律师，更像统筹众多 Agent 的 Chief of Staff。'
-                    : 'The lawyer of the future will be a Chief of Staff orchestrating fleets of agents.',
-                  index: 1,
-                })
-              }
-              className="study-ctrl-btn"
-            >
-              {isZh ? '分享 / 金句卡片 ↗' : 'Share ↗'}
             </button>
           </div>
         </div>
@@ -591,16 +584,26 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
                   <div key={pIdx} className="bilingual-row">
                     <div className="bilingual-col">
                       {p.quoteEn && (
-                        <div className="article-quote-block">
+                        <div
+                          className="article-quote-block clickable-quote-box"
+                          onClick={() => downloadQuoteCard(p.quoteEn!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'en')}
+                          title="Click quote box to download card"
+                        >
                           <p>{p.quoteEn}</p>
+                          <span>Click box to download card ↓</span>
                         </div>
                       )}
                       <p>{p.en}</p>
                     </div>
                     <div className="bilingual-col" lang="zh-CN">
                       {p.quoteZh && (
-                        <div className="article-quote-block">
+                        <div
+                          className="article-quote-block clickable-quote-box"
+                          onClick={() => downloadQuoteCard(p.quoteZh!.replace(/^[“"]|[”"]$/g, ''), pIdx, 'zh')}
+                          title="点击此引用框直接下载卡片"
+                        >
                           <p>{p.quoteZh}</p>
+                          <span>点击下载卡片 ↓</span>
                         </div>
                       )}
                       <p>{p.zh}</p>
@@ -612,14 +615,6 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
           </div>
         )}
       </div>
-
-      <QuoteCardModal
-        isOpen={quoteModal.isOpen}
-        onClose={() => setQuoteModal((prev) => ({ ...prev, isOpen: false }))}
-        quote={quoteModal.quote}
-        index={quoteModal.index}
-        locale={locale}
-      />
     </div>
   );
 }
