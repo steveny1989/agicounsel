@@ -31,139 +31,180 @@ export default function QuoteCardModal({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const size = 1200;
-    canvas.width = size;
-    canvas.height = size;
+    const width = 1080;
+    const height = 840;
+    canvas.width = width;
+    canvas.height = height;
 
     // Background
     ctx.fillStyle = '#071a2b';
-    ctx.fillRect(0, 0, size, size);
+    ctx.fillRect(0, 0, width, height);
 
-    // Decorative ambient circles (orbits)
+    // Subtle decorative ambient circles (orbits)
     ctx.save();
-    ctx.strokeStyle = 'rgba(186, 147, 96, 0.12)';
+    ctx.strokeStyle = 'rgba(186, 147, 96, 0.1)';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.arc(size / 2, size / 2, 480, 0, Math.PI * 2);
+    ctx.arc(width / 2, height / 2, 370, 0, Math.PI * 2);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(size / 2, size / 2, 540, 0, Math.PI * 2);
+    ctx.arc(width / 2, height / 2, 425, 0, Math.PI * 2);
     ctx.stroke();
     ctx.restore();
 
     // Outer decorative border
-    const pad = 64;
-    ctx.strokeStyle = 'rgba(186, 147, 96, 0.35)';
+    const pad = 44;
+    ctx.strokeStyle = 'rgba(186, 147, 96, 0.4)';
     ctx.lineWidth = 2;
-    ctx.strokeRect(pad, pad, size - pad * 2, size - pad * 2);
+    ctx.strokeRect(pad, pad, width - pad * 2, height - pad * 2);
+
+    const innerX = pad + 44;
+    const innerRight = width - pad - 44;
 
     // Header: Logo and Brand
-    const headerY = pad + 70;
-    const logoX = pad + 50;
-    const logoSize = 52;
+    const headerY = pad + 56;
+    const logoSize = 44;
 
     ctx.strokeStyle = '#ba9360';
     ctx.lineWidth = 1.5;
-    ctx.strokeRect(logoX, headerY - logoSize / 2, logoSize, logoSize);
+    ctx.strokeRect(innerX, headerY - logoSize / 2, logoSize, logoSize);
 
     ctx.fillStyle = '#ba9360';
-    ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = 'bold 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('A', logoX + logoSize / 2, headerY);
+    ctx.fillText('A', innerX + logoSize / 2, headerY);
 
     ctx.textAlign = 'left';
-    ctx.font = '600 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.letterSpacing = '3px';
+    ctx.font = '600 19px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.letterSpacing = '2.5px';
     ctx.fillStyle = '#faf9f5';
-    ctx.fillText('AGI COUNSEL NETWORK', logoX + logoSize + 22, headerY);
+    ctx.fillText('AGI COUNSEL NETWORK', innerX + logoSize + 18, headerY);
 
     const numberText = `0${index + 1}`;
     ctx.textAlign = 'right';
-    ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.letterSpacing = '2px';
     ctx.fillStyle = '#ba9360';
-    ctx.fillText(numberText, size - pad - 50, headerY);
+    ctx.fillText(numberText, innerRight, headerY);
 
     // Eyebrow tag
-    const eyebrowY = headerY + 75;
+    const eyebrowY = headerY + 54;
     ctx.textAlign = 'left';
-    ctx.font = '600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = '600 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.letterSpacing = '2px';
-    ctx.fillStyle = 'rgba(186, 147, 96, 0.9)';
+    ctx.fillStyle = 'rgba(186, 147, 96, 0.92)';
     const eyebrowText = isZh ? '现场摘记 · 法律 AI 洞察' : 'FROM THE ROOM · LEGAL AI NOTES';
-    ctx.fillText(eyebrowText, logoX, eyebrowY);
+    ctx.fillText(eyebrowText, innerX, eyebrowY);
 
     // Top divider
+    const topDividerY = eyebrowY + 22;
     ctx.strokeStyle = 'rgba(113, 128, 139, 0.35)';
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(pad + 50, eyebrowY + 28);
-    ctx.lineTo(size - pad - 50, eyebrowY + 28);
+    ctx.moveTo(innerX, topDividerY);
+    ctx.lineTo(innerRight, topDividerY);
     ctx.stroke();
 
-    // Quote statement text
-    const textMaxWidth = size - (pad + 60) * 2;
-    const fontSize = quote.length > 35 ? 46 : 54;
-    const lineHeight = fontSize * 1.5;
-
-    ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", serif`;
-    ctx.fillStyle = '#faf9f5';
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-
-    const words = isZh ? quote.split('') : quote.split(' ');
-    const lines: string[] = [];
-    let currentLine = '';
-
-    for (let i = 0; i < words.length; i++) {
-      const testLine = currentLine + (isZh ? words[i] : (currentLine ? ' ' : '') + words[i]);
-      const metrics = ctx.measureText(testLine);
-      if (metrics.width > textMaxWidth && currentLine !== '') {
-        lines.push(currentLine);
-        currentLine = words[i];
-      } else {
-        currentLine = testLine;
-      }
-    }
-    if (currentLine) {
-      lines.push(currentLine);
-    }
-
-    const textBlockHeight = lines.length * lineHeight;
-    const startY = (size - textBlockHeight) / 2 + 10;
-
-    ctx.font = 'bold 90px serif';
-    ctx.fillStyle = 'rgba(186, 147, 96, 0.3)';
-    ctx.fillText('“', pad + 50, startY - 70);
-
-    ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Serif SC", "Segoe UI", serif`;
-    ctx.fillStyle = '#faf9f5';
-    for (let i = 0; i < lines.length; i++) {
-      ctx.fillText(lines[i], pad + 50, startY + i * lineHeight);
-    }
-
-    const footerY = size - pad - 90;
+    // Footer divider & metadata
+    const footerY = height - pad - 74;
     ctx.strokeStyle = 'rgba(113, 128, 139, 0.35)';
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(pad + 50, footerY);
-    ctx.lineTo(size - pad - 50, footerY);
+    ctx.moveTo(innerX, footerY);
+    ctx.lineTo(innerRight, footerY);
     ctx.stroke();
 
-    ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    ctx.fillStyle = '#71808b';
+    ctx.font = '15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillStyle = '#8b99a4';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'alphabetic';
-    const ruleText = isZh ? '遵循查塔姆研究所规则整理 · 观点仅代表个人思考' : 'Chatham House Rule · Perspectives reflect personal observations';
-    ctx.fillText(ruleText, pad + 50, footerY + 42);
+    const ruleText = isZh
+      ? '遵循查塔姆研究所规则整理 · 观点仅代表个人思考'
+      : 'Chatham House Rule · Perspectives reflect personal observations';
+    ctx.fillText(ruleText, innerX, footerY + 36);
 
     ctx.textAlign = 'right';
     ctx.fillStyle = '#ba9360';
-    ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     ctx.letterSpacing = '1px';
-    ctx.fillText('agicounsel.org', size - pad - 50, footerY + 42);
+    ctx.fillText('agicounsel.org', innerRight, footerY + 36);
+
+    // Dynamic Auto-Fit Quote Typography within the central zone
+    const cleanQuote = quote.replace(/^[“"「『]+|[”"」』]+$/g, '').trim();
+    const zoneTop = topDividerY + 24;
+    const zoneBottom = footerY - 24;
+    const zoneHeight = zoneBottom - zoneTop; // ~480px
+    const textMaxWidth = innerRight - innerX; // ~904px
+
+    const wrapQuoteLines = (testFontSize: number): string[] => {
+      ctx.font = `500 ${testFontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Serif SC", "Georgia", serif`;
+      ctx.letterSpacing = '0px';
+      const tokens = isZh ? Array.from(cleanQuote) : cleanQuote.split(/\s+/);
+      const wrapped: string[] = [];
+      let current = '';
+
+      for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        const candidate = current + (isZh ? token : (current ? ' ' : '') + token);
+        const isTrailingPunct = isZh && /^[，。！？；：、）”》」』]/.test(token);
+
+        if (ctx.measureText(candidate).width > textMaxWidth && current !== '' && !isTrailingPunct) {
+          wrapped.push(current);
+          current = token;
+        } else {
+          current = candidate;
+        }
+      }
+      if (current) wrapped.push(current);
+      return wrapped;
+    };
+
+    // Start large for short quotes, step down automatically for longer quotes
+    const maxFont = isZh ? 68 : 64;
+    const minFont = 28;
+    let chosenFontSize = minFont;
+    let chosenLines: string[] = [];
+    const lineHeightRatio = isZh ? 1.46 : 1.38;
+
+    for (let sz = maxFont; sz >= minFont; sz -= 2) {
+      const candidateLines = wrapQuoteLines(sz);
+      const lh = sz * lineHeightRatio;
+      const quoteMarkSpace = Math.round(sz * 0.85);
+      const totalNeededHeight = quoteMarkSpace + candidateLines.length * lh;
+
+      if (totalNeededHeight <= zoneHeight * 0.88) {
+        chosenFontSize = sz;
+        chosenLines = candidateLines;
+        break;
+      }
+    }
+
+    if (chosenLines.length === 0) {
+      chosenLines = wrapQuoteLines(minFont);
+      chosenFontSize = minFont;
+    }
+
+    const lineHeight = chosenFontSize * lineHeightRatio;
+    const quoteMarkOffset = Math.round(chosenFontSize * 0.82);
+    const totalContentHeight = quoteMarkOffset + chosenLines.length * lineHeight;
+    const blockTopY = zoneTop + (zoneHeight - totalContentHeight) / 2;
+    const textStartY = blockTopY + quoteMarkOffset;
+
+    // Decorative Opening Quote Mark anchored directly above the first line
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.font = `bold ${Math.round(chosenFontSize * 1.45)}px Georgia, serif`;
+    ctx.fillStyle = 'rgba(186, 147, 96, 0.42)';
+    ctx.fillText('“', innerX - 4, blockTopY - Math.round(chosenFontSize * 0.25));
+
+    // Render Quote Lines
+    ctx.font = `500 ${chosenFontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Serif SC", "Georgia", serif`;
+    ctx.fillStyle = '#faf9f5';
+    for (let i = 0; i < chosenLines.length; i++) {
+      ctx.fillText(chosenLines[i], innerX, textStartY + i * lineHeight);
+    }
 
     try {
       const dataUrl = canvas.toDataURL('image/png');

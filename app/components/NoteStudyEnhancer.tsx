@@ -252,7 +252,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
   const currentTurn = DIALOGUE_TURNS[activeTurn] || DIALOGUE_TURNS[0];
 
   return (
-    <div style={{ maxWidth: '790px', margin: '48px auto 0', padding: '0 24px' }}>
+    <div style={{ maxWidth: bilingualMode ? '1080px' : '880px', margin: '52px auto 0', padding: '0 24px', transition: 'max-width 0.25s ease' }}>
       <audio
         ref={audioRef}
         src={isZh ? '/audio/note-01-zh.mp3' : '/audio/note-01-en.mp3'}
@@ -272,27 +272,27 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
           borderTop: '1px solid #71808b',
           borderBottom: '1px solid #71808b',
           background: '#fbf9f3',
-          padding: '18px 22px',
+          padding: '20px 26px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '20px',
+          gap: '22px',
           flexWrap: 'wrap',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: '1 1 280px', minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flex: '1 1 280px', minWidth: 0 }}>
           <button
             type="button"
             onClick={handleTogglePlay}
             aria-label={isPlaying ? 'Pause audio briefing' : 'Play audio briefing'}
             style={{
-              width: '40px',
-              height: '40px',
+              width: '44px',
+              height: '44px',
               borderRadius: '50%',
               border: '1px solid #071a2b',
               background: isPlaying ? '#ba9360' : '#071a2b',
               color: '#faf9f5',
-              fontSize: '13px',
+              fontSize: '14px',
               cursor: 'pointer',
               flexShrink: 0,
               display: 'grid',
@@ -303,10 +303,10 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
           </button>
 
           <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
               <span
                 style={{
-                  fontSize: '11px',
+                  fontSize: '12px',
                   fontWeight: 700,
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',
@@ -322,8 +322,8 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
                   background: 'transparent',
                   border: 0,
                   padding: 0,
-                  fontSize: '12px',
-                  color: '#71808b',
+                  fontSize: '13.5px',
+                  color: '#5a6b78',
                   cursor: 'pointer',
                   textDecoration: 'underline',
                 }}
@@ -340,10 +340,10 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
 
             <p
               style={{
-                margin: '4px 0 0',
-                fontSize: '13.5px',
+                margin: '5px 0 0',
+                fontSize: '15.5px',
                 color: '#071a2b',
-                lineHeight: 1.5,
+                lineHeight: 1.55,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
@@ -367,8 +367,8 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
             background: bilingualMode ? '#071a2b' : 'transparent',
             color: bilingualMode ? '#faf9f5' : '#071a2b',
             border: '1px solid #071a2b',
-            padding: '8px 16px',
-            fontSize: '11.5px',
+            padding: '10px 18px',
+            fontSize: '12.5px',
             fontWeight: 600,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
@@ -392,9 +392,9 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
           style={{
             borderBottom: '1px solid #71808b',
             background: '#faf9f5',
-            padding: '20px 22px',
+            padding: '24px 26px',
             display: 'grid',
-            gap: '12px',
+            gap: '14px',
           }}
         >
           {DIALOGUE_TURNS.map((turn, idx) => (
@@ -402,7 +402,7 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
               key={idx}
               onClick={() => playTurnAt(idx)}
               style={{
-                padding: '10px 14px',
+                padding: '12px 16px',
                 borderLeft: activeTurn === idx && isPlaying ? '3px solid #ba9360' : '2px solid rgba(113,128,139,0.3)',
                 background: activeTurn === idx && isPlaying ? '#fbf7f0' : 'transparent',
                 cursor: 'pointer',
@@ -411,16 +411,16 @@ export default function NoteStudyEnhancer({ locale }: { locale: Locale }) {
               <strong
                 style={{
                   display: 'block',
-                  fontSize: '11px',
+                  fontSize: '12px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
                   color: '#ba9360',
-                  marginBottom: '4px',
+                  marginBottom: '6px',
                 }}
               >
                 {isZh ? turn.speakerZh : turn.speakerEn}
               </strong>
-              <p style={{ margin: 0, fontSize: '13.5px', color: '#071a2b', lineHeight: 1.65 }}>
+              <p style={{ margin: 0, fontSize: '16px', color: '#182b3c', lineHeight: 1.75 }}>
                 {isZh ? turn.textZh : turn.textEn}
               </p>
             </div>
