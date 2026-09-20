@@ -57,25 +57,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/notes/ai-native-legal-department/`,
-      lastModified: '2026-08-01',
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      lastModified: '2026-09-20',
+      changeFrequency: 'weekly',
+      priority: 0.95,
       alternates: {
         languages: {
           en: `${baseUrl}/notes/ai-native-legal-department/`,
           'zh-CN': `${baseUrl}/zh/notes/ai-native-legal-department/`,
+          'x-default': `${baseUrl}/notes/ai-native-legal-department/`,
         },
       },
     },
     {
       url: `${baseUrl}/zh/notes/ai-native-legal-department/`,
-      lastModified: '2026-08-01',
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      lastModified: '2026-09-20',
+      changeFrequency: 'weekly',
+      priority: 0.95,
       alternates: {
         languages: {
           en: `${baseUrl}/notes/ai-native-legal-department/`,
           'zh-CN': `${baseUrl}/zh/notes/ai-native-legal-department/`,
+          'x-default': `${baseUrl}/notes/ai-native-legal-department/`,
         },
       },
     },

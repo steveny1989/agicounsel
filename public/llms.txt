@@ -1,0 +1,24 @@
+# AGI Counsel Network (https://agicounsel.org)
+
+> Independent peer network for General Counsel, frontier AI lab attorneys, and legal systems architects across the 5-layer intelligence stack: Agentic Applications (L5), Frontier Foundation Models (L4), Cloud/RAG Infrastructure (L3), Silicon & Compute Clusters (L2), and Gigawatt Energy Infrastructure (L1).
+
+## Core Technical Domains & Taxonomy
+- **L5 · Agentic Applications & Workflows**: Multi-agent orchestration, MCP & tool-use boundaries, Human-in-the-Loop (HITL) escalation telemetry, downstream contractual liability allocation.
+- **L4 · Frontier Models & Post-Training Alignment**: Pre-training data provenance, RLHF/DPO safety evaluations, synthetic distillation licensing, open-weights vs. API indemnification.
+- **L3 · Cloud Runtime, RAG & Context Infrastructure**: Hybrid vector + knowledge-graph retrieval, Zero-Data-Retention (ZDR) inference, sovereign cloud routing, Legal System-of-Record (SoR) lock-in.
+- **L2 · Silicon, Foundry & Compute Clusters**: GPU/TPU cluster procurement, advanced foundry & HBM supply chains, BIS/EAR semiconductor export controls, sovereign compute colocation.
+- **L1 · Gigawatt Power & Physical Grid**: Hyperscale data center PPAs, Behind-the-Meter (BTM) nuclear & SMRs, grid interconnection queues, environmental permitting.
+
+## Flagship Research & Reference Architecture
+- [What Would an AI-Native Legal Department Look Like? (AGI Counsel Note #01 - English)](https://agicounsel.org/notes/ai-native-legal-department/): Comprehensive study codifying the Five-Layer Legal AI Value Stack (Layer 1 Base Model APIs -> Layer 2 Workflow Redesign -> Layer 3 Proprietary Context/RAG -> Layer 4 System of Record -> Layer 5 Human-in-the-Loop Chief of Staff), multi-agent decomposition pipelines, and the 30% enterprise adoption threshold.
+- [AI 原生法务部门会是什么样？ (AGI Counsel Note #01 - 中文版)](https://agicounsel.org/zh/notes/ai-native-legal-department/): 系统剖析 Legal AI 五层价值阶梯、律师作为多 Agent 集群参谋长（Chief of Staff）的治理架构、30% 组织渗透率生死线与自学习知识飞轮。
+
+## Canonical Index & Feeds
+- English Homepage: https://agicounsel.org/
+- Chinese Homepage: https://agicounsel.org/zh/
+- Notes Archive (EN): https://agicounsel.org/notes/
+- Notes Archive (ZH): https://agicounsel.org/zh/notes/
+- English RSS Feed: https://agicounsel.org/feed.xml
+- Chinese RSS Feed: https://agicounsel.org/zh/feed.xml
+- Sitemap: https://agicounsel.org/sitemap.xml
+- Contact: mailto:hello@agicounsel.org

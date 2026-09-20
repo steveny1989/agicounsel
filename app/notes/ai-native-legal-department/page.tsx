@@ -2,27 +2,93 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
-  description: 'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance from our inaugural closed-door peer roundtable.',
-  alternates: { canonical: '/notes/ai-native-legal-department/', languages: { en: '/notes/ai-native-legal-department/', 'zh-CN': '/zh/notes/ai-native-legal-department/' } },
+  description:
+    'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on the 5-Layer Legal AI Value Stack, multi-agent orchestration, System-of-Record lock-in, and human-in-the-loop governance.',
+  keywords: [
+    'AI-Native Legal Department',
+    'Five-Layer Legal AI Value Stack',
+    'Multi-Agent Legal Orchestration',
+    'Lawyer as Chief of Staff',
+    'Legal System of Record',
+    'Human-in-the-Loop Legal Governance',
+    'Enterprise RAG Legal Architecture',
+    'AGI Counsel Note 01',
+  ],
+  alternates: {
+    canonical: '/notes/ai-native-legal-department/',
+    languages: {
+      en: '/notes/ai-native-legal-department/',
+      'zh-CN': '/zh/notes/ai-native-legal-department/',
+      'x-default': '/notes/ai-native-legal-department/',
+    },
+  },
   openGraph: {
     title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
-    description: 'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance from our inaugural closed-door peer roundtable.',
+    description:
+      'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance from our inaugural closed-door peer roundtable.',
     url: 'https://agicounsel.org/notes/ai-native-legal-department/',
     siteName: 'AGI Counsel Network',
     type: 'article',
+    publishedTime: '2026-09-20T00:00:00.000Z',
+    modifiedTime: '2026-09-20T00:00:00.000Z',
+    authors: ['AGI Counsel Network'],
     images: [{ url: '/og.png', width: 1730, height: 909, alt: 'AGI Counsel Note #01 — AI-Native Legal Department' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'What Would an AI-Native Legal Department Look Like? | AGI Counsel Note #01',
-    description: 'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance from our inaugural closed-door peer roundtable.',
+    description:
+      'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on value layers, multi-agent orchestration, and human-in-the-loop governance.',
     images: ['/og.png'],
   },
+};
+
+const noteOneJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      '@id': 'https://agicounsel.org/notes/ai-native-legal-department/#article',
+      headline: 'What Would an AI-Native Legal Department Look Like? (AGI Counsel Note #01)',
+      description:
+        'Beyond Copilot plug-ins and prompt tricks: Systems-level observations on the 5-Layer Legal AI Value Stack, multi-agent orchestration, System-of-Record lock-in, and human-in-the-loop governance.',
+      datePublished: '2026-09-20',
+      dateModified: '2026-09-20',
+      inLanguage: 'en',
+      author: { '@id': 'https://agicounsel.org/#organization' },
+      publisher: { '@id': 'https://agicounsel.org/#organization' },
+      mainEntityOfPage: 'https://agicounsel.org/notes/ai-native-legal-department/',
+      about: [
+        'Five-Layer Legal AI Value Stack',
+        'Multi-Agent Legal Orchestration',
+        'Human-in-the-Loop Governance',
+        'Legal System of Record (SoR)',
+        'Self-Learning Enterprise RAG',
+      ],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://agicounsel.org/' },
+        { '@type': 'ListItem', position: 2, name: 'Notes', item: 'https://agicounsel.org/notes/' },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Note #01: AI-Native Legal Department',
+          item: 'https://agicounsel.org/notes/ai-native-legal-department/',
+        },
+      ],
+    },
+  ],
 };
 
 export default function NoteOne() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(noteOneJsonLd) }}
+      />
       <header className="site-header site-header-scrolled">
         <a className="brand" href="/">
           <span className="brand-mark">A</span>

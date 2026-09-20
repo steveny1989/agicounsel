@@ -197,8 +197,7 @@ export default function SectionCarousel({ id, title, labels, children, locale = 
           role="group"
           aria-roledescription={copy.slide}
           aria-label={`${index + 1} / ${slides.length}: ${labels[index]}`}
-          aria-hidden={index !== active}
-          inert={index !== active}
+          data-active={index === active}
         >{slide}</div>)}
       </div>
     </div>
@@ -220,7 +219,10 @@ export default function SectionCarousel({ id, title, labels, children, locale = 
             aria-label={labels[index]}
             onClick={() => goTo(index)}
             className={`carousel-tab-dot ${index === active ? 'is-active' : ''}`}
-          ><span /></button>
+          >
+            <span className="carousel-tab-indicator" />
+            <em className="carousel-tab-label">{`0${index + 1} · ${labels[index]}`}</em>
+          </button>
         ))}
       </div>
       <button

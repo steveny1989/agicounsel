@@ -1,29 +1,94 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
-  description: '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
-  alternates: { canonical: '/zh/notes/ai-native-legal-department/', languages: { en: '/notes/ai-native-legal-department/', 'zh-CN': '/zh/notes/ai-native-legal-department/' } },
+  title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01 深度研究',
+  description:
+    '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 颗粒度拆解、System of Record 核心记录底座与人机协同治理。',
+  keywords: [
+    'AI 原生法务部门',
+    'Legal AI 五层价值架构',
+    '多 Agent 法务编排',
+    'Chief of Staff 法务参谋长',
+    'System of Record 法务核心记录系统',
+    '企业法务 AI 转型',
+    'AGI Counsel Note 01',
+  ],
+  alternates: {
+    canonical: '/zh/notes/ai-native-legal-department/',
+    languages: {
+      en: '/notes/ai-native-legal-department/',
+      'zh-CN': '/zh/notes/ai-native-legal-department/',
+      'x-default': '/notes/ai-native-legal-department/',
+    },
+  },
   openGraph: {
-    title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
-    description: '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
+    title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01 深度研究',
+    description:
+      '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
     url: 'https://agicounsel.org/zh/notes/ai-native-legal-department/',
     siteName: 'AGI Counsel Network',
     locale: 'zh_CN',
     type: 'article',
+    publishedTime: '2026-09-20T00:00:00.000Z',
+    modifiedTime: '2026-09-20T00:00:00.000Z',
+    authors: ['AGI Counsel Network'],
     images: [{ url: '/og.png', width: 1730, height: 909, alt: 'AGI Counsel Note #01 — AI 原生法务部门' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI 原生法务部门会是什么样？｜AGI Counsel Note #01',
-    description: '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
+    description:
+      '超越 Copilot 插件思维：系统剖析 Legal AI 五层价值架构、多 Agent 统筹机制与企业落地实战。',
     images: ['/og.png'],
   },
+};
+
+const zhNoteOneJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      '@id': 'https://agicounsel.org/zh/notes/ai-native-legal-department/#article',
+      headline: 'AI 原生法务部门会是什么样？ (AGI Counsel Note #01)',
+      description:
+        '超越 Copilot 插件思维：基于首场 AGI Counsel 闭门同行研讨，系统剖析 Legal AI 五层价值架构、多 Agent 颗粒度拆解、System of Record 核心记录底座与人机协同治理。',
+      datePublished: '2026-09-20',
+      dateModified: '2026-09-20',
+      inLanguage: 'zh-CN',
+      author: { '@id': 'https://agicounsel.org/#organization' },
+      publisher: { '@id': 'https://agicounsel.org/#organization' },
+      mainEntityOfPage: 'https://agicounsel.org/zh/notes/ai-native-legal-department/',
+      about: [
+        'Legal AI 五层价值架构',
+        'Multi-Agent 多智能体法务编排',
+        'Human-in-the-Loop 人机协同治理',
+        'System of Record 法务核心记录系统',
+        '企业专有 RAG 与自学习知识飞轮',
+      ],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://agicounsel.org/zh/' },
+        { '@type': 'ListItem', position: 2, name: '社群笔记', item: 'https://agicounsel.org/zh/notes/' },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Note #01：AI 原生法务部门',
+          item: 'https://agicounsel.org/zh/notes/ai-native-legal-department/',
+        },
+      ],
+    },
+  ],
 };
 
 export default function ChineseNoteOne() {
   return (
     <main lang="zh-CN">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(zhNoteOneJsonLd) }}
+      />
       <header className="site-header site-header-scrolled">
         <a className="brand" href="/zh/">
           <span className="brand-mark">A</span>
