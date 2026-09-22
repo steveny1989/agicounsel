@@ -13,15 +13,15 @@ const layers = [
 
 const discussions = [
   {
-    title: 'Building an AI-Native Legal Department',
+    title: 'Note #01 — Building an AI-Native Legal Department',
     href: '/notes/ai-native-legal-department/',
   },
   {
-    title: 'AI Agents & Legal Responsibility',
-    href: '/notes/',
+    title: 'Conversation #02 — Content Strategy & IP for Media and Entertainment Companies (Now Convening)',
+    href: '/notes/#conversation-02',
   },
   {
-    title: 'The Future of AI Counsel',
+    title: 'AI Agents & Legal Responsibility',
     href: '/notes/',
   },
 ];

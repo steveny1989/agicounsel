@@ -13,15 +13,15 @@ const layers = [
 
 const discussions = [
   {
-    title: '构建 AI 原生法务部门',
+    title: 'Note #01 — 构建 AI 原生法务部门',
     href: '/zh/notes/ai-native-legal-department/',
   },
   {
-    title: 'AI 智能体与法律责任',
-    href: '/zh/notes/',
+    title: '第二期对话召集 — 文娱与内容企业的 AI 内容战略与 IP 商业化',
+    href: '/zh/notes/#conversation-02',
   },
   {
-    title: 'AI 法律人的未来',
+    title: 'AI 智能体与法律责任',
     href: '/zh/notes/',
   },
 ];

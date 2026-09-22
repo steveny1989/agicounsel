@@ -99,10 +99,21 @@ export default function ChineseNotesArchive() {
             </p>
             <strong>阅读深度笔记 &amp; 收听音频导读 →</strong>
           </a>
-          <div className="notes-context">
-            <p className="kicker">接下来</p>
-            <h2>每一篇笔记，都始于一个值得讨论的问题。</h2>
-            <p>当前议题包括 AI 智能体与法律责任，以及未来 AI 法律人需要具备的关键能力。</p>
+          <div className="notes-context" id="conversation-02">
+            <p className="kicker">第二场闭门对话 · 参会嘉宾与议题召集</p>
+            <h2>文娱与内容企业的 AI 内容战略：IP 资产、商业授权与创作重构</h2>
+            <p>
+              第二期闭门同行研讨将聚焦<strong>内容与娱乐产业</strong>（涵盖影视与流媒体、互动游戏、音乐与出版、短视频平台及全球泛娱乐 IP 机构）。我们诚挚邀请文娱内容产业的法务负责人、IP 战略官与业务决策者共同探讨 AI 时代的内容战略演进。
+            </p>
+            <p style={{ marginTop: '14px' }}>
+              核心探讨议题包括：内容企业如何构建进可攻、退可守的 AI 语料授权与联合开发机制？生成式工作流全面介入影视与游戏制作后，核心 IP 护城河、创作者与艺人权益边界如何重塑？法务团队又该如何从“合规守门人”升级为驱动公司内容战略与新型商业化交易的共同架构师？
+            </p>
+            <a
+              className="note-link"
+              href="mailto:hello@agicounsel.org?subject=%E7%AC%AC%E4%BA%8C%E6%9C%9F%E9%97%AD%E9%97%A8%E5%AF%B9%E8%AF%9D%E2%80%94%E2%80%94%E6%96%87%E5%A8%B1%E4%B8%8E%E5%86%85%E5%AE%B9%E6%88%98%E7%95%A5%E6%8A%A5%E5%90%8D&body=%E6%89%80%E5%9C%A8%E6%9C%BA%E6%9E%84%20%2F%20%E7%BB%86%E5%88%86%E9%A2%86%E5%9F%9F%EF%BC%88%E5%A6%82%E5%BD%B1%E8%A7%86%E3%80%81%E6%B5%81%E5%AA%92%E4%BD%93%E3%80%81%E6%B8%B8%E6%88%8F%E3%80%81%E9%9F%B3%E4%B9%90%E3%80%81%E5%87%BA%E7%89%88%E3%80%81%E5%86%85%E5%AE%B9%E5%B9%B3%E5%8F%B0%EF%BC%89%EF%BC%9A%0A%0A%E8%81%8C%E5%8A%A1%EF%BC%9A%0A%0A%E6%82%A8%E6%9C%80%E5%B8%8C%E6%9C%9B%E5%9C%A8%E7%AC%AC%E4%BA%8C%E6%9C%9F%E9%97%AD%E9%97%A8%E4%BC%9A%E4%B8%AD%E4%B8%8E%E5%90%8C%E8%A1%8C%E6%8E%A2%E8%AE%A8%E7%9A%84%E3%80%8CAI%20%E5%86%85%E5%AE%B9%E6%88%98%E7%95%A5%E3%80%8D%E9%97%AE%E9%A2%98%EF%BC%9A%0A"
+            >
+              申请参与第二场闭门对话或推荐文娱同行 <span>↗</span>
+            </a>
           </div>
           <div id="subscribe-notes-zh" style={{ marginTop: '48px' }}>
             <NetworkBriefingForm locale="zh" />

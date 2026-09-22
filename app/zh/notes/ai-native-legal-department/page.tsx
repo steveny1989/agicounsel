@@ -277,9 +277,17 @@ export default function ChineseNoteOne() {
           </p>
 
           <div className="article-callout">
-            <strong>留给下一场对话的核心设问</strong>
+            <strong>第二期闭门对话召集 · 聚焦内容与文娱产业的 AI 内容战略</strong>
             <p>
-              如果今天允许你彻底清空技术与组织债务，从零搭建一家跨国企业的法务部门，你会最先围绕哪一个业务场景重新设计人机协作工作流？为什么？
+              AGI Counsel Network 第二场闭门同行研讨将聚焦<strong>内容与娱乐企业</strong>（影视与流媒体、互动游戏、音乐出版、短视频平台及全球泛娱乐 IP 机构），共同探讨生成式 AI 浪潮下的<strong>内容战略演进、IP 语料授权与联合开发、合成制作工作流合规，以及创作者与艺人合作边界</strong>。
+            </p>
+            <p style={{ marginTop: '18px' }}>
+              <a
+                href="mailto:hello@agicounsel.org?subject=%E7%AC%AC%E4%BA%8C%E6%9C%9F%E9%97%AD%E9%97%A8%E5%AF%B9%E8%AF%9D%E2%80%94%E2%80%94%E6%96%87%E5%A8%B1%E4%B8%8E%E5%86%85%E5%AE%B9%E6%88%98%E7%95%A5%E6%8A%A5%E5%90%8D&body=%E6%89%80%E5%9C%A8%E6%9C%BA%E6%9E%84%20%2F%20%E7%BB%86%E5%88%86%E9%A2%86%E5%9F%9F%EF%BC%88%E5%A6%82%E5%BD%B1%E8%A7%86%E3%80%81%E6%B5%81%E5%AA%92%E4%BD%93%E3%80%81%E6%B8%B8%E6%88%8F%E3%80%81%E9%9F%B3%E4%B9%90%E3%80%81%E5%87%BA%E7%89%88%E3%80%81%E5%86%85%E5%AE%B9%E5%B9%B3%E5%8F%B0%EF%BC%89%EF%BC%9A%0A%0A%E8%81%8C%E5%8A%A1%EF%BC%9A%0A%0A%E6%82%A8%E6%9C%80%E5%B8%8C%E6%9C%9B%E5%9C%A8%E7%AC%AC%E4%BA%8C%E6%9C%9F%E9%97%AD%E9%97%A8%E4%BC%9A%E4%B8%AD%E4%B8%8E%E5%90%8C%E8%A1%8C%E6%8E%A2%E8%AE%A8%E7%9A%84%E3%80%8CAI%20%E5%86%85%E5%AE%B9%E6%88%98%E7%95%A5%E3%80%8D%E9%97%AE%E9%A2%98%EF%BC%9A%0A"
+                style={{ color: '#ba9360', fontWeight: 700, borderBottom: '1px solid #ba9360', paddingBottom: '4px' }}
+              >
+                申请参与第二场闭门对话或推荐文娱内容企业同行 ↗
+              </a>
             </p>
           </div>
 

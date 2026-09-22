@@ -101,12 +101,21 @@ export default function NotesArchive() {
             </p>
             <strong>Read the note &amp; listen to the Deep Dive →</strong>
           </a>
-          <div className="notes-context">
-            <p className="kicker">What comes next</p>
-            <h2>Notes begin with a question worth discussing.</h2>
+          <div className="notes-context" id="conversation-02">
+            <p className="kicker">Conversation #02 · Open Call for Participants</p>
+            <h2>AI &amp; Content Strategy in Media, Gaming, and Entertainment</h2>
             <p>
-              Current conversations include AI agents and legal responsibility, and the capabilities that will define the future of AI counsel.
+              For our second closed-door peer roundtable, we are inviting legal, IP, and strategy leaders from content and entertainment companies—spanning film &amp; streaming studios, interactive gaming, music, publishing, and digital creator platforms—to compare notes on AI-era content strategy.
             </p>
+            <p style={{ marginTop: '14px' }}>
+              Key questions on the table: How are content companies structuring AI licensing and training partnerships? Where are the real boundaries around synthetic production workflows, talent &amp; creator rights, and IP moat defense? And how should legal teams partner with creative and commercial leadership to shape a forward-looking content strategy?
+            </p>
+            <a
+              className="note-link"
+              href="mailto:hello@agicounsel.org?subject=Conversation%20%2302%20%E2%80%94%20Content%20%26%20Entertainment%20Strategy%20Roundtable&body=Organization%20%2F%20Sector%20(e.g.%2C%20Film%2C%20Streaming%2C%20Gaming%2C%20Music%2C%20Publishing%2C%20Platform)%3A%0A%0ARole%3A%0A%0AWhat%20content%20strategy%20question%20or%20perspective%20would%20you%20most%20like%20to%20explore%20with%20peers%3F%0A"
+            >
+              Request an invitation or propose a question for Conversation #02 <span>↗</span>
+            </a>
           </div>
           <div id="subscribe-notes" style={{ marginTop: '48px' }}>
             <NetworkBriefingForm locale="en" />

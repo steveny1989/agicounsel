@@ -277,9 +277,17 @@ export default function NoteOne() {
           </p>
 
           <div className="article-callout">
-            <strong>A Strategic Inquiry for the Next Conversation</strong>
+            <strong>Conversation #02 · Open Call for Content &amp; Entertainment Leaders</strong>
             <p>
-              If granted the mandate to construct an enterprise legal department from absolute zero today with zero technical and organizational debt, which single workflow would you re-engineer around autonomous agents first—and why?
+              Our second closed-door peer roundtable will bring together legal, IP, and strategy leaders from content and entertainment companies (film, streaming, gaming, music, publishing, and creator platforms) to examine <strong>AI-era content strategy</strong>—from licensing frameworks and synthetic production workflows to IP moat defense and talent partnerships.
+            </p>
+            <p style={{ marginTop: '18px' }}>
+              <a
+                href="mailto:hello@agicounsel.org?subject=Conversation%20%2302%20%E2%80%94%20Content%20%26%20Entertainment%20Strategy%20Roundtable&body=Organization%20%2F%20Sector%20(e.g.%2C%20Film%2C%20Streaming%2C%20Gaming%2C%20Music%2C%20Publishing%2C%20Platform)%3A%0A%0ARole%3A%0A%0AWhat%20content%20strategy%20question%20or%20perspective%20would%20you%20most%20like%20to%20explore%20with%20peers%3F%0A"
+                style={{ color: '#ba9360', fontWeight: 700, borderBottom: '1px solid #ba9360', paddingBottom: '4px' }}
+              >
+                Request an invitation or nominate a peer for Conversation #02 ↗
+              </a>
             </p>
           </div>
 
