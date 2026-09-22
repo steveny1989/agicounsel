@@ -111,9 +111,6 @@ export default function NotesArchive() {
           <div id="subscribe-notes" style={{ marginTop: '48px' }}>
             <NetworkBriefingForm locale="en" />
           </div>
-          <p className="notes-disclaimer">
-            Distilled under the Chatham House Rule from recent peer discussions. Perspectives are personal.
-          </p>
         </div>
       </section>
       <footer>

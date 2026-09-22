@@ -107,9 +107,6 @@ export default function ChineseNotesArchive() {
           <div id="subscribe-notes-zh" style={{ marginTop: '48px' }}>
             <NetworkBriefingForm locale="zh" />
           </div>
-          <p className="notes-disclaimer">
-            遵循查塔姆研究所规则（Chatham House Rule）整理，观点仅代表个人实践思考。
-          </p>
         </div>
       </section>
       <footer>
